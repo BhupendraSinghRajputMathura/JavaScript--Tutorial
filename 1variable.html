@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Variablest</title>
+    <title>Variables</title>
 </head>
 <body>
     <h1>
@@ -43,6 +43,47 @@
             </li>
         </ol>
     </p>
+
+    <h1>
+        interview Question: What is the difference between var, let, and const in JavaScript?
+        difference between var, let and const:
+        <ul>
+            <li>Scope:
+                <ul>
+                    <li>var: Function-scoped. Accessible throughout the function in which it is declared.</li>
+                    <li>let: Block-scoped. Accessible only within the block (enclosed by {}) in which it is declared.</li>
+                    <li>const: Block-scoped. Accessible only within the block in which it is declared.</li>
+                </ul>
+            </li>
+            <li>Reassignment:
+                <ul>
+                    <li>var: Can be reassigned.</li>
+                    <li>let: Can be reassigned.</li>
+                    <li>const: Cannot be reassigned after its initial assignment.</li>
+                </ul>
+            </li>
+            <li>Hoisting:
+                <ul>
+                    <li>var: Hoisted to the top of its scope and initialized with undefined.</li>
+                    <li>let: Hoisted to the top of its block but not initialized. Accessing it before declaration results in a ReferenceError (temporal dead zone).</li>
+                    <li>const: Hoisted to the top of its block but not initialized. Accessing it before declaration results in a ReferenceError (temporal dead zone).</li>
+                </ul>
+            </li>
+            <li>Use Cases:
+                <ul>
+                    <li>var: Generally avoided in modern JavaScript due to its function scope and hoisting behavior, which can lead to unexpected results.</li>
+                    <li>let: Used for variables that may need to be reassigned, such as loop counters or values that change over time.</li>
+                    <li>const: Used for variables that should remain constant throughout the program, such as configuration values or references to objects/arrays that should not be reassigned.</li>
+                </ul>
+            </li>   
+        </ul>
+        Example:
+        <ul>
+            <li>var x = 10; // function-scoped, can be reassigned</li>
+            <li>let y = 20; // block-scoped, can be reassigned</li>
+            <li>const z = 30; // block-scoped, cannot be reassigned</li>
+        </ul>
+    </h1>
 
     <script>
         const panCard = "1234-5678-9012-3456";
