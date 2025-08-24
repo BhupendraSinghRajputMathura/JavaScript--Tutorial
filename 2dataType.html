@@ -80,10 +80,34 @@
 
 
     <h1>
-        interview Question: What are the different data types in JavaScript?
+        interview Question: What are the different data types in JavaScript? <br>
+        console.log(typeof "Hello"); // "string" <br>
+        console.log(typeof 42); // "number"  <br>
+        console.log(typeof true); // "boolean"  <br>
+        console.log(boolean("")); // false <br>
+         console.log(Boolean(0)); // false <br>
+        console.log(Boolean(1)); // true <br>
+        console.log(boolean("aadi")); // true <br>
+        console.log(boolean("null")); // true <br>
+        console.log(boolean("undefined")); // true <br> 
+        console.log(typeof null); // "object" (this is a known quirk in JavaScript)  <br>
+        console.log(typeof undefined); // "undefined"  <br>
+        console.log(typeof Symbol('id')); // "symbol"  <br>
+        console.log(typeof 9007199254740991n); // "bigint"  <br>
+        console.log(typeof {name: "John", age: 30}); // "object"  <br>
+        console.log(typeof [1, 2, 3]); // "object" (arrays are a type of object)  <br>
+        console.log(typeof function() {}); // "function"  <br>
+    </h1>
+    <script>
         console.log(typeof "Hello"); // "string"
         console.log(typeof 42); // "number"
         console.log(typeof true); // "boolean"
+        console.log(Boolean("")); // false
+         console.log(Boolean(0)); // false
+        console.log(Boolean(1)); // true
+        console.log(Boolean("aadi")); // true
+        console.log(Boolean("null")); // true
+        console.log(Boolean("undefined")); // true 
         console.log(typeof null); // "object" (this is a known quirk in JavaScript)
         console.log(typeof undefined); // "undefined"
         console.log(typeof Symbol('id')); // "symbol"
@@ -91,9 +115,6 @@
         console.log(typeof {name: "John", age: 30}); // "object"
         console.log(typeof [1, 2, 3]); // "object" (arrays are a type of object)
         console.log(typeof function() {}); // "function"
-    </h1>
-    <script>
-
     </script>
 </body>
 </html>
