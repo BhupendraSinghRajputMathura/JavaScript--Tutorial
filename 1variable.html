@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Variablest</title>
+</head>
+<body>
+    <h1>
+        Variable in JavaScript
+    </h1>
+    <h2>
+        A variable is a container for storing data values.
+    </h2>
+    <h3>
+        there are 3 ways to declare a variable in JavaScript:
+        <ul>
+            <li>var</li>
+            <li>let</li>
+            <li>const</li>  
+        </ul>
+    </h3>
+    <p>
+        note:
+        <ul>
+            <li>Variables declared with var or let can be reassigned.</li>
+            <li>Variables declared with const cannot be reassigned.</li>    
+        </ul>   
+        Example:
+        <ul>
+            <li>const panCard = "1234-5678-9012-3456";</li>
+            <li>let age = 25;</li>
+            <li>var name = "John Doe";</li>
+        </ul>
+    </p>
+    <p>
+        <ol>
+            <li>
+                 In the above example, panCard is a constant variable that cannot be changed, age is a variable that can be reassigned, and name is a variable that can also be reassigned.
+            </li>
+            <li>
+                Prefer using const for variables that should not change, and let for variables that may change. Avoid using var to prevent scope-related issues.
+            </li>
+        </ol>
+    </p>
+
+    <script>
+        const panCard = "1234-5678-9012-3456";
+        console.log("Pan Number is:",panCard);
+        // const p;
+        // This will cause an error because const variables must be initialized at the time of declaration
+
+        let age = 25;
+        console.log("Age is:",age);
+        // let a;
+        // This is valid, but the variable 'a' will be undefined until assigned a value
+
+        var name = "John Doe";
+        console.log("Name is:",name);
+        // var n;
+        // This is valid, but the variable 'n' will be undefined until assigned a value
+
+        // Re-assigning values
+        age = 26; // re-assigning a new value to age
+        console.log("Updated Age is:",age);
+
+        // panCard = "6543-2109-8765-4321"; 
+        // This will cause an error because const variables cannot be reassigned
+
+        name = "Jane Doe"; // re-assigning a new value to name
+        console.log("Updated Name is:",name);
+
+        console.table({panCard, age, name});
+        console.table([panCard, age, name]);
+    </script>
+</body>
+</html>
