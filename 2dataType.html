@@ -79,7 +79,7 @@
     </p>
 
 
-    <h1>
+    <h2>
         <div>
             interview Question: What are the different data types in JavaScript? <br>
         console.log(typeof "Hello"); // "string" <br>
@@ -99,7 +99,81 @@
         console.log(typeof [1, 2, 3]); // "object" (arrays are a type of object)  <br>
         console.log(typeof function() {}); // "function"  <br>  
         </div>
+    </h2>
+
+    <h1>
+        Note:-
     </h1>
+    <ul>
+        <li>
+             Note 1: representation of string data type is done by double quotes("") or single quotes('') or backticks(``)
+        </li>
+        <li>
+            Note 2: double quotes("") and single quotes('') are used for string representation but backticks(``) are used for template literals
+        </li>
+        <li>
+            Note 3: both double quotes("") and single quotes('') are used to represent string but we cannot use them interchangeably
+            Example:    
+            let greeting1 = "Hello, World!"; // Using double quotes
+            let greeting2 = 'Hello, World!'; // Using single quotes
+            console.log(greeting1); // Output: Hello, World!
+            console.log(greeting2); // Output: Hello, World!
+        </li>
+        <li>
+            Note 4: double quotes("") is an advaced version of single quotes('') because it can hold single quotes('') within it without any escape character
+            Example:
+            let message1 = "It's a beautiful day!"; // Using double quotes to hold single quote
+            let message2 = 'It\'s a beautiful day!'; // Using single quotes with escape character
+            console.log(message1); // Output: It's a beautiful day!
+            console.log(message2); // Output: It's a beautiful day!
+        </li>
+        <li>
+            Note 5: template literals are used to embed expressions and variables within a string using ${}
+            Example:
+            let name = "Aadi";
+            let greeting = `Hello, ${name}!`; // Using backticks for template literal
+            console.log(greeting); // Output: Hello, Aadi!  
+        </li>
+        <li>
+            Note 6: template literals can also span multiple lines without the need for escape characters
+            Example:
+            let multiLineString = `This is a string
+            that spans multiple
+            lines.`;
+            console.log(multiLineString);
+            // Output:
+            // This is a string
+            // that spans multiple
+            // lines.
+        </li>
+        <li>
+            Note 7: while using template literals, if we want to use backticks(``) within the string, we need to escape them using a backslash(\)
+            Example:
+            let quote = `He said, \`JavaScript is awesome!\``; // Escaping backticks
+            console.log(quote); // Output: He said, `JavaScript is awesome!`
+        </li>
+        <li>
+            Note 8: in template literals, we can also use expressions within the ${} syntax
+            Example:
+            let a = 5;
+            let b = 10;
+            let sumMessage = `The sum of ${a} and ${b} is ${a + b}.`;
+            console.log(sumMessage); // Output: The sum of 5 and 10 is 15.
+        </li>
+        <li>
+            Note 9: template literals are particularly useful for creating complex strings that include variables and expressions, making the code more readable and maintainable.  
+            Example:
+            let user = { name: "Aadi", age: 25 };
+            let userInfo = `User Info:
+            Name: ${user.name}
+            Age: ${user.age}`;
+            console.log(userInfo);
+            // Output:
+            // User Info:
+            // Name: Aadi
+            // Age: 25
+        </li>
+    </ul>
     <script>
         console.log(typeof "Hello"); // "string"
         console.log(typeof 42); // "number"
