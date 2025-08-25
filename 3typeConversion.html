@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data-Type Conversion</title>
+</head>
+<body>
+    <h1>Data-Type Conversion in JavaScript</h1>
+    <p>This page demonstrates various data-type conversions in JavaScript, including both explicit and implicit conversions.</p>
+    <ul>
+        <li>String to Number</li>
+        <li>Number to String</li>
+        <li>Boolean to Number</li>
+        <li>Number to Boolean</li>
+        <li>String to Boolean</li>
+        <li>Implicit Conversions</li>
+        <li>Special Cases and Edge Cases</li>
+    </ul>
+<ol>
+    <li>
+        <strong>String to Number:</strong> Using the `Number()` function or unary `+` operator.
+    </li>
+    <li>
+        <strong>Number to String:</strong> Using the `String()` function or `toString()` method.
+    </li>
+    <li>
+        <strong>Boolean to Number:</strong> `true` converts to `1`, `false` converts to `0`.
+    </li>
+    <li>
+        <strong>Number to Boolean:</strong> `0`, `NaN`, `null`, `undefined`, and `""` convert to `false`; all other values convert to `true`.
+    </li>
+    <li>
+        <strong>String to Boolean:</strong> Non-empty strings convert to `true`, empty strings convert to `false`.
+    </li>
+    <li>
+        <strong>Implicit Conversions:</strong> Occur during operations like addition, subtraction, etc.
+    </li>
+    <li>
+        <strong>Special Cases and Edge Cases:</strong> Handling of `null`, `undefined`, `NaN`, arrays, objects, and functions.
+    </li>
+    <li>
+        <strong>Equality vs. Strict Equality:</strong> Differences between `==` and `===` in type coercion.
+    </li>
+    <li>
+        <strong>Object to Primitive Conversion:</strong> How objects are converted to primitive types using `valueOf()` and `toString()`.
+    </li>
+    <li>
+        <strong>Using `parseInt()` and `parseFloat()`:</strong> Converting strings to numbers with specific parsing rules.      
+    </li>
+    <li>
+        <strong>Hexadecimal, Binary, and Octal Strings:</strong> Converting strings with different bases to numbers.
+    </li>
+    <li>
+        <strong>Handling Whitespace in Strings:</strong> How leading and trailing whitespace affects conversions.
+    </li>
+    <li>
+        <strong>Conversion of Special Numeric Values:</strong> Handling `Infinity`, `-Infinity`, and `NaN`.
+    </li>
+    <li>
+        <strong>Conversion of Date Objects:</strong> How `Date` objects convert to strings and numbers.
+    </li>
+    <li>
+        <strong>Conversion of Symbol Type:</strong> Understanding that `Symbol` cannot be converted to a number or string directly.
+    </li>
+    <li>
+        <strong>Using Template Literals for Conversion:</strong> How template literals can implicitly convert values to strings.
+    </li>
+</ol>
+<h3>
+    <p>
+        // String to Number <br> <br>
+        let str = "123"; <br>
+        let num = Number(str); <br>
+        console.log(num); // 123 <br>
+        console.log(typeof num); // "number"  <br>
+
+    </p>
+    <p>
+        // Number to String <br> <br>
+        let n = 456; <br>
+        let s = String(n); <br>
+        console.log(s); // "456" <br>
+        console.log(typeof s); // "string" <br>
+    </p>
+    <p>
+        // Boolean to Number <br> <br>
+        let boolTrue = true; <br>
+        let boolFalse = false; <br>
+        console.log(Number(boolTrue)); // 1 <br>
+        console.log(Number(boolFalse)); // 0 <br>
+    </p>
+    <p>
+        // Number to Boolean <br> <br>
+        let zero = 0; <br>
+        let nonZero = 42;   <br>
+        console.log(Boolean(zero)); // false <br>
+        console.log(Boolean(nonZero)); // true <br>
+    </p>
+    <p>
+        // String to Boolean <br> <br>
+        let emptyStr = ""; <br>
+        let nonEmptyStr = "Hello"; <br>
+        console.log(Boolean(emptyStr)); // false <br>
+        console.log(Boolean(nonEmptyStr)); // true <br>
+    </p>
+    <p>
+         // Implicit Conversion <br> <br>
+        let implicitNum = "5" * 2; // String to Number <br>
+        console.log(implicitNum); // 10 <br>
+
+        let implicitStr = 5 + " apples"; // Number to String <br>
+        console.log(implicitStr); // "5 apples" <br>
+        console.log(typeof implicitStr); // "string" <br>
+
+        let implicitBool = 1 + true; // Boolean to Number <br>
+        console.log(implicitBool); // 2 <br>
+        console.log(typeof implicitBool); // "number" <br>
+        let implicitBoolStr = "Value: " + false; // Boolean to String <br>
+        console.log(implicitBoolStr); // "Value: false" <br>
+        console.log(typeof implicitBoolStr); // "string" <br>
+    </p>
+    <p>
+         // Special Cases <br> <br>
+        console.log(Number("")); // 0 <br>                      
+        console.log(Number(" ")); // 0 <br>
+        console.log(Number("abc")); // NaN <br>
+        console.log(Boolean(NaN)); // false <br>
+        console.log(Boolean(undefined)); // false <br> 
+        console.log(Boolean(null)); // false <br>
+        console.log(Boolean([])); // true <br>
+        console.log(Boolean({})); // true <br>
+        console.log(Boolean(function() {})); // true<br>
+        console.log(String(null)); // "null"<br>
+        console.log(String(undefined)); // "undefined"<br>
+        console.log(String(NaN)); // "NaN"<br>
+        console.log(String([])); // ""<br>
+        console.log(String({})); // "[object Object]"<br>
+        console.log(String(function() {})); // "function() {}"<br>
+        console.log(Number([])); // 0<br>
+        console.log(Number({})); // NaN<br>
+        console.log(Number(function() {})); // NaN<br>
+        console.log(Number(" 123 ")); // 123<br>
+        console.log(Number("0x11")); // 17<br>
+        console.log(Number("0b11")); // 3<br>
+        console.log(Number("0o11")); // 9<br>
+        console.log(parseInt("123abc")); // 123<br>
+        console.log(parseFloat("123.45abc")); // 123.45<br>
+        console.log(parseInt("abc123")); // NaN<br>
+        console.log(parseFloat("abc123.45")); // NaN<br>
+        console.log(Boolean("false")); // true<br>
+        console.log(Boolean("0")); // true<br>
+        console.log(Boolean(" ")); // true<br>
+        console.log(Boolean([])); // true<br>
+        console.log(Boolean({})); // true<br>
+        console.log(Boolean(function() {})); // true<br>
+        console.log(Boolean(new Boolean(false))); // true<br>
+        console.log(Boolean(new Number(0))); // true<br>
+        console.log(Boolean(new String(""))); // true<br>
+        console.log(String(new Boolean(true))); // "true"<br>
+        console.log(String(new Number(123))); // "123"<br>
+        console.log(String(new String("abc"))); // "abc"<br>
+        console.log(Number(new Boolean(true))); // 1<br>
+        console.log(Number(new Boolean(false))); // 0<br>
+        console.log(Number(new Number(123))); // 123<br>
+        console.log(Number(new String("123"))); // 123<br>
+        console.log(Number(new String("abc"))); // NaN<br>
+        console.log(Boolean(new Boolean(false))); // true<br>
+        console.log(Boolean(new Number(0))); // true<br>
+        console.log(Boolean(new String(""))); // true<br>
+        console.log([] + []); // ""<br>
+        console.log([] + {}); // "[object Object]"<br>
+        console.log({} + []); // 0<br>
+        console.log({} + {}); // "[object Object][object Object]<br>"
+        console.log([] + 1); // "1"<br>
+        console.log(1 + []); // "1"<br>
+        console.log({} + 1); // "[object Object]1"<br>
+        console.log(1 + {}); // "1[object Object]"<br>
+        console.log("5" - 2); // 3<br>
+        console.log("5" * 2); // 10<br>
+        console.log("5" / 2); // 2.5<br>
+        console.log("5" % 2); // 1<br>
+        console.log("5" + 2); // "52"<br>
+        console.log("5" + true); // "5true"<br>
+        console.log("5" + null); // "5null"<br>
+        console.log("5" + undefined); // "5undefined"<br>
+        console.log("5" - true); // 4<br>
+        console.log("5" - null); // 5<br>
+        console.log("5" - undefined); // NaN<br>
+        console.log("5" * true); // 5<br>
+        console.log("5" * null); // 0<br>
+        console.log("5" * undefined); // NaN<br>
+        console.log("5" / true); // 5<br>
+        console.log("5" / null); // Infinity    <br>
+        console.log("5" / undefined); // NaN<br>
+        console.log("5" % true); // 0<br>
+        console.log("5" % null); // NaN<br>
+        console.log("5" % undefined); // NaN<br>
+        console.log(true + false); // 1<br>
+        console.log(true + true); // 2<br>
+        console.log(false + false); // 0<br>
+        console.log(true + 1); // 2<br>
+        console.log(false + 1); // 1<br>
+        console.log(true + "1"); // "true1"<br>
+        console.log(false + "1"); // "false1"<br>
+        console.log(null + 1); // 1<br>
+        console.log(null + "1"); // "null1"<br>
+        console.log(undefined + 1); // NaN<br>
+        console.log(undefined + "1"); // "undefined1"<br>
+        console.log(null + true); // 1<br>
+        console.log(undefined + true); // NaN<br>
+        console.log(null + false); // 0<br>
+        console.log(undefined + false); // NaN<br>
+        console.log([] == ""); // true<br>
+        console.log([] == 0); // true<br>
+        console.log([1] == "1"); // true<br>
+        console.log([1] == 1); // true<br>
+        console.log([1,2] == "1,2"); // true<br>
+        console.log([1,2] == 12); // false<br>
+        console.log({} == "[object Object]"); // false<br>
+        console.log({} == 0); // false<br>
+        console.log(null == undefined); // true<br>
+        console.log(null == 0); // false<br>
+        console.log(undefined == 0); // false<br>
+        console.log("5" == 5); // true<br>
+        console.log("0" == false); // true<br>
+        console.log("" == false); // true<br>
+        console.log(" " == false); // true<br>
+        console.log(" " == 0); // true<br>
+        console.log(" \t\n" == 0); // true<br>
+        console.log(" \t\n" == false); // true<br>
+        console.log(" \t\n" == true); // false<br>
+        console.log(0 == false); // true<br>
+        console.log(1 == true); // true<br>
+        console.log(2 == true); // false<br>
+        console.log(0 == null); // false<br>
+        console.log(0 == undefined); // false<br>
+        console.log(NaN == NaN); // false<br>
+        console.log(Object.is(NaN, NaN)); // true<br>
+        console.log(Object.is(0, -0)); // false<br>
+        console.log(0 === -0); // true<br>
+        console.log(Object.is(0, 0)); // true<br>
+        console.log(Object.is(-0, -0)); // true<br>
+        console.log(0 === 0); // true<br>
+        console.log(-0 === -0); // true<br>
+        console.log("5" === 5); // false<br>
+        console.log(true === 1); // false<br>
+        console.log(false === 0); // false<br>
+        console.log(null === undefined); // false<br>
+        console.log(NaN === NaN); // false<br>
+        console.log(Object.is(NaN, NaN)); // true<br>
+        console.log(Object.is(0, -0)); // false<br>
+        console.log(0 === -0); // true<br>
+        console.log(0 === 0); // true<br>
+        console.log(-0 === -0); // true<br>
+        console.log([].toString() === ""); // true<br>
+        // console.log([] === 0); // false<br>
+        // console.log([1] === "1"); // false<br>
+        // console.log([1] === 1); // false<br>
+        // console.log([1,2] === "1,2"); // false<br>
+        // console.log([1,2] === 12); // false<br>
+        // console.log({} === "[object Object]"); // false<br>
+        // console.log({} === 0); // false<br>
+        console.log(null === undefined); // false<br>
+        console.log(null === 0); // false<br>
+        console.log(undefined === 0); // false<br>
+        console.log(NaN === NaN); // false<br>
+        console.log(Object.is(NaN, NaN)); // true<br>
+        console.log(Object.is(0, -0)); // false<br>
+        console.log(0 === -0); // true<br>
+        console.log(0 === 0); // true<br>
+        console.log(-0 === -0); // true<br>
+        console.log("5" === 5); // false<br>
+        console.log(true === 1); // false<br>
+        console.log(false === 0); // false<br>
+        console.log(null === undefined); // false<br>
+        console.log(NaN === NaN); // false<br>
+        console.log(Object.is(NaN, NaN)); // true<br>
+        console.log(Object.is(0, -0)); // false<br>
+        console.log(0 === -0); // true<br>
+        console.log(0 === 0); // true<br>
+        console.log(-0 === -0); // true <br>
+    </p>  
+</h3>
+    
+    <h2>Open the console to see the results of the conversions.</h2>
+
+    <script>
+        // String to Number
+        let str = "123";
+        let num = Number(str);
+        console.log(num); // 123
+        console.log(typeof num); // "number"
+
+        // Number to String
+        let n = 456;
+        let s = String(n);
+        console.log(s); // "456"
+        console.log(typeof s); // "string"
+
+        // Boolean to Number
+        let boolTrue = true;
+        let boolFalse = false;
+        console.log(Number(boolTrue)); // 1
+        console.log(Number(boolFalse)); // 0
+
+        // Number to Boolean
+        let zero = 0;
+        let nonZero = 42;
+        console.log(Boolean(zero)); // false
+        console.log(Boolean(nonZero)); // true
+
+        // String to Boolean
+        let emptyStr = "";
+        let nonEmptyStr = "Hello";
+        console.log(Boolean(emptyStr)); // false
+        console.log(Boolean(nonEmptyStr)); // true
+
+        // Implicit Conversion
+        let implicitNum = "5" * 2; // String to Number
+        console.log(implicitNum); // 10
+
+        let implicitStr = 5 + " apples"; // Number to String
+        console.log(implicitStr); // "5 apples"
+        console.log(typeof implicitStr); // "string"
+
+        let implicitBool = 1 + true; // Boolean to Number
+        console.log(implicitBool); // 2
+        console.log(typeof implicitBool); // "number"
+        let implicitBoolStr = "Value: " + false; // Boolean to String
+        console.log(implicitBoolStr); // "Value: false"
+        console.log(typeof implicitBoolStr); // "string"
+
+        // Special Cases
+        console.log(Number("")); // 0
+        console.log(Number(" ")); // 0
+        console.log(Number("abc")); // NaN
+        console.log(Boolean(NaN)); // false
+        console.log(Boolean(undefined)); // false
+        console.log(Boolean(null)); // false
+        console.log(Boolean([])); // true
+        console.log(Boolean({})); // true
+        console.log(Boolean(function() {})); // true
+        console.log(String(null)); // "null"
+        console.log(String(undefined)); // "undefined"
+        console.log(String(NaN)); // "NaN"
+        console.log(String([])); // ""
+        console.log(String({})); // "[object Object]"
+        console.log(String(function() {})); // "function() {}"
+        console.log(Number([])); // 0
+        console.log(Number({})); // NaN
+        console.log(Number(function() {})); // NaN
+        console.log(Number(" 123 ")); // 123
+        console.log(Number("0x11")); // 17
+        console.log(Number("0b11")); // 3
+        console.log(Number("0o11")); // 9
+        console.log(parseInt("123abc")); // 123
+        console.log(parseFloat("123.45abc")); // 123.45
+        console.log(parseInt("abc123")); // NaN
+        console.log(parseFloat("abc123.45")); // NaN
+        console.log(Boolean("false")); // true
+        console.log(Boolean("0")); // true
+        console.log(Boolean(" ")); // true
+        console.log(Boolean([])); // true
+        console.log(Boolean({})); // true
+        console.log(Boolean(function() {})); // true
+        console.log(Boolean(new Boolean(false))); // true
+        console.log(Boolean(new Number(0))); // true
+        console.log(Boolean(new String(""))); // true
+        console.log(String(new Boolean(true))); // "true"
+        console.log(String(new Number(123))); // "123"
+        console.log(String(new String("abc"))); // "abc"
+        console.log(Number(new Boolean(true))); // 1
+        console.log(Number(new Boolean(false))); // 0
+        console.log(Number(new Number(123))); // 123
+        console.log(Number(new String("123"))); // 123
+        console.log(Number(new String("abc"))); // NaN
+        console.log(Boolean(new Boolean(false))); // true
+        console.log(Boolean(new Number(0))); // true
+        console.log(Boolean(new String(""))); // true
+        console.log([] + []); // ""
+        console.log([] + {}); // "[object Object]"
+        console.log({} + []); // 0
+        console.log({} + {}); // "[object Object][object Object]"
+        console.log([] + 1); // "1"
+        console.log(1 + []); // "1"
+        console.log({} + 1); // "[object Object]1"
+        console.log(1 + {}); // "1[object Object]"
+        console.log("5" - 2); // 3
+        console.log("5" * 2); // 10
+        console.log("5" / 2); // 2.5
+        console.log("5" % 2); // 1
+        console.log("5" + 2); // "52"
+        console.log("5" + true); // "5true"
+        console.log("5" + null); // "5null"
+        console.log("5" + undefined); // "5undefined"
+        console.log("5" - true); // 4
+        console.log("5" - null); // 5
+        console.log("5" - undefined); // NaN
+        console.log("5" * true); // 5
+
+        console.log("5" * null); // 0
+        console.log("5" * undefined); // NaN
+        console.log("5" / true); // 5
+        console.log("5" / null); // Infinity    
+        console.log("5" / undefined); // NaN
+        console.log("5" % true); // 0
+        console.log("5" % null); // NaN
+        console.log("5" % undefined); // NaN
+        console.log(true + false); // 1
+        console.log(true + true); // 2
+        console.log(false + false); // 0
+        console.log(true + 1); // 2
+        console.log(false + 1); // 1
+        console.log(true + "1"); // "true1"
+        console.log(false + "1"); // "false1"
+
+        console.log(null + 1); // 1
+        console.log(null + "1"); // "null1"
+        console.log(undefined + 1); // NaN
+        console.log(undefined + "1"); // "undefined1"
+        console.log(null + true); // 1
+        console.log(undefined + true); // NaN
+        console.log(null + false); // 0
+        console.log(undefined + false); // NaN
+        console.log([] == ""); // true
+        console.log([] == 0); // true
+        console.log([1] == "1"); // true
+        console.log([1] == 1); // true
+        console.log([1,2] == "1,2"); // true
+        console.log([1,2] == 12); // false
+        console.log({} == "[object Object]"); // false
+        console.log({} == 0); // false
+        console.log(null == undefined); // true
+        console.log(null == 0); // false
+        console.log(undefined == 0); // false
+        console.log("5" == 5); // true
+        console.log("0" == false); // true
+        console.log("" == false); // true
+        console.log(" " == false); // true
+        console.log(" " == 0); // true
+        console.log(" \t\n" == 0); // true
+        console.log(" \t\n" == false); // true
+        console.log(" \t\n" == true); // false
+        console.log(0 == false); // true
+        console.log(1 == true); // true
+        console.log(2 == true); // false
+        console.log(0 == null); // false
+        console.log(0 == undefined); // false
+        console.log(NaN == NaN); // false
+        console.log(Object.is(NaN, NaN)); // true
+        console.log(Object.is(0, -0)); // false
+        console.log(0 === -0); // true
+        console.log(Object.is(0, 0)); // true
+        console.log(Object.is(-0, -0)); // true
+        console.log(0 === 0); // true
+        console.log(-0 === -0); // true
+        console.log("5" === 5); // false
+        console.log(true === 1); // false
+        console.log(false === 0); // false
+        console.log(null === undefined); // false
+        console.log(NaN === NaN); // false
+        console.log(Object.is(NaN, NaN)); // true
+        console.log(Object.is(0, -0)); // false
+        console.log(0 === -0); // true
+        console.log(0 === 0); // true
+        console.log(-0 === -0); // true
+        console.log([].toString() === ""); // true
+        // console.log([] === 0); // false
+        // console.log([1] === "1"); // false
+        // console.log([1] === 1); // false
+        // console.log([1,2] === "1,2"); // false
+        // console.log([1,2] === 12); // false
+        // console.log({} === "[object Object]"); // false
+        // console.log({} === 0); // false
+        console.log(null === undefined); // false
+        console.log(null === 0); // false
+        console.log(undefined === 0); // false
+
+        console.log(NaN === NaN); // false
+        console.log(Object.is(NaN, NaN)); // true
+        console.log(Object.is(0, -0)); // false
+        console.log(0 === -0); // true
+        console.log(0 === 0); // true
+        console.log(-0 === -0); // true
+        console.log("5" === 5); // false
+        console.log(true === 1); // false
+        console.log(false === 0); // false
+        console.log(null === undefined); // false
+        console.log(NaN === NaN); // false
+        console.log(Object.is(NaN, NaN)); // true
+        console.log(Object.is(0, -0)); // false
+        console.log(0 === -0); // true
+        console.log(0 === 0); // true
+        console.log(-0 === -0); // true 
+    </script>
+</body>
+</html>
