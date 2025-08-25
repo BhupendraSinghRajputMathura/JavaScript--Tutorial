@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operators</title>
+</head>
+<body>
+    <h1>Operators</h1>
+    <p>
+        // Arithmetic Operators <br> <br>
+        console.log(5 + 3); // 8<br>
+        console.log(5 - 3); // 2<br>
+        console.log(5 * 3); // 15<br>
+        console.log(5 / 2); // 2.5<br>
+        console.log(5 % 2); // 1<br>
+        console.log(5 ** 2); // 25<br>
+        console.log(5 + "3"); // "53"<br>
+        console.log("5" + 3); // "53"<br>
+        console.log("5" - 3); // 2<br>
+        console.log("5" * 3); // 15<br>
+        console.log("5" / 2); // 2.5<br>
+        console.log("5" % 2); // 1<br>
+        console.log("5" + 2); // "52"<br>
+        console.log("5" + 2 + 3); // "523"<br>
+        console.log(2 + 3 + "5"); // "55"<br>
+        console.log("5" + true); // "5true"<br>
+        console.log("5" + null); // "5null"<br>
+        console.log("5" + undefined); // "5undefined"<br>
+    </p>
+    <p>
+        // Assignment Operators <br> <br>
+        let a = 5; // Assignment<br>
+        a += 3; // a = a + 3 -> 8<br>
+        a -= 2; // a = a - 2 -> 6<br>
+        a *= 2; // a = a * 2 -> 12<br>
+        a /= 3; // a = a / 3 -> 4<br>
+        a %= 3; // a = a % 3 -> 1<br>
+        a **= 3; // a = a ** 3 -> 1<br>
+        console.log(a); // 1<br>
+    </p>
+    <p>
+        // Increment and Decrement Operators <br> <br>
+        let b = 5;<br>
+        console.log(b++); // 5 (returns the value before incrementing)<br>
+        console.log(b); // 6<br>
+        console.log(++b); // 7 (increments first, then returns the value)<br>
+        console.log(b--); // 7 (returns the value before decrementing)<br>
+        console.log(b); // 6<br>
+        console.log(--b); // 5 (decrements first, then returns the value)<br>
+    </p>
+    <p>
+        // Logical Operators <br> <br>
+        console.log(true && true); // true<br>
+        console.log(true && false); // false<br>
+        console.log(false && true); // false<br>
+        console.log(false && false); // false<br>
+        console.log(true || true); // true<br>
+        console.log(true || false); // true<br>
+        console.log(false || true); // true<br>
+        console.log(false || false); // false<br>
+        console.log(!true); // false<br>
+        console.log(!false); // true<br>
+    </p>
+    <p>
+        // Ternary Operator <br> <br>
+        let age = 20;<br>
+        let canVote = (age >= 18) ? "Yes" : "No";<br>
+        console.log(canVote); // "Yes"<br>
+    </p>
+    <p>
+        // Typeof Operator <br> <br>
+        console.log(typeof 5); // "number"<br>
+        console.log(typeof "hello"); // "string"<br>
+        console.log(typeof true); // "boolean"<br>
+        console.log(typeof undefined); // "undefined"<br>
+        console.log(typeof null); // "object" (this is a known quirk in JavaScript)<br>
+        console.log(typeof {}); // "object"<br>
+        console.log(typeof []); // "object"<br>
+        console.log(typeof function() {}); // "function"<br>
+    </p>
+    <p>
+        // Comma Operator <br> <br>
+        let x = (1, 2, 3);<br>
+        console.log(x); // 3 (returns the last value)<br>
+        let y;<br>
+        y = (x = 5, x + 2);<br>
+        console.log(y); // 7<br>
+    </p>
+    <p>
+        // Unary Plus and Minus Operators <br> <br>
+        console.log(+ "5"); // 5 (converts string to number)<br>
+        console.log(- "5"); // -5 (converts string to number and negates it)<br>
+        console.log(+ true); // 1 (converts boolean to number)<br>
+        console.log(- true); // -1 (converts boolean to number and negates it)<br>
+        console.log(+ false); // 0 (converts boolean to number)<br>
+        console.log(- false); // -0 (converts boolean to number and negates it)<br>
+    </p>
+    <p>
+        // Bitwise Operators <br> <br>
+        console.log(5 & 3); // 1 (bitwise AND)<br>
+        console.log(5 | 3); // 7 (bitwise OR)<br>
+        console.log(5 ^ 3); // 6 (bitwise XOR)<br>
+        console.log(~5); // -6 (bitwise NOT)<br>
+        console.log(5 << 1); // 10 (left shift)<br>
+        console.log(5 >> 1); // 2 (right shift)<br>
+        console.log(5 >>> 1); // 2 (unsigned right shift)<br>
+    </p>
+    <p>
+        // Operator Precedence <br> <br>
+        console.log(3 + 5 * 2); // 13 (multiplication has higher precedence than addition)<br>
+        console.log((3 + 5) * 2); // 16 (parentheses change the order of evaluation)<br>
+        console.log(10 / 2 + 3 * 2); // 11 (division and multiplication have higher precedence than addition)<br>
+        console.log(10 / (2 + 3) * 2); // 4 (parentheses change the order of evaluation)<br>
+    </p>
+    <p>
+        // Conditional (?:) Operator <br> <br>
+        let score = 85;<br>
+        let grade = (score >= 90) ? "A" : (score >= 80) ? "B" : (score >= 70) ? "C" : (score >= 60) ? "D" : "F";<br>
+        console.log(grade); // "B"<br>
+    </p>
+    <p>
+        // Nullish Coalescing Operator (??) <br> <br>
+        let foo = null;<br>
+        let bar = foo ?? "default";<br>
+        console.log(bar); // "default"<br>
+        foo = "value";<br>
+        bar = foo ?? "default";<br>
+        console.log(bar); // "value"<br>
+    </p>
+    <p>
+        // Optional Chaining Operator (?.) <br> <br>
+        let obj = { a: { b: { c: 42 } } };<br>
+        console.log(obj?.a?.b?.c); // 42<br>
+        console.log(obj?.x?.y?.z); // undefined (does not throw an error)<br>
+        obj = null;<br>
+        console.log(obj?.a?.b?.c); // undefined (does not throw an error)<br>
+    </p>
+    <p>
+        // Exponentiation Operator (**) <br> <br>
+        console.log(2 ** 3); // 8 (2 raised to the power of 3)<br>
+        console.log(4 ** 0.5); // 2 (square root of 4)<br>
+        console.log(9 ** (1/3)); // 2.080083823051904 (cube root of 9)<br>
+    </p>
+    <p>
+        // Spread Operator (...) <br> <br>
+        let arr1 = [1, 2, 3];<br>
+        let arr2 = [...arr1, 4, 5];<br>
+        console.log(arr2); // [1, 2, 3, 4, 5]<br>
+        let obj1 = { a: 1, b: 2 };<br>
+        let obj2 = { ...obj1, c: 3 };<br>
+        console.log(obj2); // { a: 1, b: 2, c: 3 }<br>
+    </p>
+    <p>
+        // Destructuring Assignment <br> <br>
+        let [x, y] = [1, 2];<br>
+        console.log(x); // 1<br>
+        console.log(y); // 2<br>
+        let { a, b } = { a: 3, b: 4 };<br>
+        console.log(a); // 3<br>
+        console.log(b); // 4<br>
+    </p>
+
+    <script>
+        // Equality Operators <br> <br>
+        console.log(true == 1); // true<br>
+        console.log(false == 0); // true<br>
+        console.log(true == false); // false<br>
+        console.log(null == null); // true<br>
+        console.log(undefined == undefined); // true<br>
+        console.log(null == undefined); // true<br>
+        console.log(null == 0); // false<br>
+        console.log(undefined == 0); // false<br>
+        console.log(NaN == NaN); // false<br>
+        console.log(Object.is(NaN, NaN)); // true<br>
+        console.log(Object.is(0, -0)); // false<br> 
+
+        console.log(5 === 5); // true<br>
+        console.log(5 === "5"); // false<br>
+        console.log(true === 1); // false<br>
+        console.log(false === 0); // false<br>
+        console.log(true === false); // false<br>
+        console.log(null === null); // true<br>
+        console.log(undefined === undefined); // true<br>
+        console.log(null === undefined); // false<br>
+        console.log(null === 0); // false<br>
+        console.log(undefined === 0); // false<br>
+        console.log(NaN === NaN); // false<br>
+        console.log(Object.is(NaN, NaN)); // true<br>
+        console.log(Object.is(0, -0)); // false<br> 
+        // Relational Operators <br> <br>
+        console.log(5 > 3); // true<br>
+        console.log(5 < 3); // false<br>
+        console.log(5 >= 5); // true<br>
+        console.log(5 <= 5); // true<br>
+        console.log(5 >= "5"); // true<br>
+        console.log(5 <= "5"); // true<br>
+        console.log("abc" > "ab"); // true<br>
+        console.log("abc" < "ab"); // false<br>
+        console.log("abc" > "abcd"); // false<br>
+        console.log("abc" < "abcd"); // true<br>
+        console.log("abc" > "ABC"); // true<br>
+        console.log("abc" < "ABC"); // false<br>
+        console.log("2" > "12"); // true (lexicographical comparison)<br    
+        console.log("2" < "12"); // false (lexicographical comparison)<br>
+        console.log(null > 0); // false<br>
+        console.log(null >= 0); // true<br> 
+        console.log(null < 0); // false<br>
+        console.log(null <= 0); // true<br> 
+        console.log(undefined > 0); // false<br>
+        console.log(undefined < 0); // false<br>
+        console.log(undefined >= 0); // false<br>   
+        console.log(undefined <= 0); // false<br>
+        console.log(NaN > 0); // false<br>      
+        console.log(NaN < 0); // false<br>
+        console.log(NaN >= 0); // false<br>
+        console.log(NaN <= 0); // false<br>
+    </script>
+</body>
+</html>
