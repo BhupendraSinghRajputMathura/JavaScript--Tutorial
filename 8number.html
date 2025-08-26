@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number</title>
+</head>
+<body>
+    <h1>JavaScript Number</h1>
+    <p>JavaScript has only one type of number. Numbers can be written with or without decimals:</p>
+    <p>Example</p>
+    <p>let x = 3.14</p>
+    <p>let y = 3</p>
+
+    <h2>Methodes</h2>
+    <p>Number.isInteger()</p>
+    <p>Number.parseFloat()</p>
+    <p>Number.parseInt()</p>
+    <p>Number.toString()</p>
+    <p>Number.toFixed()</p>
+    <p>Number.toPrecision()</p> 
+    <p>Number.valueOf()</p>
+
+    <p>Example</p>
+    <pre><code>
+    let x = 123;
+    let y = 123.456;</code></pre>
+    <p>console.log(Number.isInteger(x)); // true</p>
+    <p>console.log(Number.isInteger(y)); // false</p>
+    <p>console.log(Number.parseFloat("123.456")); // 123.456</p>
+    <p>console.log(Number.parseInt("123.456")); // 123</p>
+    <p>console.log(x.toString()); // "123"</p>
+    <p>console.log(y.toFixed(2)); // "123.46"</p>
+    <p>console.log(y.toPrecision(4)); // "123.5"</p>
+    <p>console.log(x.valueOf()); // 123</p> 
+    <p>console.log(y.valueOf()); // 123.456</p>
+    
+    <script>
+        let x = 123;
+        let y = 123.456;
+        console.log(Number.isInteger(x)); // true
+        console.log(Number.isInteger(y)); // false
+        console.log(Number.parseFloat("123.456")); // 123.456
+        console.log(Number.parseInt("123.456")); // 123
+        console.log(x.toString()); // "123"
+        console.log(y.toFixed(2)); // "123.46"
+        console.log(y.toPrecision(4)); // "123.5"
+        console.log(x.valueOf()); // 123
+        console.log(y.valueOf()); // 123.456
+    </script>
+</body>
+</html>
