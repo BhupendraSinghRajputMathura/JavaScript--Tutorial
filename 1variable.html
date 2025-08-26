@@ -85,6 +85,28 @@
         </ul>
     </h1>
 
+    <h1>console</h1>
+    1. console.log(): Used to print messages or values to the console for debugging purposes.
+    <br>
+    2. console.error(): Used to print error messages to the console.
+    <br>
+    3. console.warn(): Used to print warning messages to the console.
+    <br>    
+    4. console.table(): Used to display data in a tabular format in the console.
+    <br>    
+    5. console.info(): Used to print informational messages to the console.
+    <br>
+    6. console.debug(): Used to print debugging messages to the console.
+    <br>
+    7. console.clear(): Used to clear the console.
+    <br>
+    8. console.time() and console.timeEnd(): Used to measure the time taken by a block of code to execute.
+    <br>
+    9. console.group() and console.groupEnd(): Used to group related messages in the console.
+    <br>
+    10. console.trace(): Used to print the stack trace to the console.
+    <br>
+
     <script>
         const panCard = "1234-5678-9012-3456";
         console.log("Pan Number is:",panCard);
@@ -113,6 +135,24 @@
 
         console.table({panCard, age, name});
         console.table([panCard, age, name]);
+
+
+        // console Examples
+        console.error("This is an error message");
+        console.warn("This is a warning message");
+        console.info("This is an informational message");
+        console.debug("This is a debug message");
+        console.time("Timer");
+        for(let i=0; i<100000; i++) {
+            // some code to measure time
+        }
+        console.timeEnd("Timer");
+        console.group("Grouped Messages");
+        console.log("Message 1");
+        console.log("Message 2");
+        console.groupEnd();
+        console.trace("Trace Message");
+        // console.clear(); // Uncomment this line to clear the console 
     </script>
 </body>
 </html>
