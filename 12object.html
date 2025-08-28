@@ -7,13 +7,273 @@
 </head>
 <body>
     <h1>Objects in JavaScript</h1>
-    <h2>Object is the pair of key and value</h2>
+    <p>In JavaScript, an object is a complex data type that allows you to store collections of data and more complex entities. Objects are used to represent real-world entities and can contain properties (key-value pairs) and methods (functions associated with the object).
+    </p>
+
+    <h2>Creating Objects</h2>
+    <p>There are several ways to create objects in JavaScript:</p>
+
+    <h3>1. Object Literal</h3>
+    <pre><code>let person = {
+    name: "Alice",
+    age: 25,
+    greet: function() {
+        console.log("Hello, my name is " + this.name);
+    }
+};</code></pre>
+
+    <h3>2. Using the Object Constructor</h3>
+    <pre><code>let car = new Object();
+car.make = "Toyota";
+car.model = "Camry";
+car.year = 2020;</code></pre>
+
+    <h3>3. Using a Constructor Function</h3>
+    <pre><code>function Dog(name, breed) {
+    this.name = name;
+    this.breed = breed;
+    this.bark = function() {
+        console.log("Woof! Woof!");
+    };
+}   
+let myDog = new Dog("Buddy", "Golden Retriever");</code></pre>
+
+    <h2>Accessing Object Properties and Methods</h2>
+    <p>You can access object properties and methods using dot notation or bracket notation:</p>
+    <pre><code>// Using dot notation
+console.log(person.name); // Output: Alice
+person.greet(); // Output: Hello, my name is Alice
+// Using bracket notation
+console.log(car["make"]); // Output: Toyota
+console.log(myDog["breed"]); // Output: Golden Retriever
+myDog.bark(); // Output: Woof! Woof!</code></pre>
+
+    <h2>Modifying Objects</h2>
+    <p>You can add, update, or delete properties and methods of an object:</p>
+
+    <pre><code>// Adding a new property
+person.height = 170; // in cm
+// Updating an existing property
+car.year = 2021;
+// Deleting a property
+delete myDog.breed;</code></pre>
+
+    <h2>Iterating Over Object Properties</h2>
+    <p>You can use a <code>for...in</code> loop to iterate over the properties of an object:</p>
+    <pre><code>for (let key in person) {
+    console.log(key + ": " + person[key]);
+}</code></pre>
+
+    <h2>Object Methods</h2>
+    <p>JavaScript provides several built-in methods for working with objects, such as:</p>
+    <ul>
+        <li><code>Object.keys(obj)</code>: Returns an array of the object's property names.</li>
+        <li><code>Object.values(obj)</code>: Returns an array of the object's property values.</li>
+        <li><code>Object.entries(obj)</code>: Returns an array of the object's key-value pairs.</li>
+        <li><code>Object.assign(target, ...sources)</code>: Copies properties from source objects to a target object.</li>
+        <li><code>JSON.stringify(obj)</code>: Converts a JavaScript object into a JSON string.</li>
+        <li><code>JSON.parse(jsonString)</code>: Parses a JSON string and converts it into a JavaScript object.</li>
+    </ul>
+    <p>Understanding how to create and manipulate objects is essential for effective JavaScript programming, as they are widely used in various applications and frameworks.</p>
+
+   <h2>Object Method Examples</h2>
+    <pre><code>// Creating an object using object literal
+let student = {
+    name: "Bob",
+    age: 22,
+    courses: ["Math", "Science", "History"],
+    introduce: function() {
+        console.log("Hi, I'm " + this.name + " and I'm " + this.age + " years old.");
+    }
+};
+
+// Accessing properties and methods
+console.log(student.name); // Output: Bob
+student.introduce(); // Output: Hi, I'm Bob and I'm 22 years old.
+console.log(student.courses[1]); // Output: Science
+
+// Modifying the object
+student.age = 23; // Updating age
+student.courses.push("Art"); // Adding a new course
+console.log(student.courses); // Output: ["Math", "Science", "History", "Art"]
+student.introduce(); // Output: Hi, I'm Bob and I'm 23 years old.
+</code></pre>
+
+<h1>Important</h1>
+    <p>constructor methods: Provide singleton</p>
+    <p>Object.create(): Create a new object with the specified prototype object and properties.</p>
+    <p>Object.defineProperty(): Define a new property directly on an object, or modify an existing property on an object, and return the object.</p>
+    <p>Object.freeze(): Freeze an object. A frozen object can no longer be modified.</p>
+    <p>Object.seal(): Seal an object, preventing new properties from being added to it and marking all existing properties as non-configurable.</p>
+    <p>Object.getPrototypeOf(): Returns the prototype (i.e., the internal [[Prototype]] property) of the specified object.</p>
+    <p>Object.setPrototypeOf(): Sets the prototype (i.e., the internal [[Prototype]] property) of a specified object to another object or null.</p>    
+    
+    <h1>Accessing Object</h1>
+        <p>There are two ways to access the properties of an object: dot notation and bracket notation.</p>
+        <p>Dot Notation: This is the most common way to access object properties. You simply use the object's name followed by a dot and the property name.</p>
+        <pre><code>let person = {       
+    name: "Alice",
+    age: 25
+};
+console.log(person.name); // Output: Alice
+console.log(person.age);  // Output: 25</code></pre>
+        <p>Bracket Notation: This method is useful when the property name is dynamic or not a valid identifier (e.g., contains spaces or special characters). You use the object's name followed by brackets containing the property name as a string.</p>
+        <pre><code>let person = {       
+    "first name": "Alice",
+    age: 25
+};
+console.log(person["first name"]); // Output: Alice
+console.log(person["age"]);        // Output: 25</code></pre>
+        <h2>Example</h2>
+        <pre><code>// Creating an object using object literal
+let student = {
+    name: "Bob",
+    age: 22,
+    courses: ["Math", "Science", "History"],
+    introduce: function() {
+        console.log("Hi, I'm " + this.name + " and I'm " + this.age + " years old.");
+    }
+};
+
+<h1>Interview Questions on object</h1>
+<ol>
+    <li>What is an object in JavaScript?</li>
+    <li>How do you create an object in JavaScript?</li>
+    <li>What are the different ways to access properties of an object?</li>
+    <li>How can you add or remove properties from an object?</li>
+    <li>What is the difference between dot notation and bracket notation for accessing object properties?</li>
+    <li>How do you iterate over the properties of an object?</li>
+    <li>What are some common built-in methods for working with objects in JavaScript?</li>
+    <li>Can you explain the concept of "this" in the context of object methods?</li>
+    <li>What is a constructor function, and how is it used to create objects?</li>
+    <li>How do you check if a property exists in an object?</li>
+    <li>What is the difference between shallow copy and deep copy of an object?</li>
+    <li>How can you merge two or more objects in JavaScript?</li>
+    <li>What are prototypes, and how do they relate to objects in JavaScript?</li>
+    <li>How do you convert a JavaScript object to a JSON string and vice versa?</li>
+    <li>What are some best practices for working with objects in JavaScript?</li>
+</ol>
 
 
-    <P>Example</P>
-    const 
-    <script>
+<h1>Note:1</h1>
+<h2>Declare and Accessing Symbol in object</h2>
+let sym1 = Symbol("id");
+let sym2 = Symbol("id"); // Different symbol, even with the same description
+let user = {
+    [sym1]: 101,
+    [sym2]: 102,
+    name: "Charlie"
+};
+console.log(user[sym1]); // Output: 101
+console.log(user[sym2]); // Output: 102
+console.log(user.name); // Output: Charlie
+// spread operator with objects
+let obj1 = {a: 1, b: 2};
+let obj2 = {b: 3, c: 4};
+let mergedObj = {...obj1, ...obj2}; // {a: 1, b: 3, c: 4}
+console.log(mergedObj);
 
-    </script>
+// Object Destructuring
+<!-- let student = {
+    name: "Bob",
+    age: 23,
+    courses: ["Math", "Science", "History", "Art"]
+}; -->
+
+let {name, age, courses} = student;
+console.log(name); // Output: Bob
+console.log(age);  // Output: 23
+console.log(courses); // Output: ["Math", "Science", "History", "Art"]
+</code></pre>
+    
+
+<script>
+    // Creating an object using object literal
+    let student = {
+        name: "Bob",
+        age: 22,
+        courses: ["Math", "Science", "History"],
+        introduce: function() {
+            console.log("Hi, I'm " + this.name + " and I'm " + this.age + " years old.");
+        }
+    };
+    // Accessing properties and methods
+    console.log(student.name); // Output: Bob
+    student.introduce(); // Output: Hi, I'm Bob and I'm 22 years old.
+    console.log(student.courses[1]); // Output: Science
+    // Modifying the object
+    student.age = 23; // Updating age
+    student.courses.push("Art"); // Adding a new course
+    console.log(student.courses); // Output: ["Math", "Science", "History", "Art"]
+    student.introduce(); // Output: Hi, I'm Bob and I'm 23 years old.
+
+    // Object Methods
+    console.log(Object.keys(student)); // Output: ["name", "age", "courses", "introduce"]
+    console.log(Object.values(student)); // Output: ["Bob", 23, Array(4), ƒ]
+    console.log(Object.entries(student)); // Output: [["name", "Bob"], ["age", 23], ["courses", Array(4)], ["introduce", ƒ]]
+    let jsonString = JSON.stringify(student);
+    console.log(jsonString); // Output: JSON string representation of the student object
+    let parsedObject = JSON.parse(jsonString);
+    console.log(parsedObject); // Output: JavaScript object parsed from the JSON string
+    // Declare and Accessing Symbol in object
+    let sym1 = Symbol("id");
+    let sym2 = Symbol("id"); // Different symbol, even with the same description
+    let user = {
+        [sym1]: 101,
+        [sym2]: 102,
+        name: "Charlie"
+    };
+    console.log(user[sym1]); // Output: 101
+    console.log(user[sym2]); // Output: 102
+    console.log(user.name); // Output: Charlie
+
+
+    // spread operator with objects
+    let obj1 = {a: 1, b: 2};
+    let obj2 = {b: 3, c: 4};
+    let mergedObj = {...obj1, ...obj2}; // {a: 1, b: 3, c: 4}
+    console.log(mergedObj);
+
+    // Object Destructuring
+    let {name, age, courses} = student;
+    console.log(name); // Output: Bob
+    console.log(age);  // Output: 23
+    console.log(courses); // Output: ["Math", "Science", "History", "Art"]
+
+    // Using Object.create()
+    let proto = {
+        greet: function() {
+            console.log("Hello!");
+        }
+    };
+    let newObj = Object.create(proto);
+    newObj.name = "David";
+    newObj.greet(); // Output: Hello!
+    console.log(newObj.name); // Output: David
+
+    // Using Object.defineProperty()
+    let obj = {};
+    Object.defineProperty(obj, 'property1', {
+        value: 42,
+        writable: false
+    });
+    console.log(obj.property1); // Output: 42
+    // obj.property1 = 100; // This will not change the value
+    console.log(obj.property1); // Output: 42
+
+    // Using Object.freeze()
+    let frozenObj = {prop: "I am frozen"};
+    Object.freeze(frozenObj);
+    // frozenObj.prop = "Trying to change"; // This will not change the value
+
+    console.log(frozenObj.prop); // Output: I am frozen
+    // Using Object.seal()
+    let sealedObj = {prop: "I am sealed"};
+    Object.seal(sealedObj);
+    sealedObj.prop = "Changed"; // This will work
+    // sealedObj.newProp = "New"; // This will not add a new property
+    console.log(sealedObj.prop); // Output: Changed
+    console.log(sealedObj.newProp); // Output: undefined
+</script>
 </body>
 </html>
