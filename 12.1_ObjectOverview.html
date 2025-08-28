@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object OverView</title>
+</head>
+<body>
+    <h1>Object in JavaScript</h1>
+    <h2>
+        <ol>
+            <li>
+                <p>Defination:</p>
+                <h3>Collection of key value pair and each key is distinct</h3>
+            </li>
+            <li>
+                <p>Declaration:</p>
+                <h3><code><pre>
+                    const obj1 = {id:1, age:21, name:"aadi"};
+                </pre></code></h3>
+                <p>//OR</p>
+                <h3><code><pre>
+                    const obj1 = {
+                        id:1,
+                        age:21,
+                        name:"aadi"
+                    };
+                </pre></code></h3>
+            </li>
+            <li>
+                <p>Accessing:</p>
+                <h3><code><pre>
+                    const obj1 = {
+                        id:1,
+                        age:21,
+                        name:"aadi"
+                    };
+
+                    console.log(obj1.id); // 1
+
+                    <h2><p>//OR</p></h2>
+
+                    console.log(obj1["id"]); // 1
+                </pre></code></h3>
+            </li>
+            <li>
+                <p>Over Writing</p>
+                <h3><code><pre>
+                    const obj1 = {
+                        id:1,
+                        age:21,
+                        name:"aadi"
+                    };
+                    
+                    obj1.id = 2;
+                    obj1.age = 22;
+                    obj1.name ="Singh";
+
+                    console.log(obj1.id); // 2
+                    console.log(obj1.age); // 22
+                    console.log(obj1.name); // Singh
+                </pre></code></h3>
+            </li>
+            <li>
+                <p>Object.freeze(object_name)</p>
+                <p>Used to lock the given object then it become immutable(Unchangable)</p>
+                <h3><code><pre>
+                    const obj1 = {
+                        id:1,
+                        age:21,
+                        name:"aadi"
+                    };
+
+                    Object.freeze(obj1);
+                    
+                    obj1.id = 2;
+                    obj1.age = 22;
+                    obj1.name ="Singh";
+
+                    console.log(obj1.id); // 1
+                    console.log(obj1.age); // 21
+                    console.log(obj1.name); // aadi
+                </pre></code></h3>
+            </li>
+            <li>
+                <p>Object.keys(object_name)</p>
+                <p>Used to get keys of object</p>
+                <h3><code><pre>
+                    const obj1 = {
+                        id:1,
+                        age:21,
+                        name:"aadi"
+                    };
+
+                    const key=Object.keys(obj1);
+                    console.log(key); // ['id','age','name']
+                </pre></code></h3>
+            </li>
+            <li>
+                <p>Object.value(object_name)</p>
+                <p>Used to get values of object</p>
+                <h3><code><pre>
+                    const obj1 = {
+                        id:1,
+                        age:21,
+                        name:"aadi"
+                    };
+
+                    const values=Object.value(obj1);
+                    console.log(values); // ['1','21','aadi']
+                </pre></code></h3>
+            </li>
+            <li>
+                <p>Object.entries(object_name)</p>
+                <p>Used to get entries from object</p>
+                <h3><code><pre>
+                    const obj1 = {
+                        id:1,
+                        age:21,
+                        name:"aadi"
+                    };
+
+                    const entities=Object.entries(obj1);
+                    console.log(entities); // [ [ 'id', 1 ], [ 'age', 21 ], [ 'name', 'aadi' ] ]
+                </pre></code></h3>
+            </li>
+            <li>
+                <p>Spread Operator(...)</p>
+                <p>Used to spread elements</p>
+                <ul>
+                    <li>
+                        <p>Copy Object</p>
+                        <h3><code><pre>
+                            const obj1 = {a:1, b:2};
+                            
+                            const copy = {...obj1};
+                            console.log(copy); // { a: 1, b: 2}
+                        </pre></code></h3>
+                    </li>
+                    <li>
+                        <p>Merging</p>
+                        <h3><code><pre>
+                            const obj1 = {a:1, b:2};
+                            const obj2 = {c:3, d:4};
+                            const obj3 = {e:5, f:6};
+                            
+                            const merged = {...obj1,...obj2,...obj3};
+                            console.log(merged); // { a: 1, b: 2, c: 3, d: 4, e: 5, f: 6 }
+                        </pre></code></h3>
+                    </li>
+                    <li>
+                        <p>Override</p>
+                        <h3><code><pre>
+                            const obj1 = {a:1, b:2};
+                            
+                            const update = {...obj1,b:5};
+                            console.log(merged); // { a: 1, b: 5 }
+                        </pre></code></h3>
+                    </li>
+                    <li>
+                        <p>Nested Object (Shallow copy issue)</p>
+                        <h3><code><pre>
+                            const student = {
+                                name: "Raj",
+                                address: { city: "Mathura", pincode: 281001 }
+                            };
+
+                            const newStudent = { ...student };
+                            newStudent.address.city = "Delhi";
+                            
+                            console.log(student.address.city); // Delhi 
+                        </pre></code></h3>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <p>De-Structuring of Object</p>
+                <h3><code><pre>
+                    const obj = {
+                        id:1,
+                        age:21,
+                        name:"Aadi"
+                    };
+
+                    console.log(obj.id);  // 1
+                    console.log(obj.age);  //21
+
+                // De-Structuring
+
+                    const {id, age , name} = obj;
+
+                    console.log(id);  // 1
+                    console.log(age);  //21
+                    console.log(name);  // Aadi
+                </pre></code></h3>
+            </li>
+        </ol>
+    </h2>
+
+    <p>Q. Take symbol than attached in object and print it?</p>
+    <h3><code><pre>
+        const symb = Symbol("key1");
+
+        const obj = {
+            [symb]: "key1",
+            id:1,
+            age:23
+        }
+
+        console.log([symb]);  // [ Symbol(key1) ]
+    </pre></code></h3>
+   
+</body>
+</html>
