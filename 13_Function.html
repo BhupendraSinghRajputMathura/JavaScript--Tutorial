@@ -60,6 +60,47 @@
 
     <h2>Conclusion</h2>
     <p>Functions are a fundamental part of JavaScript, allowing you to encapsulate code for reuse and organization. Understanding how to define, call, and work with functions is essential for effective programming in JavaScript.</p>
+    
+
+    <h2>Function Examples</h2>
+
+    <p>Function with parameters</p>
+    <pre><code>function greet(name) {
+    return "Hello, " + name + "!";
+}</code></pre>
+    <p>To use the <code>greet</code> function:</p>
+    <pre><code>let message = greet("Alice"); // message will be "Hello, Alice!"</code></pre>
+
+    <h2>Function with Default Parameters</h2>
+    <pre><code>function multiply(a, b = 1) {
+    return a * b;
+}</code></pre>
+    <p>To use the <code>multiply</code> function:</p>
+    <pre><code>let result = multiply(5); // result will be 5 (5 * 1)</code></pre>
+
+    <h2>Function with Rest Parameters</h2>
+    <pre><code>function sum(...numbers) {
+    return numbers.reduce((acc, curr) => acc + curr, 0);
+}</code></pre>
+    <p>To use the <code>sum</code> function:</p>
+    <pre><code>let total = sum(1, 2, 3, 4, 5); // total will be 15</code></pre>
+
+     <h2>Arrow Function Examples</h2>
+     
+     <h2>Arraw function with Parameters</h2>
+     <pre><code>const add = (a, b) => a + b;</code></pre>
+     <p>To use the <code>add</code> function:</p>
+     <pre><code>let sum = add(5, 10); // sum will be 15</code></pre>
+
+     <h2>Arrow Function with Default Parameters</h2>
+     <pre><code>const multiply = (a, b = 1) => a * b;</code></pre>
+     <p>To use the <code>multiply</code> function:</p>
+     <pre><code>let result = multiply(5); // result will be 5 (5 * 1)</code></pre>
+
+     <h2>Arrow Function with Rest Parameters</h2>
+     <pre><code>const sum = (...numbers) => numbers.reduce((acc, curr) => acc + curr, 0);</code></pre>
+     <p>To use the <code>sum</code> function:</p>
+     <pre><code>let total = sum(1, 2, 3, 4, 5); // total will be 15</code></pre>    
 
 </body>
 </html>
