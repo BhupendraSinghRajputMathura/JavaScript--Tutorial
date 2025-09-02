@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+    <style>
+        .bg-black{
+            background-color: black;
+            color: aliceblue;
+        }
+    </style>
+</head>
+<body class="bg-black">
+    <div >
+        <h1 id="title" class="heading">DOM <span  style="display: none;">learning</span> With Aadi</h1>
+        <p>Lorem ipsum dolor sit amet.</p>
+        <ol>
+            <li>one</li>
+            <li>two</li>
+            <li>three</li>
+            <li>four</li>
+        </ol>
+
+        <div class="parent">
+            <div class="num">one</div>
+            <div class="num">two</div>
+            <div class="num">three</div>
+            <div class="num">four</div>
+            <div class="num">five</div>
+        </div>
+
+
+    </div>
+
+    <script>
+  const parent = document.querySelector('.parent');
+  console.log(parent);
+  console.log(parent.children);
+
+  
+  console.log(parent.children[0].innerHTML); // 👉 "one"
+  console.log(parent.children[1].innerHTML); // 👉 "two"
+
+  console.log(parent.firstElementChild.innerText); // "one"
+  console.log(parent.lastElementChild.innerText); // "five"
+
+
+    for(let i=0 ; i<parent.children.length; i++ ){
+    console.log(parent.children[i].innerText);
+  } //  one
+    // two
+    // three
+    // four
+    // five
+
+
+  const child = parent.children;
+  console.log(child[0].innerHTML); // 👉 "one"
+
+  for (let i = 0; i < child.length; i++) {
+  console.log(child[i].innerText);
+}  //  one
+   // two
+   // three
+   // four
+   // five
+
+
+</script>
+    
+</body>
+</html>
