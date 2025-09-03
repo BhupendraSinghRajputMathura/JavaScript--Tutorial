@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scope</title>
+</head>
+<body>
+    <h1>Scope</h1>
+    <p>In JavaScript, scope refers to the current context of execution, which determines the accessibility of variables. There are two main types of scope:</p>
+    <ul>
+        <li><strong>Global Scope:var</strong> Variables declared outside of any function or block are in the global scope and can be accessed from anywhere in the code.</li>
+        <li><strong>Local Scope (Block Scope):const,let</strong> Variables declared within a function or block are in the local scope and can only be accessed within that function or block.</li>
+    </ul>
+
+    <p>Example</p>
+    <code>
+        if(true){
+            let blockScopedLet = "I am block scoped";
+            console.log(blockScopedLet); // Accessible
+            const blockScopedConst = "I am block scoped";
+            console.log(blockScopedConst); // Accessible
+            var globalScopedVar = "I am function scoped";
+            console.log(globalScopedVar); // Accessible
+        }
+        console.log(blockScopedLet); // Not Accessible
+        console.log(blockScopedConst); // Not Accessible
+        console.log(globalScopedVar); // Accessible
+    </code>
+    <code>
+        var globalVar = "I am a global variable";
+
+        function testScope() {
+            var localVar = "I am a local variable";
+            console.log(globalVar); // Accessible
+            console.log(localVar);  // Accessible
+        }
+
+        testScope();
+
+        console.log(globalVar); // Accessible
+        console.log(localVar);  // Not Accessible
+    </code>
+
+    <code>
+        if(true){
+            const a = 10;
+            console.log(a); // 10 Accessible
+            let b = 20;
+            console.log(b); // 20 Accessible
+            var c = 30;
+            console.log(c); // 30 Accessible
+        }
+        console.log(a); // Not Accessible
+        console.log(b); // Not Accessible
+        console.log(c); // Accessible
+    </code>
+
+    
+</body>
+</html>

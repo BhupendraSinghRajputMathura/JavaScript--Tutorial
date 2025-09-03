@@ -201,6 +201,58 @@
         }
         console.log(arrayValue(arr)); // Output: 300
     </code>     
+    <h1>High order function vs Callback function</h1>
+    <ol>
+        <li>
+            <strong>Higher-Order Function:</strong> A function that takes another function as an argument or returns a function as its result.
+        </li>
+        <li>
+            <strong>Callback Function:</strong> A function that is passed as an argument to another function and is executed after some operation is completed.
+        </li>
+        <li>
+            <strong>Example:</strong>
+           <pre>
+             <code>
+                function higherOrderFunction(callback) {
+                    // Do something
+                    callback();
+                }
 
+                function myCallback() {
+                    console.log("Callback function executed.");
+                }
+
+                higherOrderFunction(myCallback);
+            </code>
+           </pre>
+        </li>
+        <li>
+            <strong>Example:</strong> A higher-order function can be used to create a callback function.
+            <pre>
+                <code>
+                function fetchData(callback) {
+                    // Simulate an API call
+                    setTimeout(() => {
+                        const data = { id: 1, name: "Alice" };
+                        callback(data);
+                    }, 1000);
+                }
+
+                function processData(data) {
+                    console.log(`Processing data for ${data.name}`);
+                }
+
+                fetchData(processData);
+            </code>
+            </pre>
+        </li>
+        <li>
+            <strong>Conclusion:</strong> Higher-order functions and callback functions are essential concepts in JavaScript that enable powerful programming patterns, such as asynchronous programming and functional programming.
+        </li>
+        <li>
+            <strong>Real-World Use Case:</strong> Higher-order functions and callback functions are widely used in JavaScript libraries and frameworks, such as React and Node.js, to handle asynchronous operations and manage state effectively.
+        </li>
+    </ol>
+    
 </body>
 </html>
