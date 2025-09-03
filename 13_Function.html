@@ -102,5 +102,105 @@
      <p>To use the <code>sum</code> function:</p>
      <pre><code>let total = sum(1, 2, 3, 4, 5); // total will be 15</code></pre>    
 
+     <h1>Arrow Function vs Regular Function</h1>
+     <p>Arrow functions and regular functions have some key differences:</p>
+     <ul>
+         <li><strong>Syntax:</strong> Arrow functions have a shorter syntax compared to regular functions.</li>
+         <li><strong>Lexical this:</strong> Arrow functions do not have their own <code>this</code> context; they inherit <code>this</code> from the parent scope.</li>
+         <li><strong>Arguments object:</strong> Arrow functions do not have an <code>arguments</code> object.</li>
+         <li><strong>Hosting:</strong> Arrow functions are not hoisted, meaning they cannot be called before they are defined.  </li>
+         <li><strong>Constructor:</strong> Arrow functions cannot be used as constructors and will throw an error when used with <code>new</code>.</li>
+         <li><strong>Best Use Cases:</strong><li>Arrow function:- CallBack(map,filter,reduce)</li><li>Normal function:- Constractor function when we need this keyword</li></li>
+     </ul>
+
+     <h1>"this." keyword</h1>
+     <p>This keyword used to refers the current context(value) </p>
+     <p>The <code>this</code> keyword in JavaScript refers to the context in which a function is called. In regular functions, <code>this</code> refers to the object that is calling the function. However, in arrow functions, <code>this</code> is lexically inherited from the surrounding code.</p>
+
+     <p>example:-</p>
+     <code>
+        const obj = {
+            id: 1,
+            name: "Alice",
+            age: 30,
+            value: 42,
+            regularFunction: function() {
+                console.log(this.value);
+            },
+            arrowFunction: () => {
+                console.log(this.value);
+            }
+        };
+
+        obj.regularFunction(); // 42
+        obj.arrowFunction();   // undefined
+        console.log(this); // {}
+    </code>
+    <h3>note:-</h3>
+    <p>here corrent context is id,name,age,value,regularFunction,arrowFunction</p>
+    <p>In the example above, the regular function correctly logs the value of the <code>value</code> property from the <code>obj</code> context. In contrast, the arrow function does not have its own <code>this</code> context, so it refers to the surrounding lexical context, which does not have a <code>value</code> property, resulting in <code>undefined</code>.</p>
+    <p>here corrent context is id,name,age,value,regularFunction,arrowFunction</p>
+
+    <h1>Function Hoisting</h1>
+    <p>Function hoisting is a JavaScript mechanism where function declarations are moved to the top of their containing scope during the compilation phase. This means that you can call a function before it is defined in the code.</p>
+    <p>Example of Function Hoisting:</p>
+    <code>
+        sayHello();
+
+        function sayHello() {
+            console.log("Hello!");
+        }
+    </code>
+
+    <h1>Rest Operator(...)</h1>
+    <p>The rest operator (...) in JavaScript allows you to represent an indefinite number of arguments as an array. It is commonly used in function definitions to handle multiple parameters.</p>
+    <code>
+        const sum = (...numbers) => numbers.reduce((acc, curr) => acc + curr, 0);
+
+        let total = sum(1, 2, 3, 4, 5); // total will be 15
+    </code  >
+
+    <p>Note:-</p>
+    <ul>
+        <li>Used to create cart functionality in e-commerce applications.</li>
+        <li>Can be used to implement functions that accept a variable number of arguments.</li>
+        <li>The rest operator must be the last parameter in the function definition.</li>
+        <li>It can be used in both regular and arrow functions.</li>
+    </ul>
+
+    <h1>Pass object in function</h1>
+    <p>In JavaScript, you can pass objects as arguments to functions. This allows you to group related data together and work with it more easily.</p>
+    <code>
+        const person = {
+            name: "Alice",
+            age: 30,
+            city: "Wonderland"
+        };
+
+        function greet({ name, age, city }) {
+            console.log(`Hello, my name is ${name}, I am ${age} years old and I live in ${city}.`);
+        }
+
+        greet(person); // Output: Hello, my name is Alice, I am 30 years old and I live in Wonderland.
+    </code>
+    <h1>Pass array in function</h1>
+    <p>In JavaScript, you can also pass arrays as arguments to functions. This allows you to work with lists of data more easily.</p>
+    <code>
+        const numbers = [1, 2, 3, 4, 5];
+
+        function sumArray(arr) {
+            return arr.reduce((acc, curr) => acc + curr, 0);
+        }
+        const total = sumArray(numbers); // Output: 15
+
+
+        const arr = [200,300,400,500];
+
+        function arrayValue(getValue) {
+            return getValue[1];
+        }
+        console.log(arrayValue(arr)); // Output: 300
+    </code>     
+
 </body>
 </html>
