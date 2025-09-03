@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Immediately Invoked Function Expression-IIFE</title>
+</head>
+<body>
+    <h1>Immediately Invoked Function Expression (IIFE)</h1>
+    <p>It is used to remove global scope polution and create a private scope.</p>
+    <p>It is used to remove global variables and create a private scope.</p>
+    <p>An IIFE is a function that runs as soon as it is defined.</p>
+    <h2>Syntax</h2>
+    <h2>
+        <pre><code><span style="color: red;">(</span>function() {
+    // code to be executed
+}<span style="color: red;">)</span>}<span style="color: green;">();</span></code></pre>
+    </h2>
+    <h2>Example</h2>
+    <pre><code>(function() {
+    console.log("IIFE executed!");
+})();</code></pre>
+    <h2>Use Cases</h2>
+    <ul>
+        <li>Creating a private scope</li>
+        <li>Initializing variables</li>
+        <li>Preventing global namespace pollution</li>
+    </ul>
+</body>
+</html>
