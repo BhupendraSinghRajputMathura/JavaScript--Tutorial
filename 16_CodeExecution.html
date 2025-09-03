@@ -64,91 +64,9 @@
     <h2>Call Stack</h2>
     <p>The call stack is a data structure that keeps track of the execution contexts in a JavaScript program. It follows a Last In, First Out (LIFO) order, meaning that the most recently added context is the first one to be removed.</p>
     <p>When a function is called, a new execution context is created and pushed onto the call stack. When the function returns, its context is popped off the stack.</p>
-
+    
     <h2>Example</h2>
-    <pre>
-        <code>
-            var a = 10; // Global Execution Context (GEC)
-            var b = 20; // Global Execution Context (GEC)
-
-            function add(x,y) {
-                var c = 30; // Function Execution Context (FEC)
-                return x + y + c;
-            }
-
-            add(); // Function Execution Context (FEC) is created and pushed onto the call stack
-        </code>
-    </pre>
-    <h2>Execution Flow:-</h2>
-
-    <h2>1. Global Execution Context (GEC) Created</h2>
-    <pre>
-        <code>
-            a= undefined
-            b= undefined
-            c= undefined
-            add= undefined
-        </code>
-    </pre>
-
-    <h2>2. Execution Phase</h2>
-    <pre>
-        <code>
-            a= 10
-            b= 20
-            c= 30
-            add= ƒ add() // Function Execution Context (FEC)
-        </code>
-    </pre>
-
-    <h2>3. Function Execution Context(add)</h2>
-    <code>
-        <pre>
-            <ol>
-                <li>
-                    Creation Phase
-                    <pre>
-                        <code>
-                            x= undefined
-                            y= undefined
-                            c= undefined
-                        </code>
-                    </pre>
-                </li>
-                <li>
-                    Execution Phase
-                    <pre>
-                        <code>
-                            x= undefined
-                            y= undefined
-                            c= 30
-                        </code>
-                    </pre>
-                </li>
-                <li>
-                    Termination Phase
-                    <pre>
-                        <code>
-                            x= undefined
-                            y= undefined
-                            c= undefined
-                        </code>
-                    </pre>
-                </li>
-            </ol>
-        </pre>
-    </code>
-<h2>4. Function Execution Context (FEC) Destroyed </h2>
-
-<h2>5. Global Execution Context (GEC) Destroyed</h2>
-<pre>
-    <code>
-        a= undefined
-        b= undefined
-        c= undefined
-        add= undefined
-    </code>
-</pre>
+    <img src="./Image/CodeExecutionProcess.jpg" alt="">
 
 
 </body>
