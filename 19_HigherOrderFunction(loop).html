@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Higher Order Function</title>
+</head>
+<body>
+    <h1>Higher Order Functions in JavaScript</h1>
+    <p>Higher order functions are functions that can take other functions as arguments or return them as output. They are a key feature of functional programming and allow for more abstract and flexible code.</p>
+    <h2>Examples</h2>
+    <h3>1. Functions as First-Class Citizens</h3>
+    <pre><code>function greet(name) {
+    return "Hello, " + name;
+}
+
+function processUserInput(callback) {
+    var name = prompt("Please enter your name.");
+    alert(callback(name));
+}
+
+processUserInput(greet);</code></pre>
+    <h3>2. Array Methods</h3>
+    <pre><code>const numbers = [1, 2, 3, 4, 5];
+
+const doubled = numbers.map(function(num) {
+    return num * 2;
+});
+
+const filtered = numbers.filter(function(num) {
+    return num > 2;
+});</code></pre>
+    <h3>3. Returning Functions</h3>
+    <pre><code>function makeCounter() {
+    let count = 0;
+    return function() {
+        count++;
+        return count;
+    };
+}
+
+const counter = makeCounter();
+console.log(counter()); // 1
+console.log(counter()); // 2
+console.log(counter()); // 3
+</code></pre>
+    <h2>Common Higher Order Functions</h2>
+    <ul>
+        <li><strong>forEach()</strong>: Executes a provided function once for each array element.</li>
+        <li><strong>filter()</strong>: Filters elements in an array based on a condition and returns a new array.</li>
+        <li><strong>map()</strong>: Transforms each element in an array and returns a new array.</li>
+        <li><strong>reduce()</strong>: Reduces an array to a single value by applying a function to each element.</li>
+    </ul>
+    <h2>Benefits of Higher Order Functions</h2>
+    <ul>
+        <li>Encourages code reusability and modularity.</li>
+        <li>Makes code more readable and expressive.</li>
+        <li>Facilitates functional programming techniques.</li>
+    </ul>
+</body>
+</html>
