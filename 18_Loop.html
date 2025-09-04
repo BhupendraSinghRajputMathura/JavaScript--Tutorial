@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loops</title>
+</head>
+    <h1>Loops in JavaScript</h1>
+    <p>Loops are used to execute a block of code repeatedly until a specified condition is met. JavaScript supports several types of loops:</p>
+    <ul>
+        <li><strong>for loop</strong>: Used when the number of iterations is known.</li>
+        <li><strong>while loop</strong>: Used when the number of iterations is not known and depends on a condition.</li>
+        <li><strong>do...while loop</strong>: Similar to the while loop, but guarantees that the code block will be executed at least once.</li>
+        <li><strong>for...in loop</strong>: Used to iterate over the properties of an object.</li>
+        <li><strong>for...of loop</strong>: Used to iterate over iterable objects like arrays, strings, etc.</li>
+    </ul>
+    <h2>Examples</h2>
+    <h3>for loop</h3>
+    <pre><code>for (let i = 0; i &lt; 5; i++) {
+    console.log(i);
+}</code></pre>
+    <h3>while loop</h3>
+    <pre><code>let i = 0;
+while (i &lt; 5) {
+    console.log(i);
+    i++;
+}</code></pre>
+    <h3>do...while loop</h3>
+    <pre><code>let i = 0;   
+do {
+    console.log(i);
+    i++;
+} while (i &lt; 5);</code></pre>
+    <h3>for...in loop</h3>
+    <p>Used to iterate over the properties of an object for keys.</p>
+    <pre><code>const obj = {a: 1, b: 2, c: 3};
+for (const key in obj) {
+    console.log(key + ": " + obj[key]);
+}</code></pre>
+
+    <h3>for...of loop</h3>
+    <p>Used to iterate over iterable objects like arrays, strings, etc for values.</p>
+    <pre><code>const arr = [10, 20, 30];
+for (const value of arr) {
+    console.log(value);  
+}</code></pre>
+
+<h2>for...in vs for...of</h2>
+<p>The <code>for...in</code> loop iterates over the enumerable properties of an object, while the <code>for...of</code> loop iterates over the values of an iterable object like an array or string. Use <code>for...in</code> for objects and <code>for...of</code> for arrays and other iterable collections.</p>
+
+<h2>new Map()</h2>
+<p>The <code>Map</code> object in JavaScript is a collection of key-value pairs where both keys and values can be of any data type. It maintains the order of insertion and allows for efficient retrieval, addition, and deletion of elements.</p>
+<p>Example:</p>
+<pre><code>const myMap = new Map();
+myMap.set('name', 'John');
+myMap.set('age', 30);
+myMap.set(1, 'one');
+myMap.set('name', 'John'); // Duplicate key, will update the value
+
+console.log(myMap); // Output: Map(3) {'name' => 'John', 'age' => 30, 1 => 'one'}   
+console.log(myMap.get('name')); // Output: John
+console.log(myMap.size); // Output: 3
+myMap.delete(1); // Removes the key-value pair with key 1
+console.log(myMap.has('age')); // Output: true
+myMap.clear(); // Removes all key-value pairs
+</code></pre>
+<h3>new Map() operation</h3>
+<ul>
+    <li><strong>set(key, value)</strong>: Adds or updates an element with the specified key and value.</li>
+    <li><strong>get(key)</strong>: Retrieves the value associated with the specified key.</li>
+    <li><strong>has(key)</strong>: Checks if an element with the specified key exists in the Map.</li>
+    <li><strong>delete(key)</strong>: Removes the element with the specified key from the Map.</li>
+    <li><strong>clear()</strong>: Removes all elements from the Map.</li>
+    <li><strong>size</strong>: Returns the number of elements in the Map.</li>
+</ul>
+
+
+<script>
+    // Example of for...in
+    const person = {name: "Alice", age: 25, city: "New York"};
+    for (const key in person) {
+        console.log(key + ": " + person[key]);
+    }
+
+    // Example of for...of
+    const numbers = [1, 2, 3, 4, 5];
+    for (const num of numbers) {
+        console.log(num);
+    }
+    
+    // Example of Patterns
+    const pattern = "*";    
+    for (let i = 1; i <= 5; i++) {
+        console.log(pattern.repeat(i));
+    }  // Right angle triangle
+
+    for (let i = 5; i >= 1; i--) {
+        console.log(pattern.repeat(i));
+    }  // Inverted right angle triangle
+
+    for (let i = 1; i <= 5; i++) {
+        console.log(" ".repeat(5 - i) + pattern.repeat(i));
+    }  // Right angle triangle (right aligned)
+
+    for (let i = 5; i >= 1; i--) {
+        console.log(" ".repeat(5 - i) + pattern.repeat(i));
+    }  // Inverted right angle triangle (right aligned)
+
+    for (let i = 1; i <= 5; i++) {
+        console.log(" ".repeat(5 - i) + pattern.repeat(2 * i - 1));
+    }  // Pyramid
+
+    for (let i = 5; i >= 1; i--) {
+        console.log(" ".repeat(5 - i) + pattern.repeat(2 * i - 1));
+    }  // Inverted Pyramid
+
+    for (let i = 1; i <= 5; i++) {
+        console.log(pattern.repeat(i) + " ".repeat(10 - 2 * i) + pattern.repeat(i));
+    }  // Diamond (top half)
+
+    for (let i = 5; i >= 1; i--) {
+        console.log(pattern.repeat(i) + " ".repeat(10 - 2 * i) + pattern.repeat(i));
+    }  // Diamond (bottom half)
+
+    for (let i = 1; i <= 5; i++) {
+        console.log(" ".repeat(5 - i) + pattern.repeat(2 * i - 1));
+    }
+
+    for (let i = 4; i >= 1; i--) {
+        console.log(" ".repeat(5 - i) + pattern.repeat(2 * i - 1));
+    }  // Diamond (full)
+
+    for (let i = 1; i <= 5; i++) {
+        console.log(" ".repeat(5 - i) + pattern + " ".repeat(2 * (i - 1)) + pattern);
+    }  // Hollow Pyramid
+
+    for (let i = 5; i >= 1; i--) {
+        console.log(" ".repeat(5 - i) + pattern + " ".repeat(2 * (i - 1)) + pattern);
+    }  // Hollow Inverted Pyramid
+
+    for (let i = 1; i <= 5; i++) {
+        if (i === 1 || i === 5) {
+            console.log(pattern.repeat(9));
+        } else {
+            console.log(pattern + " ".repeat(7) + pattern);
+        }
+    }  // Hollow Square
+
+   
+
+
+</script>
+</body>
+</html>
