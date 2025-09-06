@@ -57,5 +57,216 @@ console.log(counter()); // 3
         <li>Makes code more readable and expressive.</li>
         <li>Facilitates functional programming techniques.</li>
     </ul>
+
+    <h2>.forEach()</h2>
+    <p>It is a built-in higher order function method and it does not return anything(Always undefined)</p>
+    <p>The <code>forEach()</code> method executes a provided function once for each array element. It is commonly used to iterate over arrays.</p>
+    <h3>syntax</h3>
+    <p><pre><code>
+        array.forEach(function(currentValue, index, arr){
+            //your code here
+        })
+
+        <h2>OR</h2>
+
+        array.forEach((currentValue, index, arr) => {
+            //your code here
+        })
+    </code></pre></p>
+    <p>Example</p>
+    <pre><code>const arr = [1, 2, 3, 4, 5];
+arr.forEach((element) => {
+    console.log(element);
+});
+// Output:
+// 1
+// 2
+// 3
+// 4
+// 5
+</code></pre>
+
+<pre>
+    <code>
+const fruits = ['apple', 'banana', 'cherry'];
+fruits.forEach((fruit, index) => {
+    console.log(index + ': ' + fruit);
+});
+// Output:
+// 0: apple
+// 1: banana
+// 2: cherry
+    </code>
+</pre>
+
+<pre><code>
+    const objectArray = [
+        { name: 'Alice', age: 25 },
+        { name: 'Bob', age: 30 },
+        { name: 'Charlie', age: 35 }
+    ];
+    objectArray.forEach((obj) => {
+        console.log(obj.name + ' is ' + obj.age + ' years old.');
+    });
+    // Output:
+    // Alice is 25 years old.
+    // Bob is 30 years old.
+    // Charlie is 35 years old.
+</code></pre>
+
+<h2>.filter()</h2>
+<p>It is a built-in higher order function method and it always return a new array</p>
+<p>The <code>filter()</code> method creates a new array and It is commonly used to filter elements from an array based on specific criteria.</p>
+<h3>syntax</h3>
+<p><pre><code>
+    array.filter(function(currentValue, index, arr){
+        //your code here
+    })
+
+    <h2>OR</h2>
+
+    array.filter((currentValue, index, arr) => {
+        //your code here
+    })
+</code></pre></p>
+<p>Example</p>
+<pre><code>const numbers = [1, 2, 3, 4, 5];
+const evenNumbers = numbers.filter((num) => num % 2 === 0);
+console.log(evenNumbers); // Output: [2, 4]
+</code></pre>
+
+<pre><code>
+    const mixedNumbers = [10, 15, 20, 25, 30];
+    const greaterThan20 = mixedNumbers.filter((num) => num > 20);
+    console.log(greaterThan20); // Output: [25, 30]
+</code></pre>
+
+<pre><code>
+    const words = ['apple', 'banana', 'cherry', 'date'];
+    const longWords = words.filter((word) => word.length > 5);
+    console.log(longWords); // Output: ['banana', 'cherry']
+</code></pre>
+
+<pre><code>
+    const objectArray = [
+        { name: 'Alice', age: 25 },
+        { name: 'Bob', age: 30 },
+        { name: 'Charlie', age: 35 }
+    ];
+    const adults = objectArray.filter((obj) => obj.age >= 30);
+    console.log(adults);
+    // Output:
+    // [ { name: 'Bob', age: 30 }, { name: 'Charlie', age: 35 } ]
+</code></pre>
+
+<pre><code>
+    const students = [
+        { name: 'Alice', score: 85 },
+        { name: 'Bob', score: 92 },
+        { name: 'Charlie', score: 78 }
+    ];
+    const passedStudents = students.filter((student) => student.score >= 80);
+    console.log(passedStudents);
+    // Output:
+    // [ { name: 'Alice', score: 85 }, { name: 'Bob', score: 92 } ]
+</code></pre>
+
+<pre>
+    <code>
+    const products = [
+        { name: 'Laptop', price: 1000 },
+        { name: 'Phone', price: 500 },
+        { name: 'Tablet', price: 300 }
+    ];
+    const expensiveProducts = products.filter((product) => product.price > 400);
+    console.log(expensiveProducts);
+    // Output:
+    // [ { name: 'Laptop', price: 1000 }, { name: 'Phone', price: 500 } ]
+    </code>
+</pre>
+
+<pre><code>
+    const cities = ['New York', 'Los Angeles', 'Chicago', 'Houston', 'Phoenix'];
+    const citiesWithO = cities.filter((city) => city.includes('o'));
+    console.log(citiesWithO); // Output: ['Los Angeles', 'Houston']
+</code></pre>
+
+<pre><code>
+    const name = ['Alice', 'Bob', 'Charlie', 'David'];
+    const namesWithA = name.filter((n) => n.startsWith('A'));
+    console.log(namesWithA); // Output: ['Alice']
+    const nameWitha = name.filter((n) => n.toLowerCase().includes('a'));
+    console.log(nameWitha); // Output: ['Alice', 'Charlie', 'David']
+</code></pre>
+
+<h2>.map()</h2>
+<p>It is a built-in higher order function method and it always return a new array</p>
+<p> It is commonly used to transform elements in an array.</p>
+<p>The <code>map()</code> method creates a new array populated with the results of calling a provided function on every element in the calling array.</p>
+<h3>syntax</h3>
+<p><pre><code>
+    array.map(function(currentValue, index, arr){
+        //your code here
+    })
+
+    <h2>OR</h2>
+
+    array.map((currentValue, index, arr) => {
+        //your code here
+    }) 
+</code></pre></p>
+<p>Example</p>
+<pre><code>const numbers = [1, 2, 3, 4, 5];
+const squared = numbers.map((num) => num * num);
+console.log(squared); // Output: [1, 4, 9, 16, 25]
+</code></pre>
+
+<pre><code>
+    const mixedNumbers = [1, 2, 3, 4, 5];
+    const incremented = mixedNumbers.map((num) => num + 1);
+    console.log(incremented); // Output: [2, 3, 4, 5, 6]
+</code></pre>
+
+<pre><code>
+    const words = ['hello', 'world', 'javascript'];
+    const uppercased = words.map((word) => word.toUpperCase());
+    console.log(uppercased); // Output: ['HELLO', 'WORLD', 'JAVASCRIPT']
+</code></pre>
+
+<pre><code>
+    const objectArray = [
+        { name: 'Alice', age: 25 },
+        { name: 'Bob', age: 30 },
+        { name: 'Charlie', age: 35 }
+    ];
+    const names = objectArray.map((obj) => obj.name);
+    console.log(names); // Output: ['Alice', 'Bob', 'Charlie']
+</code></pre>
+
+<pre><code>
+    const students = [
+        { name: 'Alice', score: 85 },
+        { name: 'Bob', score: 92 },
+        { name: 'Charlie', score: 78 }
+    ];
+    const studentNames = students.map((student) => student.name);
+    console.log(studentNames); // Output: ['Alice', 'Bob', 'Charlie']
+</code></pre>
+
+<pre><code>
+    const products = [
+        { name: 'Laptop', price: 1000 },
+        { name: 'Phone', price: 500 },
+        { name: 'Tablet', price: 300 }
+    ];
+    const productNames = products.map((product) => product.name);
+    console.log(productNames); // Output: ['Laptop', 'Phone', 'Tablet']
+</code></pre>
+
+<pre><code>
+    const cities = ['New York', 'Los Angeles', 'Chicago', 'Houston', 'Phoenix'];
+    const cityLengths = cities.map((city) => city.length);
+    console.log(cityLengths); // Output: [8, 11, 7, 7, 7]
+</code></pre>
 </body>
 </html>
