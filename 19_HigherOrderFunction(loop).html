@@ -268,5 +268,83 @@ console.log(squared); // Output: [1, 4, 9, 16, 25]
     const cityLengths = cities.map((city) => city.length);
     console.log(cityLengths); // Output: [8, 11, 7, 7, 7]
 </code></pre>
+
+<h2>.reduce()</h2>
+<p>It is a built-in higher order function method and it always return a single value</p>
+<p>The <code>reduce()</code> method executes a reducer function (that you provide) on each element of the array, resulting in a single output value. It is commonly used to accumulate values, such as summing numbers or concatenating strings.</p>
+<h3>syntax</h3>
+<p><pre><code>
+    array.reduce(function(accumulator, currentValue, index, arr){
+        //your code here
+    }, initialValue)
+
+    <h2>OR</h2>
+
+    array.reduce((accumulator, currentValue, index, arr) => {
+        //your code here
+    }, initialValue)
+</code></pre></p>
+<p>Example</p>
+<pre><code>const numbers = [1, 2, 3, 4, 5];
+const sum = numbers.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+console.log(sum); // Output: 15
+</code></pre>
+
+<pre><code>
+    const mixedNumbers = [1, 2, 3, 4, 5];
+    const product = mixedNumbers.reduce((accumulator, currentValue) => accumulator * currentValue, 1);
+    console.log(product); // Output: 120
+</code></pre>
+
+<pre><code>
+    const words = ['hello', 'world', 'javascript'];
+    const concatenated = words.reduce((accumulator, currentValue) => accumulator + ' ' + currentValue);
+    console.log(concatenated); // Output: 'hello world javascript'
+</code></pre>
+
+<pre><code>
+    const objectArray = [
+        { name: 'Alice', age: 25 },
+        { name: 'Bob', age: 30 },
+        { name: 'Charlie', age: 35 }
+    ];
+    const totalAge = objectArray.reduce((accumulator, obj) => accumulator + obj.age, 0);
+    console.log(totalAge); // Output: 90
+</code></pre>
+
+<h2>Chaining</h2>
+<p>Higher order functions can be chained together to perform complex operations in a concise manner. For example, you can use <code>map()</code> to transform elements and then <code>filter()</code> to select specific elements from the transformed array.</p>
+<pre><code>const numbers = [1, 2, 3, 4, 5];
+const result = numbers
+    .map((num) => num * 2) // Double each number
+    .filter((num) => num > 5); // Keep only numbers greater than 5
+console.log(result); // Output: [6, 8, 10]
+</code></pre>
+
+<h3>Note:-</h3>
+<p>who support chaining?</p>
+<ul>
+    <li><code>map()</code></li>
+    <li><code>filter()</code></li>
+    <li><code>reduce()</code></li>
+</ul>
+<p>who does not support chaining?</p>
+<ul>
+    <li><code>forEach()</code></li>
+</ul>
+
+<h2>map() vs forEach()</h2>
+<p>The main difference between <code>map()</code> and <code>forEach()</code> is that <code>map()</code> returns a new array with the results of applying the provided function to each element, while <code>forEach()</code> does not return anything (always undefined).</p>
+<p>Use <code>map()</code> when you want to transform the elements of an
+array and create a new array with the transformed values. Use <code>forEach()</code> when you want to perform side effects (like logging or updating external variables) for each element in the array without needing a new array.</p>
+
+<h2>map() vs reduce()</h2>
+<p>The main difference between <code>map()</code> and <code>reduce()</code> is that <code>map()</code> transforms each element in an array and returns a new array of the same length, while <code>reduce()</code> reduces the entire array to a single value by applying a function cumulatively to its elements.</p>
+<p>Use <code>map()</code> when you want to create a new array with transformed values, and use <code>reduce()</code> when you want to aggregate or combine the elements of an array into a single value (like a sum, product, or concatenated string).</p>
+
+<h2>map() vs filter()</h2>
+<p>The main difference between <code>map()</code> and <code>filter()</code> is that <code>map()</code> transforms each element in an array and returns a new array of the same length, while <code>filter()</code> creates a new array containing only the elements that meet a specified condition, potentially resulting in a shorter array.</p>
+<p>Use <code>map()</code> when you want to apply a transformation to each element and create a new array with the transformed values. Use <code>filter()</code> when you want to select a subset of elements from an array based on a condition.</p>
+
 </body>
 </html>
