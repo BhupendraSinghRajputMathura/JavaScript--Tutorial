@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOM Level 2 Event Handler (Modern Method)</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #e6f0ff, #f5faff);
+      margin: 0;
+      padding: 25px;
+      color: #222;
+      line-height: 1.6;
+    }
+
+    h1, h2, h3 {
+      color: #003366;
+    }
+
+    h1 {
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    ul, ol {
+      margin-left: 30px;
+    }
+
+    code {
+      background-color: #f4f4f4;
+      border-radius: 6px;
+      padding: 2px 6px;
+      color: #c7254e;
+      font-size: 15px;
+    }
+
+    pre {
+      background-color: #f8f9fa;
+      border-left: 5px solid #003366;
+      padding: 15px;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-size: 15px;
+      margin: 10px 0;
+    }
+
+    hr {
+      border: none;
+      border-top: 2px solid #003366;
+      margin: 40px 0;
+    }
+
+    footer {
+      text-align: center;
+      font-weight: bold;
+      margin-top: 40px;
+      color: #003366;
+    }
+
+    .highlight {
+      background-color: #ffffcc;
+      padding: 4px 8px;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>DOM Level 2 Event Handler (Modern Method)</h1>
+
+  <h2>📘 Definition</h2>
+  <p>
+    DOM Level 2 Event Handling is a <b>modern method</b> in JavaScript for handling events using the 
+    <code>addEventListener()</code> and <code>removeEventListener()</code> methods. 
+    It allows developers to attach multiple event listeners to the same element without overwriting previous ones, 
+    providing more control and flexibility.
+  </p>
+
+  <hr>
+
+  <h2>📄 Syntax</h2>
+  <pre><code>
+element.addEventListener(event, function, useCapture);
+element.removeEventListener(event, function, useCapture);
+  </code></pre>
+
+  <h3>🔹 Parameters:</h3>
+  <ul>
+    <li><b>event:</b> The name of the event (e.g., "click", "mouseover").</li>
+    <li><b>function:</b> The function that will be executed when the event occurs.</li>
+    <li><b>useCapture (optional):</b> A boolean value that specifies whether the event should be captured in the capturing phase or bubbling phase. Default is <code>false</code>.</li>
+  </ul>
+
+  <hr>
+
+  <h2>⚙️ Types of DOM Level 2 Event Handling</h2>
+
+  <ol>
+    <li><b>Mouse Events</b> (e.g., click, dblclick, mouseover, mouseout, mousedown, mouseup)</li>
+    <li><b>Keyboard Events</b> (e.g., keydown, keyup, keypress)</li>
+    <li><b>Form Events</b> (e.g., submit, change, focus, blur)</li>
+    <li><b>Window Events</b> (e.g., load, resize, scroll)</li>
+  </ol>
+
+  <hr>
+
+  <h2>🖱️ 1. Mouse Events</h2>
+  <h3>Example:</h3>
+  <pre><code>
+&lt;button id="btn"&gt;Click Me&lt;/button&gt;
+
+&lt;script&gt;
+  const button = document.getElementById("btn");
+
+  function showMessage() {
+    alert("Button clicked!");
+  }
+
+  button.addEventListener("click", showMessage);
+&lt;/script&gt;
+  </code></pre>
+  <p><b>Explanation:</b> Here, the <code>click</code> event is attached to the button using <code>addEventListener()</code>.</p>
+
+  <hr>
+
+  <h2>⌨️ 2. Keyboard Events</h2>
+  <h3>Example:</h3>
+  <pre><code>
+&lt;input type="text" id="name" placeholder="Type something..."&gt;
+
+&lt;script&gt;
+  const input = document.getElementById("name");
+
+  input.addEventListener("keydown", function(event) {
+    console.log("Key pressed:", event.key);
+  });
+&lt;/script&gt;
+  </code></pre>
+  <p><b>Explanation:</b> The <code>keydown</code> event triggers when any key is pressed inside the input field.</p>
+
+  <hr>
+
+  <h2>🧾 3. Form Events</h2>
+  <h3>Example:</h3>
+  <pre><code>
+&lt;form id="myForm"&gt;
+  &lt;input type="text" placeholder="Enter name"&gt;
+  &lt;button type="submit"&gt;Submit&lt;/button&gt;
+&lt;/form&gt;
+
+&lt;script&gt;
+  const form = document.getElementById("myForm");
+
+  form.addEventListener("submit", function(event) {
+    event.preventDefault(); // prevents form submission
+    alert("Form submitted successfully!");
+  });
+&lt;/script&gt;
+  </code></pre>
+  <p><b>Explanation:</b> The <code>submit</code> event is handled without reloading the page using <code>preventDefault()</code>.</p>
+
+  <hr>
+
+  <h2>🪟 4. Window Events</h2>
+  <h3>Example:</h3>
+  <pre><code>
+&lt;script&gt;
+  window.addEventListener("resize", function() {
+    console.log("Window resized. Current width:", window.innerWidth);
+  });
+
+  window.addEventListener("load", function() {
+    console.log("Page fully loaded!");
+  });
+&lt;/script&gt;
+  </code></pre>
+  <p><b>Explanation:</b> The <code>resize</code> event runs when the browser window size changes, and <code>load</code> fires when the page finishes loading.</p>
+
+  <hr>
+
+  <h2>🧩 Removing Event Listeners</h2>
+  <p>You can remove an attached event handler using <code>removeEventListener()</code>.</p>
+  <pre><code>
+&lt;button id="removeBtn"&gt;Click Me&lt;/button&gt;
+
+&lt;script&gt;
+  const removeBtn = document.getElementById("removeBtn");
+
+  function handleClick() {
+    alert("Event listener removed after one click!");
+    removeBtn.removeEventListener("click", handleClick);
+  }
+
+  removeBtn.addEventListener("click", handleClick);
+&lt;/script&gt;
+  </code></pre>
+
+  <hr>
+
+  <h2>✅ Advantages of Modern Event Handling</h2>
+  <ul>
+    <li>Allows multiple event handlers on the same element.</li>
+    <li>Separates HTML from JavaScript (clean code).</li>
+    <li>Supports both capturing and bubbling phases.</li>
+    <li>Can easily remove specific event handlers.</li>
+  </ul>
+
+  <footer>
+    Created by <span class="highlight">Bhupendra Singh</span>
+  </footer>
+
+</body>
+</html>

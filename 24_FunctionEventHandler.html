@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event Handlers using DOM Property</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #eef2f3, #8e9eab);
+      margin: 0;
+      padding: 20px;
+      color: #222;
+      line-height: 1.6;
+    }
+
+    h1, h2 {
+      text-align: center;
+      color: #2b547e;
+    }
+
+    h3 {
+      color: #1b4f72;
+    }
+
+    p {
+      font-size: 17px;
+    }
+
+    ul {
+      margin-left: 25px;
+    }
+
+    code {
+      background-color: #f4f4f4;
+      border-radius: 6px;
+      padding: 3px 6px;
+      color: #c7254e;
+      font-family: Consolas, monospace;
+    }
+
+    pre {
+      background-color: #f8f9fa;
+      border-left: 5px solid #2b547e;
+      padding: 15px;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-size: 15px;
+      margin: 10px 0;
+    }
+
+    hr {
+      border: none;
+      border-top: 2px solid #2b547e;
+      margin: 40px 0;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    .highlight {
+      background-color: #ffffcc;
+      padding: 4px 8px;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Event Handlers using DOM Property</h1>
+
+  <h2>Definition</h2>
+  <p>
+    An <b>Event Handler</b> is a JavaScript function that runs when a specific event occurs on an HTML element.
+    <br>
+    When using <b>DOM properties</b>, event handlers are assigned directly to elements using properties such as <code>onclick</code>, <code>onmouseover</code>, etc.
+  </p>
+
+  <h2>Syntax</h2>
+  <pre><code>
+// Syntax:
+element.event = functionName;
+
+// Example:
+document.getElementById("btn").onclick = myFunction;
+
+function myFunction() {
+  alert("Button clicked!");
+}
+  </code></pre>
+
+  <h2>Types of Event Handlers (Using DOM Property)</h2>
+  <p>
+    There are various types of event handlers in JavaScript that can be assigned using DOM properties. 
+    Here are the most commonly used ones:
+  </p>
+
+  <hr>
+
+  <h3>1. onclick</h3>
+  <p><b>Definition:</b> The <code>onclick</code> event fires when an element is clicked.</p>
+  <p><b>Syntax:</b> <code>element.onclick = functionName;</code></p>
+
+  <pre><code>
+&lt;button id="btn1"&gt;Click Me&lt;/button&gt;
+
+&lt;script&gt;
+  let btn = document.getElementById("btn1");
+  btn.onclick = function() {
+    alert("Button Clicked!");
+  };
+&lt;/script&gt;
+  </code></pre>
+
+  <hr>
+
+  <h3>2. ondblclick</h3>
+  <p><b>Definition:</b> The <code>ondblclick</code> event fires when an element is double-clicked.</p>
+  <p><b>Syntax:</b> <code>element.ondblclick = functionName;</code></p>
+
+  <pre><code>
+&lt;button id="btn2"&gt;Double Click Me&lt;/button&gt;
+
+&lt;script&gt;
+  let btn2 = document.getElementById("btn2");
+  btn2.ondblclick = function() {
+    alert("Button Double Clicked!");
+  };
+&lt;/script&gt;
+  </code></pre>
+
+  <hr>
+
+  <h3>3. onmouseover</h3>
+  <p><b>Definition:</b> The <code>onmouseover</code> event triggers when the mouse pointer moves over an element.</p>
+  <p><b>Syntax:</b> <code>element.onmouseover = functionName;</code></p>
+
+  <pre><code>
+&lt;div id="box1" style="width:150px;height:100px;background-color:lightblue;text-align:center;"&gt;
+  Hover Me
+&lt;/div&gt;
+
+&lt;script&gt;
+  let box = document.getElementById("box1");
+  box.onmouseover = function() {
+    box.style.backgroundColor = "orange";
+    box.innerText = "Mouse Over!";
+  };
+&lt;/script&gt;
+  </code></pre>
+
+  <hr>
+
+  <h3>4. onmouseout</h3>
+  <p><b>Definition:</b> The <code>onmouseout</code> event occurs when the mouse pointer leaves an element.</p>
+  <p><b>Syntax:</b> <code>element.onmouseout = functionName;</code></p>
+
+  <pre><code>
+&lt;div id="box2" style="width:150px;height:100px;background-color:lightgreen;text-align:center;"&gt;
+  Move Out
+&lt;/div&gt;
+
+&lt;script&gt;
+  let box2 = document.getElementById("box2");
+  box2.onmouseout = function() {
+    box2.style.backgroundColor = "lightgreen";
+    box2.innerText = "Mouse Out!";
+  };
+&lt;/script&gt;
+  </code></pre>
+
+  <hr>
+
+  <h3>5. onkeydown</h3>
+  <p><b>Definition:</b> The <code>onkeydown</code> event occurs when a key is pressed down.</p>
+  <p><b>Syntax:</b> <code>element.onkeydown = functionName;</code></p>
+
+  <pre><code>
+&lt;input type="text" id="textInput" placeholder="Type something..."&gt;
+
+&lt;script&gt;
+  let input = document.getElementById("textInput");
+  input.onkeydown = function() {
+    console.log("A key is pressed down!");
+  };
+&lt;/script&gt;
+  </code></pre>
+
+  <hr>
+
+  <h3>6. onkeyup</h3>
+  <p><b>Definition:</b> The <code>onkeyup</code> event fires when the user releases a key on the keyboard.</p>
+  <p><b>Syntax:</b> <code>element.onkeyup = functionName;</code></p>
+
+  <pre><code>
+&lt;input type="text" id="input2" placeholder="Release a key..."&gt;
+
+&lt;script&gt;
+  let input2 = document.getElementById("input2");
+  input2.onkeyup = function() {
+    console.log("Key released!");
+  };
+&lt;/script&gt;
+  </code></pre>
+
+  <hr>
+
+  <h3>7. onchange</h3>
+  <p><b>Definition:</b> The <code>onchange</code> event occurs when the value of an input element changes and the focus is lost.</p>
+  <p><b>Syntax:</b> <code>element.onchange = functionName;</code></p>
+
+  <pre><code>
+&lt;input type="text" id="nameInput" placeholder="Enter name"&gt;
+
+&lt;script&gt;
+  let nameInput = document.getElementById("nameInput");
+  nameInput.onchange = function() {
+    alert("Value Changed: " + nameInput.value);
+  };
+&lt;/script&gt;
+  </code></pre>
+
+  <hr>
+
+  <h3>8. onload</h3>
+  <p><b>Definition:</b> The <code>onload</code> event executes a function after the page or image has fully loaded.</p>
+  <p><b>Syntax:</b> <code>window.onload = functionName;</code></p>
+
+  <pre><code>
+&lt;script&gt;
+  window.onload = function() {
+    alert("Page Loaded Successfully!");
+  };
+&lt;/script&gt;
+  </code></pre>
+
+  <hr>
+
+  <h2>Advantages of Using DOM Property Event Handlers</h2>
+  <ul>
+    <li>Simple and direct way to attach event listeners.</li>
+    <li>Easy to understand and implement.</li>
+    <li>Great for small scripts and single event handling per element.</li>
+  </ul>
+
+  <h2>Limitations</h2>
+  <ul>
+    <li>You can only assign one handler per event property (the previous one gets overwritten).</li>
+    <li>For multiple events on the same element, <code>addEventListener()</code> is preferred.</li>
+  </ul>
+
+  <footer>
+    Created by <span class="highlight">Bhupendra Singh</span>
+  </footer>
+
+</body>
+</html>

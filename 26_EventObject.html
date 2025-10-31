@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript Event Object</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #eef2f3, #d9e4f5);
+      margin: 0;
+      padding: 20px;
+      color: #222;
+      line-height: 1.6;
+    }
+
+    h1, h2 {
+      color: #1b4f72;
+      text-align: center;
+    }
+
+    h3 {
+      color: #154360;
+    }
+
+    p {
+      font-size: 17px;
+    }
+
+    ul, ol {
+      margin-left: 30px;
+    }
+
+    pre {
+      background-color: #f8f9fa;
+      border-left: 5px solid #1b4f72;
+      padding: 15px;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-size: 15px;
+    }
+
+    code {
+      background-color: #f4f4f4;
+      padding: 2px 6px;
+      border-radius: 4px;
+      color: #c7254e;
+    }
+
+    hr {
+      border: none;
+      border-top: 2px solid #1b4f72;
+      margin: 40px 0;
+    }
+
+    footer {
+      text-align: center;
+      font-weight: bold;
+      margin-top: 40px;
+      color: #333;
+    }
+
+    .highlight {
+      background-color: #ffffcc;
+      padding: 4px 8px;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Event Object in JavaScript</h1>
+
+  <h2>Definition</h2>
+  <p>
+    The <strong>Event Object</strong> in JavaScript represents an event that takes place in the DOM (Document Object Model).  
+    Whenever an event occurs, such as a user clicking a button, pressing a key, or moving the mouse,  
+    the browser creates an event object that contains information about that event.
+  </p>
+
+  <h2>Syntax</h2>
+  <pre><code>
+element.addEventListener("eventType", function(event) {
+  // Access event object properties
+  console.log(event.type);
+  console.log(event.target);
+});
+  </code></pre>
+
+  <p>Here, the <code>event</code> parameter is the Event Object automatically passed to the event handler function.</p>
+
+  <h2>Common Properties of Event Object</h2>
+  <ul>
+    <li><code>type</code> – Returns the type of event (e.g., "click", "keydown").</li>
+    <li><code>target</code> – Returns the element that triggered the event.</li>
+    <li><code>currentTarget</code> – Returns the element the event listener is attached to.</li>
+    <li><code>clientX</code> / <code>clientY</code> – Returns mouse coordinates (for mouse events).</li>
+    <li><code>key</code> – Returns which key was pressed (for keyboard events).</li>
+    <li><code>preventDefault()</code> – Cancels the default behavior of the event.</li>
+    <li><code>stopPropagation()</code> – Prevents the event from bubbling up the DOM.</li>
+  </ul>
+
+  <hr>
+
+  <h2>Types of Events</h2>
+
+  <h3>1. Mouse Events</h3>
+  <p>These events are triggered by mouse actions such as clicking, double-clicking, hovering, or moving the mouse.</p>
+
+  <h4>Examples:</h4>
+  <pre><code>
+// HTML
+&lt;button id="btn"&gt;Click Me&lt;/button&gt;
+
+// JavaScript
+document.getElementById("btn").addEventListener("click", function(event) {
+  alert("Button clicked!");
+  console.log("Event Type:", event.type);
+  console.log("Triggered By:", event.target.tagName);
+});
+  </code></pre>
+
+  <ul>
+    <li><code>click</code> – When a user clicks an element.</li>
+    <li><code>dblclick</code> – When a user double-clicks an element.</li>
+    <li><code>mouseover</code> – When the mouse pointer enters an element.</li>
+    <li><code>mouseout</code> – When the mouse pointer leaves an element.</li>
+  </ul>
+
+  <hr>
+
+  <h3>2. Keyboard Events</h3>
+  <p>These events occur when a user interacts with the keyboard.</p>
+
+  <h4>Examples:</h4>
+  <pre><code>
+// HTML
+&lt;input type="text" id="inputBox" placeholder="Type something..."&gt;
+
+// JavaScript
+document.getElementById("inputBox").addEventListener("keydown", function(event) {
+  console.log("Key pressed:", event.key);
+});
+  </code></pre>
+
+  <ul>
+    <li><code>keydown</code> – Fires when a key is pressed down.</li>
+    <li><code>keyup</code> – Fires when a key is released.</li>
+    <li><code>keypress</code> – Fires when a key that produces a character value is pressed.</li>
+  </ul>
+
+  <hr>
+
+  <h3>3. Form Events</h3>
+  <p>These events occur when users interact with forms, such as submitting, resetting, or changing input values.</p>
+
+  <h4>Examples:</h4>
+  <pre><code>
+// HTML
+&lt;form id="myForm"&gt;
+  &lt;input type="text" id="username" placeholder="Enter name"&gt;
+  &lt;button type="submit"&gt;Submit&lt;/button&gt;
+&lt;/form&gt;
+
+// JavaScript
+document.getElementById("myForm").addEventListener("submit", function(event) {
+  event.preventDefault(); // Prevents form submission
+  console.log("Form submitted by:", event.target.id);
+});
+  </code></pre>
+
+  <ul>
+    <li><code>submit</code> – When a form is submitted.</li>
+    <li><code>change</code> – When the value of an input element changes.</li>
+    <li><code>focus</code> – When an element gets focus.</li>
+    <li><code>blur</code> – When an element loses focus.</li>
+  </ul>
+
+  <hr>
+
+  <h3>4. Window Events</h3>
+  <p>These events are triggered by actions performed on the browser window, such as loading or resizing.</p>
+
+  <h4>Examples:</h4>
+  <pre><code>
+// JavaScript
+window.addEventListener("load", function(event) {
+  console.log("Page fully loaded!");
+});
+
+window.addEventListener("resize", function(event) {
+  console.log("Window resized - Width:", window.innerWidth);
+});
+  </code></pre>
+
+  <ul>
+    <li><code>load</code> – When the webpage finishes loading.</li>
+    <li><code>resize</code> – When the browser window is resized.</li>
+    <li><code>scroll</code> – When the user scrolls the webpage.</li>
+  </ul>
+
+  <hr>
+
+  <h3>5. Clipboard Events</h3>
+  <p>These events occur during cut, copy, or paste operations.</p>
+
+  <h4>Example:</h4>
+  <pre><code>
+// HTML
+&lt;input type="text" id="copyBox" value="Copy this text"&gt;
+
+// JavaScript
+document.getElementById("copyBox").addEventListener("copy", function(event) {
+  alert("You copied the text!");
+});
+  </code></pre>
+
+  <ul>
+    <li><code>copy</code> – When the user copies content.</li>
+    <li><code>cut</code> – When the user cuts content.</li>
+    <li><code>paste</code> – When the user pastes content.</li>
+  </ul>
+
+  <hr>
+
+  <h2>Conclusion</h2>
+  <p>
+    The <b>Event Object</b> is essential for handling user interactions in web applications.  
+    It gives detailed information about what happened, where it happened, and allows developers to control event behavior dynamically.
+  </p>
+
+  <footer>
+    Created by <span class="highlight">Bhupendra Singh</span>
+  </footer>
+</body>
+</html>

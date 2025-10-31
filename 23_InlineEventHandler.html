@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inline Event Handlers in JavaScript</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #e3f2fd, #bbdefb);
+      margin: 0;
+      padding: 20px;
+      color: #222;
+      line-height: 1.6;
+    }
+
+    h1, h2 {
+      color: #0d47a1;
+      text-align: center;
+    }
+
+    h3 {
+      color: #1565c0;
+      margin-top: 30px;
+    }
+
+    p {
+      font-size: 17px;
+    }
+
+    ul, ol {
+      margin-left: 30px;
+    }
+
+    code {
+      background-color: #f4f4f4;
+      border-radius: 6px;
+      padding: 2px 6px;
+      color: #c7254e;
+      font-size: 15px;
+    }
+
+    pre {
+      background-color: #f8f9fa;
+      border-left: 5px solid #0d47a1;
+      padding: 15px;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-size: 15px;
+      margin: 10px 0;
+    }
+
+    hr {
+      border: none;
+      border-top: 2px solid #0d47a1;
+      margin: 40px 0;
+    }
+
+    footer {
+      text-align: center;
+      font-weight: bold;
+      margin-top: 40px;
+      color: #333;
+    }
+
+    .highlight {
+      background-color: #fff59d;
+      padding: 4px 8px;
+      border-radius: 5px;
+    }
+
+    .example-box {
+      background-color: #e8f5e9;
+      border-left: 5px solid #2e7d32;
+      padding: 15px;
+      border-radius: 8px;
+      margin: 15px 0;
+    }
+
+    .syntax-box {
+      background-color: #fff3e0;
+      border-left: 5px solid #ef6c00;
+      padding: 15px;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Inline Event Handlers in JavaScript</h1>
+
+  <h2>Definition:</h2>
+  <p>
+    An <b>inline event handler</b> is a way to handle events directly within an HTML element’s tag using an attribute that begins with <code>on</code>.  
+    It allows JavaScript code to be executed when a specific event occurs (like a click, hover, or keypress) on that element.
+  </p>
+
+  <div class="example-box">
+    <p><b>Example:</b></p>
+    <pre><code>
+&lt;button onclick="alert('Hello!')"&gt;Click Me&lt;/button&gt;
+    </code></pre>
+    <p><b>Output:</b> Clicking the button shows an alert box saying <i>"Hello!"</i></p>
+  </div>
+
+  <hr>
+
+  <h2>Syntax:</h2>
+  <div class="syntax-box">
+    <pre><code>
+&lt;tagname onevent="JavaScript Code"&gt; Content &lt;/tagname&gt;
+    </code></pre>
+  </div>
+
+  <p><b>Example:</b></p>
+  <pre><code>
+&lt;button onclick="myFunction()"&gt;Click Here&lt;/button&gt;
+
+&lt;script&gt;
+  function myFunction() {
+      alert("Button was clicked!");
+  }
+&lt;/script&gt;
+  </code></pre>
+
+  <hr>
+
+  <h2>Common Types of Inline Event Handlers</h2>
+  <ul>
+    <li><code>onclick</code> – Triggered when the user clicks on an element.</li>
+    <li><code>ondblclick</code> – Triggered when the user double-clicks an element.</li>
+    <li><code>onmouseover</code> – Triggered when the mouse pointer moves over an element.</li>
+    <li><code>onmouseout</code> – Triggered when the mouse pointer leaves an element.</li>
+    <li><code>onkeydown</code> – Triggered when a key is pressed down.</li>
+    <li><code>onkeyup</code> – Triggered when a key is released.</li>
+    <li><code>onchange</code> – Triggered when an input value is changed (like dropdowns or text fields).</li>
+    <li><code>onfocus</code> – Triggered when an element gets focus (like input fields).</li>
+    <li><code>onload</code> – Triggered when a page or image finishes loading.</li>
+  </ul>
+
+  <hr>
+
+  <h2>Examples:</h2>
+
+  <h3>1. Using <code>onclick</code></h3>
+  <pre><code>
+&lt;button onclick="alert('Welcome to Inline Event Handling!')"&gt;Click Me&lt;/button&gt;
+  </code></pre>
+
+  <h3>2. Using <code>onmouseover</code> and <code>onmouseout</code></h3>
+  <pre><code>
+&lt;h2 onmouseover="this.style.color='red'" onmouseout="this.style.color='black'"&gt;
+  Hover over me!
+&lt;/h2&gt;
+  </code></pre>
+
+  <h3>3. Using <code>onchange</code></h3>
+  <pre><code>
+&lt;select onchange="alert('You selected: ' + this.value)"&gt;
+  &lt;option&gt;Apple&lt;/option&gt;
+  &lt;option&gt;Banana&lt;/option&gt;
+  &lt;option&gt;Mango&lt;/option&gt;
+&lt;/select&gt;
+  </code></pre>
+
+  <h3>4. Using <code>onkeydown</code> and <code>onkeyup</code></h3>
+  <pre><code>
+&lt;input type="text" onkeydown="console.log('Key Pressed')" onkeyup="console.log('Key Released')" placeholder="Type something..."&gt;
+  </code></pre>
+
+  <hr>
+
+  <h2>Advantages of Inline Event Handlers</h2>
+  <ul>
+    <li>Simple and easy to use for small scripts.</li>
+    <li>Useful for quick testing or demos.</li>
+    <li>Allows adding JavaScript directly in HTML.</li>
+  </ul>
+
+  <h2>Disadvantages of Inline Event Handlers</h2>
+  <ul>
+    <li>Not recommended for large projects – reduces code readability.</li>
+    <li>Mixes HTML and JavaScript, breaking separation of concerns.</li>
+    <li>Difficult to maintain or debug when many elements use inline handlers.</li>
+  </ul>
+
+  <hr>
+
+  <h2>Best Practice</h2>
+  <p>For better maintainability, use <code>addEventListener()</code> in JavaScript instead of inline handlers:</p>
+  <pre><code>
+&lt;button id="btn"&gt;Click Me&lt;/button&gt;
+
+&lt;script&gt;
+  document.getElementById("btn").addEventListener("click", function() {
+      alert("This is better practice!");
+  });
+&lt;/script&gt;
+  </code></pre>
+
+  <footer>
+    Created by <span class="highlight">Bhupendra Singh</span>
+  </footer>
+</body>
+</html>

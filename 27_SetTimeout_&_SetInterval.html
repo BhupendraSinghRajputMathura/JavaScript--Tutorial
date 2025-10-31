@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>setTimeout() and setInterval() in JavaScript</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #dfe9f3, #ffffff);
+      color: #222;
+      padding: 25px;
+      line-height: 1.6;
+    }
+
+    h1, h2 {
+      color: #1a5276;
+      text-align: center;
+    }
+
+    h3 {
+      color: #154360;
+    }
+
+    pre {
+      background-color: #f8f9fa;
+      border-left: 5px solid #1a5276;
+      padding: 15px;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-size: 15px;
+    }
+
+    code {
+      color: #c7254e;
+      background-color: #f1f1f1;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 15px;
+    }
+
+    ul {
+      margin-left: 25px;
+    }
+
+    hr {
+      border: none;
+      border-top: 2px solid #1a5276;
+      margin: 30px 0;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    .highlight {
+      background-color: #ffffcc;
+      padding: 4px 8px;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h1>⏳ setTimeout(), clearTimeout(), setInterval(), clearInterval()</h1>
+  <p><b>Author:</b> Bhupendra Singh</p>
+
+  <hr>
+
+  <h2>1️⃣ setTimeout()</h2>
+  <h3>Definition:</h3>
+  <p>The <code>setTimeout()</code> method is used to execute a function <b>after a specified amount of time (in milliseconds)</b>. It runs the code only <b>once</b> after the delay.</p>
+
+  <h3>Syntax:</h3>
+  <pre><code>setTimeout(function, delay, param1, param2, ...)</code></pre>
+
+  <h3>Parameters:</h3>
+  <ul>
+    <li><b>function:</b> The function to be executed.</li>
+    <li><b>delay:</b> Time in milliseconds before the function runs.</li>
+    <li><b>param1, param2, ...:</b> Optional parameters to pass to the function.</li>
+  </ul>
+
+  <h3>Example 1: Basic Example</h3>
+  <pre><code>
+setTimeout(() => {
+  console.log("Executed after 3 seconds!");
+}, 3000);
+  </code></pre>
+
+  <h3>Example 2: With Function Reference</h3>
+  <pre><code>
+function greet(name) {
+  console.log("Hello, " + name);
+}
+setTimeout(greet, 2000, "Bhupendra Singh");
+// Output after 2 seconds: Hello, Bhupendra Singh
+  </code></pre>
+
+  <hr>
+
+  <h2>2️⃣ clearTimeout()</h2>
+  <h3>Definition:</h3>
+  <p>The <code>clearTimeout()</code> method is used to <b>cancel</b> a timeout that was previously set using <code>setTimeout()</code>.</p>
+
+  <h3>Syntax:</h3>
+  <pre><code>clearTimeout(timeoutID)</code></pre>
+
+  <h3>Example:</h3>
+  <pre><code>
+let timeoutID = setTimeout(() => {
+  console.log("This will not run!");
+}, 4000);
+
+clearTimeout(timeoutID);
+console.log("Timeout canceled!");
+// Output: Timeout canceled!
+  </code></pre>
+
+  <hr>
+
+  <h2>3️⃣ setInterval()</h2>
+  <h3>Definition:</h3>
+  <p>The <code>setInterval()</code> method executes a function <b>repeatedly</b> at specified intervals (in milliseconds) until it is stopped using <code>clearInterval()</code>.</p>
+
+  <h3>Syntax:</h3>
+  <pre><code>setInterval(function, interval, param1, param2, ...)</code></pre>
+
+  <h3>Parameters:</h3>
+  <ul>
+    <li><b>function:</b> The function to be executed repeatedly.</li>
+    <li><b>interval:</b> Time interval in milliseconds between executions.</li>
+  </ul>
+
+  <h3>Example 1: Printing Numbers Every 1 Second</h3>
+  <pre><code>
+let count = 1;
+let intervalID = setInterval(() => {
+  console.log("Count:", count);
+  count++;
+  if (count > 5) clearInterval(intervalID);
+}, 1000);
+
+// Output:
+// Count: 1
+// Count: 2
+// Count: 3
+// Count: 4
+// Count: 5
+  </code></pre>
+
+  <h3>Example 2: Displaying Time Every Second</h3>
+  <pre><code>
+setInterval(() => {
+  let time = new Date();
+  console.log("Current Time:", time.toLocaleTimeString());
+}, 1000);
+  </code></pre>
+
+  <hr>
+
+  <h2>4️⃣ clearInterval()</h2>
+  <h3>Definition:</h3>
+  <p>The <code>clearInterval()</code> method is used to <b>stop</b> the repeated execution set by <code>setInterval()</code>.</p>
+
+  <h3>Syntax:</h3>
+  <pre><code>clearInterval(intervalID)</code></pre>
+
+  <h3>Example:</h3>
+  <pre><code>
+let counter = 0;
+let timer = setInterval(() => {
+  console.log("Counter:", counter);
+  counter++;
+  if (counter === 3) {
+    clearInterval(timer);
+    console.log("Interval stopped!");
+  }
+}, 1000);
+
+// Output:
+// Counter: 0
+// Counter: 1
+// Counter: 2
+// Interval stopped!
+  </code></pre>
+
+  <hr>
+
+  <h2>🧠 Summary Table</h2>
+  <table border="1" cellspacing="0" cellpadding="8" style="border-collapse:collapse; width:100%; text-align:center;">
+    <tr style="background:#1a5276; color:white;">
+      <th>Method</th>
+      <th>Purpose</th>
+      <th>Runs</th>
+      <th>Stopped By</th>
+    </tr>
+    <tr>
+      <td><code>setTimeout()</code></td>
+      <td>Run a function once after a delay</td>
+      <td>Once</td>
+      <td><code>clearTimeout()</code></td>
+    </tr>
+    <tr>
+      <td><code>setInterval()</code></td>
+      <td>Run a function repeatedly after a delay</td>
+      <td>Multiple</td>
+      <td><code>clearInterval()</code></td>
+    </tr>
+  </table>
+
+  <footer>
+    ✍️ Created by <span class="highlight">Bhupendra Singh</span>
+  </footer>
+</body>
+</html>

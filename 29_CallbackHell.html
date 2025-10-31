@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Callback Hell in JavaScript</title>
+  <style>
+    body {
+      font-family: "Poppins", Arial, sans-serif;
+      background: linear-gradient(to right, #e0eafc, #cfdef3);
+      margin: 0;
+      padding: 25px;
+      color: #222;
+      line-height: 1.7;
+    }
+
+    h1, h2 {
+      color: #1a5276;
+      text-align: center;
+    }
+
+    h3 {
+      color: #154360;
+    }
+
+    ul {
+      margin-left: 30px;
+    }
+
+    pre {
+      background: #f4f4f4;
+      padding: 15px;
+      border-left: 5px solid #1a5276;
+      border-radius: 10px;
+      overflow-x: auto;
+      font-size: 15px;
+    }
+
+    code {
+      color: #c7254e;
+      background-color: #f9f2f4;
+      padding: 2px 6px;
+      border-radius: 5px;
+      font-size: 15px;
+    }
+
+    hr {
+      border: none;
+      border-top: 2px solid #1a5276;
+      margin: 40px 0;
+    }
+
+    footer {
+      text-align: center;
+      font-weight: bold;
+      margin-top: 40px;
+      color: #333;
+    }
+
+    .highlight {
+      background: #ffffcc;
+      padding: 5px 8px;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Callback Hell in JavaScript</h1>
+
+  <h2>📘 Definition</h2>
+  <p>
+    <b>Callback Hell</b> occurs when multiple asynchronous operations are nested inside each other,
+    creating deeply nested code that is difficult to read, debug, and maintain.
+    It usually happens when using callbacks for handling asynchronous tasks like API calls, file reading, or timers.
+  </p>
+
+  <p><b>In simple words:</b> Callback Hell is the situation when you have callbacks inside callbacks, forming a "pyramid of doom".</p>
+
+  <hr>
+
+  <h2>🧩 Syntax</h2>
+  <pre><code>
+asyncOperation1(function(result1) {
+    asyncOperation2(result1, function(result2) {
+        asyncOperation3(result2, function(result3) {
+            asyncOperation4(result3, function(result4) {
+                console.log("All operations done!");
+            });
+        });
+    });
+});
+  </code></pre>
+
+  <p>This pattern becomes messy as the number of asynchronous functions increases.</p>
+
+  <hr>
+
+  <h2>📂 Types of Callbacks</h2>
+  <ul>
+    <li><b>1. Synchronous Callback</b></li>
+    <li><b>2. Asynchronous Callback</b></li>
+  </ul>
+
+  <hr>
+
+  <h2>1️⃣ Synchronous Callback</h2>
+  <p>
+    A <b>synchronous callback</b> is executed immediately during the function call. 
+    It does not involve asynchronous operations and runs in sequence.
+  </p>
+
+  <h3>✅ Example:</h3>
+  <pre><code>
+// Function that accepts a callback
+function greetUser(name, callback) {
+    console.log("Hi " + name);
+    callback();
+}
+
+// Callback function
+function endMessage() {
+    console.log("Welcome to JavaScript!");
+}
+
+// Function call
+greetUser("Bhupendra", endMessage);
+
+// Output:
+// Hi Bhupendra
+// Welcome to JavaScript!
+  </code></pre>
+
+  <hr>
+
+  <h2>2️⃣ Asynchronous Callback</h2>
+  <p>
+    An <b>asynchronous callback</b> is executed after an operation completes, 
+    such as reading a file, making an API call, or using <code>setTimeout()</code>.
+    These callbacks are handled by the JavaScript event loop.
+  </p>
+
+  <h3>✅ Example:</h3>
+  <pre><code>
+console.log("Start");
+
+setTimeout(function() {
+    console.log("This message is shown after 2 seconds");
+}, 2000);
+
+console.log("End");
+
+// Output:
+// Start
+// End
+// This message is shown after 2 seconds
+  </code></pre>
+
+  <hr>
+
+  <h2>⚠️ Callback Hell Example</h2>
+  <p>
+    Here’s an example of <b>Callback Hell</b> — multiple asynchronous tasks nested inside each other:
+  </p>
+
+  <pre><code>
+function getData(callback) {
+    setTimeout(() => {
+        console.log("Fetched Data");
+        callback();
+    }, 1000);
+}
+
+function processData(callback) {
+    setTimeout(() => {
+        console.log("Processed Data");
+        callback();
+    }, 1000);
+}
+
+function saveData(callback) {
+    setTimeout(() => {
+        console.log("Saved Data");
+        callback();
+    }, 1000);
+}
+
+// Callback Hell Example
+getData(() => {
+    processData(() => {
+        saveData(() => {
+            console.log("All tasks completed!");
+        });
+    });
+});
+
+// Output:
+// Fetched Data
+// Processed Data
+// Saved Data
+// All tasks completed!
+  </code></pre>
+
+  <p>
+    As you can see, the nesting of callbacks makes the code look like a triangle or "pyramid of doom".
+  </p>
+
+  <hr>
+
+  <h2>💡 How to Avoid Callback Hell</h2>
+  <ul>
+    <li>Use <b>Promises</b> to chain asynchronous operations linearly.</li>
+    <li>Use <b>async/await</b> for cleaner and more readable code.</li>
+    <li>Always handle errors properly in callbacks.</li>
+  </ul>
+
+  <hr>
+
+  <footer>
+    ✍️ Created by <span class="highlight">Bhupendra Singh</span>
+  </footer>
+
+</body>
+</html>

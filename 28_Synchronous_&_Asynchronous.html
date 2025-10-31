@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Synchronous vs Asynchronous JavaScript</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #d7e1ec, #f3f8ff);
+      margin: 0;
+      padding: 20px;
+      color: #222;
+      line-height: 1.6;
+    }
+
+    h1, h2 {
+      color: #2b547e;
+      text-align: center;
+    }
+
+    h3 {
+      color: #1b4f72;
+    }
+
+    p {
+      font-size: 17px;
+    }
+
+    ul, ol {
+      margin-left: 30px;
+    }
+
+    code {
+      background-color: #f4f4f4;
+      border-radius: 6px;
+      padding: 2px 6px;
+      color: #c7254e;
+      font-size: 15px;
+    }
+
+    pre {
+      background-color: #f8f9fa;
+      border-left: 5px solid #2b547e;
+      padding: 15px;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-size: 15px;
+      margin: 10px 0;
+    }
+
+    hr {
+      border: none;
+      border-top: 2px solid #2b547e;
+      margin: 40px 0;
+    }
+
+    footer {
+      text-align: center;
+      font-weight: bold;
+      margin-top: 40px;
+      color: #333;
+    }
+
+    .highlight {
+      background-color: #ffffcc;
+      padding: 4px 8px;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Synchronous vs Asynchronous JavaScript</h1>
+
+  <h2>1. Synchronous JavaScript</h2>
+  <p>
+    <strong>Definition:</strong>  
+    Synchronous JavaScript means the code is executed <b>line by line</b> in a sequential order.  
+    Each statement must finish before the next one starts. This is also known as <b>blocking code execution</b>.
+  </p>
+
+  <h3>Syntax</h3>
+  <pre><code>
+// Synchronous Example
+console.log("Task 1");
+console.log("Task 2");
+console.log("Task 3");
+  </code></pre>
+
+  <h3>Output:</h3>
+  <pre><code>
+Task 1
+Task 2
+Task 3
+  </code></pre>
+
+  <h3>Explanation:</h3>
+  <p>Each line waits for the previous one to complete before running.</p>
+
+  <h3>Types of Synchronous Code:</h3>
+  <ul>
+    <li>Normal function execution</li>
+    <li>Loops (for, while, do-while)</li>
+    <li>Conditionals (if, else)</li>
+  </ul>
+
+  <h3>Example (Loop and Function):</h3>
+  <pre><code>
+function greet() {
+  console.log("Hello Bhupendra!");
+}
+greet();
+
+for(let i = 1; i &lt;= 3; i++) {
+  console.log("Count:", i);
+}
+  </code></pre>
+
+  <h3>Output:</h3>
+  <pre><code>
+Hello Bhupendra!
+Count: 1
+Count: 2
+Count: 3
+  </code></pre>
+
+  <hr>
+
+  <h2>2. Asynchronous JavaScript</h2>
+  <p>
+    <strong>Definition:</strong>  
+    Asynchronous JavaScript allows code to run <b>without waiting</b> for previous operations to complete.  
+    It enables <b>non-blocking execution</b>, meaning that time-consuming tasks (like API calls or file loading)  
+    can run in the background while other code executes.
+  </p>
+
+  <h3>Syntax (General)</h3>
+  <pre><code>
+// Asynchronous Example
+console.log("Task 1");
+
+setTimeout(() => {
+  console.log("Task 2 (after delay)");
+}, 2000);
+
+console.log("Task 3");
+  </code></pre>
+
+  <h3>Output:</h3>
+  <pre><code>
+Task 1
+Task 3
+Task 2 (after delay)
+  </code></pre>
+
+  <h3>Explanation:</h3>
+  <p>
+    The <code>setTimeout()</code> function runs asynchronously —  
+    it does not block the rest of the code and executes later after a delay.
+  </p>
+
+  <h3>Types of Asynchronous JavaScript</h3>
+  <ol>
+    <li><b>Callbacks</b></li>
+    <li><b>Promises</b></li>
+    <li><b>Async/Await</b></li>
+  </ol>
+
+  <h3>1️⃣ Callbacks</h3>
+  <p>
+    A callback is a function passed as an argument to another function,  
+    which executes later when a task completes.
+  </p>
+  <pre><code>
+function fetchData(callback) {
+  console.log("Fetching data...");
+  setTimeout(() => {
+    callback("Data received!");
+  }, 2000);
+}
+
+function displayData(data) {
+  console.log(data);
+}
+
+fetchData(displayData);
+  </code></pre>
+
+  <h3>Output:</h3>
+  <pre><code>
+Fetching data...
+Data received!
+  </code></pre>
+
+  <h3>2️⃣ Promises</h3>
+  <p>
+    A Promise represents the result of an asynchronous operation that may complete in the future.  
+    It can be in one of three states: <b>Pending</b>, <b>Fulfilled</b>, or <b>Rejected</b>.
+  </p>
+
+  <pre><code>
+const promise = new Promise((resolve, reject) => {
+  let success = true;
+  setTimeout(() => {
+    if (success) resolve("Promise resolved successfully!");
+    else reject("Promise rejected!");
+  }, 2000);
+});
+
+promise
+  .then((message) => console.log(message))
+  .catch((error) => console.log(error));
+  </code></pre>
+
+  <h3>Output:</h3>
+  <pre><code>
+Promise resolved successfully!
+  </code></pre>
+
+  <h3>3️⃣ Async / Await</h3>
+  <p>
+    <code>async</code> and <code>await</code> provide a cleaner, more readable way to handle asynchronous code,  
+    built on top of Promises.
+  </p>
+
+  <pre><code>
+async function fetchUser() {
+  console.log("Fetching user...");
+  let user = await new Promise((resolve) =>
+    setTimeout(() => resolve("User data loaded!"), 2000)
+  );
+  console.log(user);
+}
+
+fetchUser();
+  </code></pre>
+
+  <h3>Output:</h3>
+  <pre><code>
+Fetching user...
+User data loaded!
+  </code></pre>
+
+  <hr>
+
+  <h2>💡 Key Differences</h2>
+  <table border="1" cellpadding="10" cellspacing="0" style="border-collapse: collapse; width:100%; text-align:center;">
+    <thead style="background-color:#2b547e; color:white;">
+      <tr>
+        <th>Aspect</th>
+        <th>Synchronous</th>
+        <th>Asynchronous</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Execution</td>
+        <td>Line-by-line, blocking</td>
+        <td>Non-blocking, parallel</td>
+      </tr>
+      <tr>
+        <td>Performance</td>
+        <td>Slower for heavy tasks</td>
+        <td>Faster (tasks run in background)</td>
+      </tr>
+      <tr>
+        <td>Example Functions</td>
+        <td>Normal functions, loops</td>
+        <td>setTimeout, fetch, promises</td>
+      </tr>
+      <tr>
+        <td>Use Case</td>
+        <td>Simple sequential logic</td>
+        <td>APIs, data loading, delays</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <footer>
+    Created by <span class="highlight">Bhupendra Singh</span>
+  </footer>
+</body>
+</html>
