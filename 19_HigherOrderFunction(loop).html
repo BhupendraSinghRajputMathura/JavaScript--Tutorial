@@ -1,350 +1,213 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Higher Order Function</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Higher Order Functions in JavaScript | Bhupendra Singh</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: #f0f0f0;
+      margin: 0;
+      padding: 0 20px 80px;
+    }
+
+    h1, h2, h3 {
+      color: #00d9ff;
+    }
+
+    h1 {
+      text-align: center;
+      margin-top: 30px;
+      text-transform: uppercase;
+    }
+
+    p {
+      line-height: 1.7;
+      text-align: justify;
+    }
+
+    section {
+      background: rgba(255, 255, 255, 0.05);
+      margin: 25px auto;
+      padding: 20px 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0, 217, 255, 0.2);
+      transition: 0.3s ease;
+    }
+
+    section:hover {
+      transform: scale(1.02);
+      box-shadow: 0 0 25px rgba(0, 217, 255, 0.4);
+    }
+
+    pre {
+      background: #1e1e1e;
+      padding: 15px;
+      border-radius: 10px;
+      overflow-x: auto;
+      font-family: "Consolas", monospace;
+      color: #00ffea;
+      box-shadow: 0 0 10px rgba(0, 217, 255, 0.15);
+    }
+
+    code {
+      color: #f3f3f3;
+    }
+
+    ul {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 15px 25px;
+      border-radius: 8px;
+      line-height: 1.8;
+      box-shadow: 0 0 10px rgba(0, 217, 255, 0.2);
+    }
+
+    strong {
+      color: #ffd700;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 60px;
+      padding: 20px;
+      color: #ccc;
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    footer span {
+      color: #00d9ff;
+      font-weight: bold;
+    }
+
+    @media (max-width: 768px) {
+      pre {
+        font-size: 13px;
+      }
+    }
+  </style>
 </head>
 <body>
-    <h1>Higher Order Functions in JavaScript</h1>
-    <p>Higher order functions are functions that can take other functions as arguments or return them as output. They are a key feature of functional programming and allow for more abstract and flexible code.</p>
+
+  <h1>Higher Order Functions in JavaScript</h1>
+
+  <section>
+    <p>
+      Higher-order functions are functions that can take other functions as arguments
+      or return them as output. They are a fundamental part of functional programming,
+      enabling cleaner, reusable, and more abstract code.
+    </p>
+  </section>
+
+  <section>
     <h2>Examples</h2>
-    <h3>1. Functions as First-Class Citizens</h3>
+
+    <h3>1️⃣ Functions as First-Class Citizens</h3>
     <pre><code>function greet(name) {
-    return "Hello, " + name;
+  return "Hello, " + name;
 }
 
 function processUserInput(callback) {
-    var name = prompt("Please enter your name.");
-    alert(callback(name));
+  var name = prompt("Please enter your name.");
+  alert(callback(name));
 }
 
 processUserInput(greet);</code></pre>
-    <h3>2. Array Methods</h3>
+
+    <h3>2️⃣ Array Methods</h3>
     <pre><code>const numbers = [1, 2, 3, 4, 5];
 
-const doubled = numbers.map(function(num) {
-    return num * 2;
-});
+const doubled = numbers.map(num => num * 2);
+const filtered = numbers.filter(num => num > 2);</code></pre>
 
-const filtered = numbers.filter(function(num) {
-    return num > 2;
-});</code></pre>
-    <h3>3. Returning Functions</h3>
+    <h3>3️⃣ Returning Functions</h3>
     <pre><code>function makeCounter() {
-    let count = 0;
-    return function() {
-        count++;
-        return count;
-    };
+  let count = 0;
+  return function() {
+    count++;
+    return count;
+  };
 }
 
 const counter = makeCounter();
 console.log(counter()); // 1
 console.log(counter()); // 2
-console.log(counter()); // 3
-</code></pre>
+console.log(counter()); // 3</code></pre>
+  </section>
+
+  <section>
     <h2>Common Higher Order Functions</h2>
     <ul>
-        <li><strong>forEach()</strong>: Executes a provided function once for each array element.</li>
-        <li><strong>filter()</strong>: Filters elements in an array based on a condition and returns a new array.</li>
-        <li><strong>map()</strong>: Transforms each element in an array and returns a new array.</li>
-        <li><strong>reduce()</strong>: Reduces an array to a single value by applying a function to each element.</li>
+      <li><strong>forEach()</strong> – Executes a function once per array element.</li>
+      <li><strong>filter()</strong> – Filters elements in an array based on a condition.</li>
+      <li><strong>map()</strong> – Transforms each element in an array.</li>
+      <li><strong>reduce()</strong> – Reduces an array to a single cumulative value.</li>
     </ul>
-    <h2>Benefits of Higher Order Functions</h2>
-    <ul>
-        <li>Encourages code reusability and modularity.</li>
-        <li>Makes code more readable and expressive.</li>
-        <li>Facilitates functional programming techniques.</li>
-    </ul>
+  </section>
 
+  <section>
     <h2>.forEach()</h2>
-    <p>It is a built-in higher order function method and it does not return anything(Always undefined)</p>
-    <p>The <code>forEach()</code> method executes a provided function once for each array element. It is commonly used to iterate over arrays.</p>
-    <h3>syntax</h3>
-    <p><pre><code>
-        array.forEach(function(currentValue, index, arr){
-            //your code here
-        })
-
-        <h2>OR</h2>
-
-        array.forEach((currentValue, index, arr) => {
-            //your code here
-        })
-    </code></pre></p>
-    <p>Example</p>
+    <p>
+      <code>forEach()</code> executes a function for each array element but does not return anything (always <strong>undefined</strong>).
+    </p>
     <pre><code>const arr = [1, 2, 3, 4, 5];
-arr.forEach((element) => {
-    console.log(element);
-});
-// Output:
-// 1
-// 2
-// 3
-// 4
-// 5
-</code></pre>
+arr.forEach(element => console.log(element));</code></pre>
 
-<pre>
-    <code>
-const fruits = ['apple', 'banana', 'cherry'];
-fruits.forEach((fruit, index) => {
-    console.log(index + ': ' + fruit);
-});
-// Output:
-// 0: apple
-// 1: banana
-// 2: cherry
-    </code>
-</pre>
+    <pre><code>const fruits = ['apple', 'banana', 'cherry'];
+fruits.forEach((fruit, index) => console.log(index + ': ' + fruit));</code></pre>
+  </section>
 
-<pre><code>
-    const objectArray = [
-        { name: 'Alice', age: 25 },
-        { name: 'Bob', age: 30 },
-        { name: 'Charlie', age: 35 }
-    ];
-    objectArray.forEach((obj) => {
-        console.log(obj.name + ' is ' + obj.age + ' years old.');
-    });
-    // Output:
-    // Alice is 25 years old.
-    // Bob is 30 years old.
-    // Charlie is 35 years old.
-</code></pre>
+  <section>
+    <h2>.filter()</h2>
+    <p>
+      The <code>filter()</code> method creates a new array with elements that pass a test.
+    </p>
+    <pre><code>const numbers = [1, 2, 3, 4, 5];
+const even = numbers.filter(num => num % 2 === 0);
+console.log(even); // [2, 4]</code></pre>
+  </section>
 
-<h2>.filter()</h2>
-<p>It is a built-in higher order function method and it always return a new array</p>
-<p>The <code>filter()</code> method creates a new array and It is commonly used to filter elements from an array based on specific criteria.</p>
-<h3>syntax</h3>
-<p><pre><code>
-    array.filter(function(currentValue, index, arr){
-        //your code here
-    })
+  <section>
+    <h2>.map()</h2>
+    <p>
+      The <code>map()</code> method returns a new array with the results of calling a function for every element.
+    </p>
+    <pre><code>const numbers = [1, 2, 3, 4, 5];
+const squared = numbers.map(num => num * num);
+console.log(squared); // [1, 4, 9, 16, 25]</code></pre>
+  </section>
 
-    <h2>OR</h2>
+  <section>
+    <h2>.reduce()</h2>
+    <p>
+      The <code>reduce()</code> method executes a reducer function on each element of the array, resulting in a single output value.
+    </p>
+    <pre><code>const numbers = [1, 2, 3, 4, 5];
+const sum = numbers.reduce((acc, cur) => acc + cur, 0);
+console.log(sum); // 15</code></pre>
+  </section>
 
-    array.filter((currentValue, index, arr) => {
-        //your code here
-    })
-</code></pre></p>
-<p>Example</p>
-<pre><code>const numbers = [1, 2, 3, 4, 5];
-const evenNumbers = numbers.filter((num) => num % 2 === 0);
-console.log(evenNumbers); // Output: [2, 4]
-</code></pre>
+  <section>
+    <h2>Chaining Methods</h2>
+    <pre><code>const result = [1, 2, 3, 4, 5]
+  .map(num => num * 2)
+  .filter(num => num > 5);
+console.log(result); // [6, 8, 10]</code></pre>
+  </section>
 
-<pre><code>
-    const mixedNumbers = [10, 15, 20, 25, 30];
-    const greaterThan20 = mixedNumbers.filter((num) => num > 20);
-    console.log(greaterThan20); // Output: [25, 30]
-</code></pre>
+  <section>
+    <h2>Comparison Table</h2>
+    <ul>
+      <li><strong>map()</strong> – Returns new transformed array ✅</li>
+      <li><strong>filter()</strong> – Returns filtered array ✅</li>
+      <li><strong>reduce()</strong> – Returns single value ✅</li>
+      <li><strong>forEach()</strong> – No return ❌</li>
+    </ul>
+  </section>
 
-<pre><code>
-    const words = ['apple', 'banana', 'cherry', 'date'];
-    const longWords = words.filter((word) => word.length > 5);
-    console.log(longWords); // Output: ['banana', 'cherry']
-</code></pre>
-
-<pre><code>
-    const objectArray = [
-        { name: 'Alice', age: 25 },
-        { name: 'Bob', age: 30 },
-        { name: 'Charlie', age: 35 }
-    ];
-    const adults = objectArray.filter((obj) => obj.age >= 30);
-    console.log(adults);
-    // Output:
-    // [ { name: 'Bob', age: 30 }, { name: 'Charlie', age: 35 } ]
-</code></pre>
-
-<pre><code>
-    const students = [
-        { name: 'Alice', score: 85 },
-        { name: 'Bob', score: 92 },
-        { name: 'Charlie', score: 78 }
-    ];
-    const passedStudents = students.filter((student) => student.score >= 80);
-    console.log(passedStudents);
-    // Output:
-    // [ { name: 'Alice', score: 85 }, { name: 'Bob', score: 92 } ]
-</code></pre>
-
-<pre>
-    <code>
-    const products = [
-        { name: 'Laptop', price: 1000 },
-        { name: 'Phone', price: 500 },
-        { name: 'Tablet', price: 300 }
-    ];
-    const expensiveProducts = products.filter((product) => product.price > 400);
-    console.log(expensiveProducts);
-    // Output:
-    // [ { name: 'Laptop', price: 1000 }, { name: 'Phone', price: 500 } ]
-    </code>
-</pre>
-
-<pre><code>
-    const cities = ['New York', 'Los Angeles', 'Chicago', 'Houston', 'Phoenix'];
-    const citiesWithO = cities.filter((city) => city.includes('o'));
-    console.log(citiesWithO); // Output: ['Los Angeles', 'Houston']
-</code></pre>
-
-<pre><code>
-    const name = ['Alice', 'Bob', 'Charlie', 'David'];
-    const namesWithA = name.filter((n) => n.startsWith('A'));
-    console.log(namesWithA); // Output: ['Alice']
-    const nameWitha = name.filter((n) => n.toLowerCase().includes('a'));
-    console.log(nameWitha); // Output: ['Alice', 'Charlie', 'David']
-</code></pre>
-
-<h2>.map()</h2>
-<p>It is a built-in higher order function method and it always return a new array</p>
-<p> It is commonly used to transform elements in an array.</p>
-<p>The <code>map()</code> method creates a new array populated with the results of calling a provided function on every element in the calling array.</p>
-<h3>syntax</h3>
-<p><pre><code>
-    array.map(function(currentValue, index, arr){
-        //your code here
-    })
-
-    <h2>OR</h2>
-
-    array.map((currentValue, index, arr) => {
-        //your code here
-    }) 
-</code></pre></p>
-<p>Example</p>
-<pre><code>const numbers = [1, 2, 3, 4, 5];
-const squared = numbers.map((num) => num * num);
-console.log(squared); // Output: [1, 4, 9, 16, 25]
-</code></pre>
-
-<pre><code>
-    const mixedNumbers = [1, 2, 3, 4, 5];
-    const incremented = mixedNumbers.map((num) => num + 1);
-    console.log(incremented); // Output: [2, 3, 4, 5, 6]
-</code></pre>
-
-<pre><code>
-    const words = ['hello', 'world', 'javascript'];
-    const uppercased = words.map((word) => word.toUpperCase());
-    console.log(uppercased); // Output: ['HELLO', 'WORLD', 'JAVASCRIPT']
-</code></pre>
-
-<pre><code>
-    const objectArray = [
-        { name: 'Alice', age: 25 },
-        { name: 'Bob', age: 30 },
-        { name: 'Charlie', age: 35 }
-    ];
-    const names = objectArray.map((obj) => obj.name);
-    console.log(names); // Output: ['Alice', 'Bob', 'Charlie']
-</code></pre>
-
-<pre><code>
-    const students = [
-        { name: 'Alice', score: 85 },
-        { name: 'Bob', score: 92 },
-        { name: 'Charlie', score: 78 }
-    ];
-    const studentNames = students.map((student) => student.name);
-    console.log(studentNames); // Output: ['Alice', 'Bob', 'Charlie']
-</code></pre>
-
-<pre><code>
-    const products = [
-        { name: 'Laptop', price: 1000 },
-        { name: 'Phone', price: 500 },
-        { name: 'Tablet', price: 300 }
-    ];
-    const productNames = products.map((product) => product.name);
-    console.log(productNames); // Output: ['Laptop', 'Phone', 'Tablet']
-</code></pre>
-
-<pre><code>
-    const cities = ['New York', 'Los Angeles', 'Chicago', 'Houston', 'Phoenix'];
-    const cityLengths = cities.map((city) => city.length);
-    console.log(cityLengths); // Output: [8, 11, 7, 7, 7]
-</code></pre>
-
-<h2>.reduce()</h2>
-<p>It is a built-in higher order function method and it always return a single value</p>
-<p>The <code>reduce()</code> method executes a reducer function (that you provide) on each element of the array, resulting in a single output value. It is commonly used to accumulate values, such as summing numbers or concatenating strings.</p>
-<h3>syntax</h3>
-<p><pre><code>
-    array.reduce(function(accumulator, currentValue, index, arr){
-        //your code here
-    }, initialValue)
-
-    <h2>OR</h2>
-
-    array.reduce((accumulator, currentValue, index, arr) => {
-        //your code here
-    }, initialValue)
-</code></pre></p>
-<p>Example</p>
-<pre><code>const numbers = [1, 2, 3, 4, 5];
-const sum = numbers.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
-console.log(sum); // Output: 15
-</code></pre>
-
-<pre><code>
-    const mixedNumbers = [1, 2, 3, 4, 5];
-    const product = mixedNumbers.reduce((accumulator, currentValue) => accumulator * currentValue, 1);
-    console.log(product); // Output: 120
-</code></pre>
-
-<pre><code>
-    const words = ['hello', 'world', 'javascript'];
-    const concatenated = words.reduce((accumulator, currentValue) => accumulator + ' ' + currentValue);
-    console.log(concatenated); // Output: 'hello world javascript'
-</code></pre>
-
-<pre><code>
-    const objectArray = [
-        { name: 'Alice', age: 25 },
-        { name: 'Bob', age: 30 },
-        { name: 'Charlie', age: 35 }
-    ];
-    const totalAge = objectArray.reduce((accumulator, obj) => accumulator + obj.age, 0);
-    console.log(totalAge); // Output: 90
-</code></pre>
-
-<h2>Chaining</h2>
-<p>Higher order functions can be chained together to perform complex operations in a concise manner. For example, you can use <code>map()</code> to transform elements and then <code>filter()</code> to select specific elements from the transformed array.</p>
-<pre><code>const numbers = [1, 2, 3, 4, 5];
-const result = numbers
-    .map((num) => num * 2) // Double each number
-    .filter((num) => num > 5); // Keep only numbers greater than 5
-console.log(result); // Output: [6, 8, 10]
-</code></pre>
-
-<h3>Note:-</h3>
-<p>who support chaining?</p>
-<ul>
-    <li><code>map()</code></li>
-    <li><code>filter()</code></li>
-    <li><code>reduce()</code></li>
-</ul>
-<p>who does not support chaining?</p>
-<ul>
-    <li><code>forEach()</code></li>
-</ul>
-
-<h2>map() vs forEach()</h2>
-<p>The main difference between <code>map()</code> and <code>forEach()</code> is that <code>map()</code> returns a new array with the results of applying the provided function to each element, while <code>forEach()</code> does not return anything (always undefined).</p>
-<p>Use <code>map()</code> when you want to transform the elements of an
-array and create a new array with the transformed values. Use <code>forEach()</code> when you want to perform side effects (like logging or updating external variables) for each element in the array without needing a new array.</p>
-
-<h2>map() vs reduce()</h2>
-<p>The main difference between <code>map()</code> and <code>reduce()</code> is that <code>map()</code> transforms each element in an array and returns a new array of the same length, while <code>reduce()</code> reduces the entire array to a single value by applying a function cumulatively to its elements.</p>
-<p>Use <code>map()</code> when you want to create a new array with transformed values, and use <code>reduce()</code> when you want to aggregate or combine the elements of an array into a single value (like a sum, product, or concatenated string).</p>
-
-<h2>map() vs filter()</h2>
-<p>The main difference between <code>map()</code> and <code>filter()</code> is that <code>map()</code> transforms each element in an array and returns a new array of the same length, while <code>filter()</code> creates a new array containing only the elements that meet a specified condition, potentially resulting in a shorter array.</p>
-<p>Use <code>map()</code> when you want to apply a transformation to each element and create a new array with the transformed values. Use <code>filter()</code> when you want to select a subset of elements from an array based on a condition.</p>
-
+  <footer>
+    Created with ❤️ by <span>Bhupendra Singh</span> | © 2025
+  </footer>
 </body>
 </html>

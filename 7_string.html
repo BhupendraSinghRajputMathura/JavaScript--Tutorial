@@ -1,68 +1,162 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>String</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Strings in JavaScript</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #eef2f3, #8e9eab);
+      margin: 0;
+      padding: 0;
+      color: #222;
+    }
+
+    header {
+      background: linear-gradient(90deg, #0072ff, #00c6ff);
+      color: white;
+      text-align: center;
+      padding: 2rem 1rem;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 2.5rem;
+      letter-spacing: 1px;
+    }
+
+    main {
+      background: white;
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 2rem;
+      border-radius: 16px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+      line-height: 1.7;
+    }
+
+    h2 {
+      color: #0072ff;
+      border-left: 4px solid #00c6ff;
+      padding-left: 10px;
+      margin-top: 2rem;
+    }
+
+    p, li {
+      font-size: 1rem;
+    }
+
+    ol, ul {
+      margin-left: 1.5rem;
+    }
+
+    code {
+      background: #f4f4f4;
+      padding: 2px 6px;
+      border-radius: 4px;
+      color: #d63384;
+      font-family: Consolas, "Courier New", monospace;
+    }
+
+    pre {
+      background: #1e1e1e;
+      color: #dcdcdc;
+      padding: 1rem;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-size: 0.95rem;
+    }
+
+    footer {
+      text-align: center;
+      background: #0072ff;
+      color: white;
+      padding: 1rem 0;
+      border-top: 4px solid #00c6ff;
+      margin-top: 2rem;
+      font-weight: 500;
+    }
+
+    footer:hover {
+      background: #005fd4;
+      transition: 0.3s;
+    }
+
+    strong {
+      color: #333;
+    }
+
+    /* Hover highlight for list items */
+    li:hover {
+      background: #f0f9ff;
+      transition: 0.3s;
+      border-radius: 5px;
+    }
+  </style>
 </head>
 <body>
-    <h1>String</h1>
-    <p>A string is a sequence of characters used to represent text. In programming, strings are typically enclosed in quotes, either single (' ') or double (" ") and backtick (` `).</p>
+
+  <header>
+    <h1>Strings in JavaScript</h1>
+    <p>Understanding text handling and manipulation in JavaScript</p>
+  </header>
+
+  <main>
+    <p>
+      A <strong>string</strong> is a sequence of characters used to represent text. 
+      In JavaScript, strings can be defined using <code>'single'</code>, 
+      <code>"double"</code>, or <code>`backtick`</code> quotes.
+    </p>
+
+    <h2>Types of String Declaration</h2>
     <ol>
-        <li>(' ') and (" ") → Normal strings (no difference except preference/escaping).</li>
-        <li>( ` ` )(backtick) - Template literals (multi-line + interpolation + advanced features)</li>
+      <li><strong>Single quotes:</strong> 'Hello, World!'</li>
+      <li><strong>Double quotes:</strong> "Hello, World!"</li>
+      <li><strong>Backticks (Template literals):</strong> `Hello, World!`</li>
     </ol>
-    <ol>
-        <li>Single quotes: 'Hello, World!'</li>
-        <li>Double quotes: "Hello, World!"</li>
-        <li>Backticks (Template literals): `Hello, World!`</li>
-    </ol>
-    <p>Strings can contain letters, numbers, symbols, and spaces. They are commonly used for storing and manipulating text data in applications.</p>
-    <p>Example of a string in JavaScript:</p>
-    <pre><code>let greeting = "Hello, World!";</code></pre>
-    <p>Strings can be concatenated, sliced, and manipulated using various methods provided by programming languages.</p>
-    <p>For example, in JavaScript, you can concatenate strings using the + operator:</p>
-    <pre><code>let firstName = "John";  
-let lastName = "Doe";  
-let fullName = firstName + " " + lastName; // "John Doe"</code></pre>
-    <p>Strings are immutable in many programming languages, meaning that once a string is created, it cannot be changed. However, you can create new strings based on existing ones.</p>
-    <p>Common string methods in JavaScript include:</p>
+
+    <h2>Basic Example</h2>
+    <pre><code>let greeting = "Hello, World!";
+console.log(greeting); // Output: Hello, World!</code></pre>
+
+    <h2>String Concatenation</h2>
+    <pre><code>let firstName = "John";
+let lastName = "Doe";
+let fullName = firstName + " " + lastName;
+console.log(fullName); // John Doe</code></pre>
+
+    <h2>Template Literals Example</h2>
+    <pre><code>let name = "Alice";
+let age = 25;
+let info = `My name is ${name} and I am ${age} years old.`;
+console.log(info);</code></pre>
+
+    <h2>Common String Methods</h2>
     <ul>
-        <li><code>length</code>: Returns the length of the string.</li>
-        <li><code>toUpperCase()</code>: Converts the string to uppercase.</li>
-        <li><code>toLowerCase()</code>: Converts the string to lowercase.</li>
-        <li><code>substring(start, end)</code>: Extracts a portion of the string.</li>
-        <li><code>indexOf(substring)</code>: Returns the index of the first occurrence of a substring.</li>
-        <li><code>replace(oldSubstring, newSubstring)</code>: Replaces occurrences of a substring with a new substring.</li>
-        <li><code>split(separator)</code>: Splits the string into an array of substrings based on a specified separator.</li>
-        <li><code>trim()</code>: Removes whitespace from both ends of the string.</li>
-
+      <li><code>length</code> → Returns the string length.</li>
+      <li><code>toUpperCase()</code> → Converts to uppercase.</li>
+      <li><code>toLowerCase()</code> → Converts to lowercase.</li>
+      <li><code>substring(start, end)</code> → Extracts part of the string.</li>
+      <li><code>indexOf(value)</code> → Finds the first occurrence of a substring.</li>
+      <li><code>replace(old, new)</code> → Replaces text in the string.</li>
+      <li><code>split(separator)</code> → Splits string into an array.</li>
+      <li><code>trim()</code> → Removes whitespace from both ends.</li>
     </ul>
-    <script>
-        // Example usage of string methods in JavaScript
-        let exampleString = "  Hello, World!  ";
-        console.log("Original String:", exampleString);
-        console.log("Length:", exampleString.length);
-        console.log("Uppercase:", exampleString.toUpperCase());
-        console.log("Lowercase:", exampleString.toLowerCase());
-        console.log("Substring (0, 5):", exampleString.substring(0, 5));
-        console.log("Index of 'World':", exampleString.indexOf("World"));
-        console.log("Replace 'World' with 'JavaScript':", exampleString.replace("World", "JavaScript"));
-        console.log("Split by comma:", exampleString.split(","));
-        console.log("Trimmed String:", exampleString.trim());
 
-        // Example of template literals
-        let name = "Alice";
-        let age = 30;
-        let templateLiteral = `My name is ${name} and I am ${age} years
-        old.`;
-        console.log("Template Literal:", templateLiteral);
+    <h2>Live Example (Run in Console)</h2>
+    <pre><code>let example = "  Hello, JavaScript!  ";
+console.log(example.trim());
+console.log(example.toUpperCase());
+console.log(example.replace("JavaScript", "World"));
+console.log(example.split(" "));</code></pre>
 
-        // Multi-line string using backticks
-        let multiLineString = `This is a string
-that spans multiple
-lines.`;
-        console.log("Multi-line String:", multiLineString); 
-    </script>
+  </main>
+
+  <footer>
+    <p>Author: <strong>Bhupendra Singh</strong></p>
+  </footer>
+
 </body>
 </html>

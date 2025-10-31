@@ -1,78 +1,186 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Code Execution Context</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Code Execution Context</title>
+  <style>
+    body {
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(135deg, #e3f2fd, #e0f7fa);
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      background: #fff;
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      text-align: center;
+      color: #1565c0;
+      font-size: 2.3em;
+      margin-bottom: 15px;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      color: #1976d2;
+      border-left: 5px solid #42a5f5;
+      padding-left: 10px;
+      margin-top: 25px;
+    }
+
+    h3 {
+      color: #0288d1;
+      margin-top: 20px;
+    }
+
+    p {
+      font-size: 1.05em;
+      line-height: 1.6;
+      margin: 10px 0;
+    }
+
+    ul, ol {
+      background: #f8fbff;
+      border-radius: 10px;
+      padding: 20px 30px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    li {
+      margin: 10px 0;
+      font-size: 1.05em;
+    }
+
+    pre {
+      background-color: #263238;
+      color: #e0e0e0;
+      padding: 20px;
+      border-radius: 10px;
+      overflow-x: auto;
+      font-family: "Consolas", monospace;
+      font-size: 1em;
+      margin: 15px 0;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      border-radius: 10px;
+      margin: 20px 0;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    strong {
+      color: #0d47a1;
+    }
+
+    footer {
+      text-align: center;
+      color: #777;
+      margin-top: 40px;
+      font-size: 0.9em;
+    }
+
+    .note {
+      background: #fff3e0;
+      border-left: 5px solid #ffb300;
+      padding: 15px 20px;
+      border-radius: 10px;
+      margin-top: 25px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 25px;
+        margin: 20px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+  </style>
 </head>
 <body>
-    <h1>Code Execution Context In JavaScript</h1>
-    <p>The code execution context is an abstract concept that holds information about the environment within which the current code is being executed. It includes details such as variable scope, the value of 'this', and the order of function calls.</p>
+  <div class="container">
+    <h1>Code Execution Context in JavaScript</h1>
+    <p>
+      The <strong>Code Execution Context</strong> is the environment in which the JavaScript code runs. It defines what variables, functions, and objects are accessible, and determines how the code executes.
+    </p>
+
     <h2>Types of Execution Context</h2>
     <ul>
-        <li><strong>Global Execution Context:</strong> The default context where any JavaScript code runs initially.</li>
-        <li><strong>Function Execution Context:</strong> Created whenever a function is invoked, containing its own scope and variables.</li>
-        <li><strong>Eval Execution Context:</strong> Created by the eval function, allowing for dynamic code execution.</li>
+      <li><strong>Global Execution Context (GEC):</strong> The default context where JavaScript code runs initially.</li>
+      <li><strong>Function Execution Context (FEC):</strong> Created whenever a function is invoked, containing its own scope and variables.</li>
+      <li><strong>Eval Execution Context (EEC):</strong> Created by the <code>eval()</code> function for dynamic code execution.</li>
     </ul>
 
     <h2>Execution Context Lifecycle</h2>
-    <p>The lifecycle of an execution context can be broken down into three phases:</p>
+    <p>Each context passes through the following phases:</p>
     <ol>
-        <li><strong>Creation Phase:</strong> During this phase, the context is created, and the scope is established. Variables are hoisted, and function declarations are processed.</li>
-        <li><strong>Activation Phase:</strong> The context is activated, and the code begins to execute. The value of 'this' is determined, and the local variables are initialized.</li>
-        <li><strong>Termination Phase:</strong> Once the code has finished executing, the context is destroyed, and any resources are released.</li>
+      <li><strong>Creation Phase:</strong> Variables and functions are hoisted, and scope is established.</li>
+      <li><strong>Activation Phase:</strong> Code executes, variables initialize, and <code>this</code> is defined.</li>
+      <li><strong>Termination Phase:</strong> Context is destroyed, freeing up memory.</li>
     </ol>
 
-    <h2>GEC (Global Execution Context)</h2>
-    <p>The Global Execution Context (GEC) is the default context where any JavaScript code runs initially. It is created when the JavaScript engine starts executing the code and serves as the outermost context.</p>
-
-    <h3>Characteristics of GEC</h3>
+    <h2>Global Execution Context (GEC)</h2>
+    <p>The GEC is created when JavaScript begins executing. It’s the outermost context.</p>
+    <h3>Characteristics:</h3>
     <ul>
-        <li>Single instance: There is only one global execution context in a JavaScript environment.</li>
-        <li>Global scope: Variables declared in the global context are accessible from anywhere in the code.</li>
-        <li>Window object: In a browser environment, the global context is associated with the window object.</li>
+      <li>Only one GEC per program.</li>
+      <li>Global variables are accessible everywhere.</li>
+      <li>Associated with the <strong>window</strong> object in browsers.</li>
     </ul>
 
-    <h2>FEC (Function Execution Context)</h2>
-    <p>The Function Execution Context (FEC) is created whenever a function is invoked. It contains its own scope, variables, and the value of 'this' specific to that function call.</p>
-
-    <h3>Characteristics of FEC</h3>
+    <h2>Function Execution Context (FEC)</h2>
+    <p>Each time a function is invoked, a new FEC is created for it.</p>
+    <h3>Characteristics:</h3>
     <ul>
-        <li>Multiple instances: A new function execution context is created for each function call.</li>
-        <li>Local scope: Variables declared within the function are not accessible from outside.</li>
-        <li>Closure: Inner functions have access to the outer function's scope.</li>
+      <li>Each function call has its own FEC.</li>
+      <li>Variables inside are private (local scope).</li>
+      <li>Supports <strong>closures</strong> — inner functions can access outer variables.</li>
     </ul>
 
     <h2>Eval Execution Context (EEC)</h2>
-    <p>The Eval Execution Context (EEC) is created by the eval function, allowing for dynamic code execution. It has its own scope and can access variables from the surrounding context.</p>
-
-    <h3>Characteristics of EEC</h3>
+    <p>Created when using <code>eval()</code> for dynamic code execution.</p>
+    <h3>Characteristics:</h3>
     <ul>
-        <li>Dynamic scope: The scope is determined at runtime, allowing for more flexible code execution.</li>
-        <li>Access to outer variables: EEC can access variables from the surrounding context, similar to closures.</li>
-        <li>Security concerns: Using eval can lead to security vulnerabilities, as it allows for the execution of arbitrary code.</li>
+      <li>Scope determined at runtime.</li>
+      <li>Can access outer variables.</li>
+      <li>Potential <strong>security risk</strong> if used improperly.</li>
     </ul>
 
-    <h2>Execution Phases</h2>
-    <p>The execution phases of a context can be divided into three main stages:</p>
-    <ol>
-        <li><strong>Creation Phase:</strong> This is when the context is created, and the scope is established. Variables are hoisted, and function declarations are processed.</li>
-        <li><strong>Activation Phase:</strong> The context is activated, and the code begins to execute. The value of 'this' is determined, and the local variables are initialized.</li>
-        <li><strong>Termination Phase:</strong> Once the code has finished executing, the context is destroyed, and any resources are released.</li>
-    </ol>
-
     <h2>Call Stack</h2>
-    <p>The call stack is a data structure that keeps track of the execution contexts in a JavaScript program. It follows a Last In, First Out (LIFO) order, meaning that the most recently added context is the first one to be removed.</p>
-    <p>When a function is called, a new execution context is created and pushed onto the call stack. When the function returns, its context is popped off the stack.</p>
-    
-    <h2>Example</h2>
-    <img src="./Image/CodeExecutionProcess.jpg" alt="">
+    <p>
+      The <strong>Call Stack</strong> keeps track of all execution contexts.  
+      It follows a <strong>LIFO</strong> (Last In, First Out) order.
+    </p>
+    <p>
+      When a function is called → new context pushed onto the stack.  
+      When it finishes → it’s popped off the stack.
+    </p>
 
-<h2>Note:-</h2>
-<ol>
-    <li>One GEC exists for the whole program</li>
-    <li>A new FEC is created for each function call</li>
-    <li>Call stack  keeps track of all context</li>
-</ol>
+    <img src="./Image/CodeExecutionProcess.jpg" alt="Code Execution Process Diagram">
+
+    <div class="note">
+      <h2>Key Notes</h2>
+      <ol>
+        <li>Only one <strong>Global Execution Context</strong> exists per program.</li>
+        <li>A new <strong>Function Execution Context</strong> is created per function call.</li>
+        <li>The <strong>Call Stack</strong> tracks and manages all contexts.</li>
+      </ol>
+    </div>
+  </div>
+
+  <footer>© 2025 | Designed by Bhupendra Singh</footer>
 </body>
 </html>

@@ -1,158 +1,192 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Variables</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Variables in JavaScript</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f8fafc;
+      color: #222;
+      margin: 40px;
+      line-height: 1.7;
+    }
+    h1, h2, h3 {
+      color: #0056b3;
+    }
+    h1 {
+      margin-top: 40px;
+    }
+    ul, ol {
+      margin-left: 25px;
+    }
+    li {
+      margin-bottom: 8px;
+    }
+    code {
+      background-color: #f1f1f1;
+      padding: 3px 6px;
+      border-radius: 5px;
+      color: #c7254e;
+      font-size: 16px;
+    }
+    strong {
+      color: #0074d9;
+    }
+    hr {
+      border: 1px solid #ddd;
+      margin: 30px 0;
+    }
+    footer {
+      margin-top: 40px;
+      text-align: center;
+      font-size: 15px;
+      color: #555;
+    }
+  </style>
 </head>
 <body>
-    <h1>
-        Variable in JavaScript
-    </h1>
-    <h2>
-        A variable is a container for storing data values.
-    </h2>
-    <h3>
-        there are 3 ways to declare a variable in JavaScript:
-        <ul>
-            <li>var</li>
-            <li>let</li>
-            <li>const</li>  
-        </ul>
-    </h3>
-    <p>
-        note:
-        <ul>
-            <li>Variables declared with var or let can be reassigned.</li>
-            <li>Variables declared with const cannot be reassigned.</li>    
-        </ul>   
-        Example:
-        <ul>
-            <li>const panCard = "1234-5678-9012-3456";</li>
-            <li>let age = 25;</li>
-            <li>var name = "John Doe";</li>
-        </ul>
-    </p>
-    <p>
-        <ol>
-            <li>
-                 In the above example, panCard is a constant variable that cannot be changed, age is a variable that can be reassigned, and name is a variable that can also be reassigned.
-            </li>
-            <li>
-                Prefer using const for variables that should not change, and let for variables that may change. Avoid using var to prevent scope-related issues.
-            </li>
-        </ol>
-    </p>
+  <h1>📘 Variables in JavaScript</h1>
 
-    <h1>
-        interview Question: What is the difference between var, let, and const in JavaScript?
-        difference between var, let and const:
-        <ul>
-            <li>Scope:
-                <ul>
-                    <li>var: Function-scoped. Accessible throughout the function in which it is declared.</li>
-                    <li>let: Block-scoped. Accessible only within the block (enclosed by {}) in which it is declared.</li>
-                    <li>const: Block-scoped. Accessible only within the block in which it is declared.</li>
-                </ul>
-            </li>
-            <li>Reassignment:
-                <ul>
-                    <li>var: Can be reassigned.</li>
-                    <li>let: Can be reassigned.</li>
-                    <li>const: Cannot be reassigned after its initial assignment.</li>
-                </ul>
-            </li>
-            <li>Hoisting:
-                <ul>
-                    <li>var: Hoisted to the top of its scope and initialized with undefined.</li>
-                    <li>let: Hoisted to the top of its block but not initialized. Accessing it before declaration results in a ReferenceError (temporal dead zone).</li>
-                    <li>const: Hoisted to the top of its block but not initialized. Accessing it before declaration results in a ReferenceError (temporal dead zone).</li>
-                </ul>
-            </li>
-            <li>Use Cases:
-                <ul>
-                    <li>var: Generally avoided in modern JavaScript due to its function scope and hoisting behavior, which can lead to unexpected results.</li>
-                    <li>let: Used for variables that may need to be reassigned, such as loop counters or values that change over time.</li>
-                    <li>const: Used for variables that should remain constant throughout the program, such as configuration values or references to objects/arrays that should not be reassigned.</li>
-                </ul>
-            </li>   
-        </ul>
-        Example:
-        <ul>
-            <li>var x = 10; // function-scoped, can be reassigned</li>
-            <li>let y = 20; // block-scoped, can be reassigned</li>
-            <li>const z = 30; // block-scoped, cannot be reassigned</li>
-        </ul>
-    </h1>
+  <p>
+    A <strong>variable</strong> in JavaScript is a <strong>container used to store data values</strong>.  
+    Variables allow programs to store, modify, and reuse data.
+  </p>
 
-    <h1>console</h1>
-    1. console.log(): Used to print messages or values to the console for debugging purposes.
-    <br>
-    2. console.error(): Used to print error messages to the console.
-    <br>
-    3. console.warn(): Used to print warning messages to the console.
-    <br>    
-    4. console.table(): Used to display data in a tabular format in the console.
-    <br>    
-    5. console.info(): Used to print informational messages to the console.
-    <br>
-    6. console.debug(): Used to print debugging messages to the console.
-    <br>
-    7. console.clear(): Used to clear the console.
-    <br>
-    8. console.time() and console.timeEnd(): Used to measure the time taken by a block of code to execute.
-    <br>
-    9. console.group() and console.groupEnd(): Used to group related messages in the console.
-    <br>
-    10. console.trace(): Used to print the stack trace to the console.
-    <br>
+  <h2>🟢 Ways to Declare Variables</h2>
+  <p>There are <strong>three ways</strong> to declare variables in JavaScript:</p>
+  <ul>
+    <li><code>var</code></li>
+    <li><code>let</code></li>
+    <li><code>const</code></li>
+  </ul>
 
-    <script>
-        const panCard = "1234-5678-9012-3456";
-        console.log("Pan Number is:",panCard);
-        // const p;
-        // This will cause an error because const variables must be initialized at the time of declaration
+  <h3>🔹 Important Notes</h3>
+  <ul>
+    <li>Variables declared with <code>var</code> or <code>let</code> can be reassigned.</li>
+    <li>Variables declared with <code>const</code> cannot be reassigned.</li>
+  </ul>
 
-        let age = 25;
-        console.log("Age is:",age);
-        // let a;
-        // This is valid, but the variable 'a' will be undefined until assigned a value
+  <p><strong>Example:</strong></p>
+  <pre><code>
+const panCard = "1234-5678-9012-3456";
+let age = 25;
+var name = "John Doe";
+  </code></pre>
 
-        var name = "John Doe";
-        console.log("Name is:",name);
-        // var n;
-        // This is valid, but the variable 'n' will be undefined until assigned a value
+  <ol>
+    <li><code>panCard</code> is a constant variable (cannot be changed).</li>
+    <li><code>age</code> can be reassigned.</li>
+    <li><code>name</code> can also be reassigned.</li>
+  </ol>
 
-        // Re-assigning values
-        age = 26; // re-assigning a new value to age
-        console.log("Updated Age is:",age);
+  <p>
+    ✅ Use <strong>const</strong> for values that do not change, and <strong>let</strong> for variables that might.  
+    Avoid <strong>var</strong> in modern JavaScript due to potential scope issues.
+  </p>
 
-        // panCard = "6543-2109-8765-4321"; 
-        // This will cause an error because const variables cannot be reassigned
+  <hr />
 
-        name = "Jane Doe"; // re-assigning a new value to name
-        console.log("Updated Name is:",name);
+  <h1>💡 Difference between var, let, and const</h1>
 
-        console.table({panCard, age, name});
-        console.table([panCard, age, name]);
+  <h3>🔸 Scope</h3>
+  <ul>
+    <li><strong>var:</strong> Function-scoped — accessible throughout a function.</li>
+    <li><strong>let:</strong> Block-scoped — accessible only within the block <code>{}</code>.</li>
+    <li><strong>const:</strong> Block-scoped — accessible only within the block <code>{}</code>.</li>
+  </ul>
 
+  <h3>🔸 Reassignment</h3>
+  <ul>
+    <li><strong>var:</strong> Can be reassigned.</li>
+    <li><strong>let:</strong> Can be reassigned.</li>
+    <li><strong>const:</strong> Cannot be reassigned.</li>
+  </ul>
 
-        // console Examples
-        console.error("This is an error message");
-        console.warn("This is a warning message");
-        console.info("This is an informational message");
-        console.debug("This is a debug message");
-        console.time("Timer");
-        for(let i=0; i<100000; i++) {
-            // some code to measure time
-        }
-        console.timeEnd("Timer");
-        console.group("Grouped Messages");
-        console.log("Message 1");
-        console.log("Message 2");
-        console.groupEnd();
-        console.trace("Trace Message");
-        // console.clear(); // Uncomment this line to clear the console 
-    </script>
+  <h3>🔸 Hoisting</h3>
+  <ul>
+    <li><strong>var:</strong> Hoisted and initialized with <code>undefined</code>.</li>
+    <li><strong>let:</strong> Hoisted but not initialized (temporal dead zone).</li>
+    <li><strong>const:</strong> Hoisted but not initialized (temporal dead zone).</li>
+  </ul>
+
+  <h3>🔸 Use Cases</h3>
+  <ul>
+    <li><strong>var:</strong> Avoid using in modern code.</li>
+    <li><strong>let:</strong> Use for variables that may change.</li>
+    <li><strong>const:</strong> Use for constants or references that should not change.</li>
+  </ul>
+
+  <p><strong>Example:</strong></p>
+  <pre><code>
+var x = 10;   // function-scoped, can be reassigned
+let y = 20;   // block-scoped, can be reassigned
+const z = 30; // block-scoped, cannot be reassigned
+  </code></pre>
+
+  <hr />
+
+  <h1>🖥️ JavaScript Console Methods</h1>
+  <p>The <strong>console</strong> object provides methods for developers to log, debug, and monitor JavaScript code.</p>
+
+  <ul>
+    <li><code>console.log()</code> → Print messages or values to the console.</li>
+    <li><code>console.error()</code> → Display error messages.</li>
+    <li><code>console.warn()</code> → Display warning messages.</li>
+    <li><code>console.table()</code> → Show data in table format.</li>
+    <li><code>console.info()</code> → Display informational messages.</li>
+    <li><code>console.debug()</code> → Show debug messages.</li>
+    <li><code>console.clear()</code> → Clear the console output.</li>
+    <li><code>console.time()</code> / <code>console.timeEnd()</code> → Measure code execution time.</li>
+    <li><code>console.group()</code> / <code>console.groupEnd()</code> → Group related log messages.</li>
+    <li><code>console.trace()</code> → Display the stack trace.</li>
+  </ul>
+
+  <hr />
+
+  <h1>🧠 Example Script</h1>
+
+  <script>
+    const panCard = "1234-5678-9012-3456";
+    console.log("Pan Number is:", panCard);
+
+    let age = 25;
+    console.log("Age is:", age);
+
+    var name = "John Doe";
+    console.log("Name is:", name);
+
+    age = 26;
+    console.log("Updated Age is:", age);
+
+    name = "Jane";
+    console.log("Updated Name is:", name);
+
+    console.table({ panCard, age, name });
+    console.table([panCard, age, name]);
+
+    // Console methods demonstration
+    console.error("This is an error message");
+    console.warn("This is a warning message");
+    console.info("This is an informational message");
+    console.debug("This is a debug message");
+
+    console.time("Timer");
+    for (let i = 0; i < 100000; i++) {}
+    console.timeEnd("Timer");
+
+    console.group("Grouped Messages");
+    console.log("Message 1");
+    console.log("Message 2");
+    console.groupEnd();
+
+    console.trace("Trace Message");
+  </script>
+
+  <footer>
+    <p><strong>Author:</strong> Bhupendra Singh<br>
+    <strong>Upload Date:</strong> October 2025</p>
+  </footer>
 </body>
 </html>

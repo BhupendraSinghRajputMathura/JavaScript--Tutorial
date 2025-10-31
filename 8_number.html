@@ -1,52 +1,159 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Number</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JavaScript Number</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #f0f4f8, #cfd9df);
+      margin: 0;
+      padding: 0;
+      color: #222;
+    }
+
+    header {
+      background: linear-gradient(90deg, #36d1dc, #5b86e5);
+      color: white;
+      text-align: center;
+      padding: 2rem 1rem;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 2.5rem;
+      letter-spacing: 1px;
+    }
+
+    main {
+      background: white;
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 2rem;
+      border-radius: 16px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+      line-height: 1.7;
+    }
+
+    h2 {
+      color: #5b86e5;
+      border-left: 4px solid #36d1dc;
+      padding-left: 10px;
+      margin-top: 2rem;
+    }
+
+    p,
+    li {
+      font-size: 1rem;
+    }
+
+    code {
+      background: #f4f4f4;
+      padding: 2px 6px;
+      border-radius: 4px;
+      color: #d63384;
+      font-family: Consolas, "Courier New", monospace;
+    }
+
+    pre {
+      background: #1e1e1e;
+      color: #dcdcdc;
+      padding: 1rem;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-size: 0.95rem;
+    }
+
+    footer {
+      text-align: center;
+      background: #36d1dc;
+      color: white;
+      padding: 1rem 0;
+      border-top: 4px solid #5b86e5;
+      margin-top: 2rem;
+      font-weight: 500;
+    }
+
+    footer:hover {
+      background: #2bb0c9;
+      transition: 0.3s;
+    }
+
+    li:hover {
+      background: #eef6ff;
+      transition: 0.3s;
+      border-radius: 6px;
+      padding-left: 4px;
+    }
+  </style>
 </head>
 <body>
+  <header>
     <h1>JavaScript Number</h1>
-    <p>JavaScript has only one type of number. Numbers can be written with or without decimals:</p>
-    <p>Example</p>
-    <p>let x = 3.14</p>
-    <p>let y = 3</p>
+    <p>Understanding numerical operations and methods in JavaScript</p>
+  </header>
 
-    <h2>Methodes</h2>
-    <p>Number.isInteger()</p>
-    <p>Number.parseFloat()</p>
-    <p>Number.parseInt()</p>
-    <p>Number.toString()</p>
-    <p>Number.toFixed()</p>
-    <p>Number.toPrecision()</p> 
-    <p>Number.valueOf()</p>
+  <main>
+    <p>
+      JavaScript has only <strong>one type of number</strong>. Numbers can be
+      written with or without decimals:
+    </p>
 
-    <p>Example</p>
-    <pre><code>
+    <h2>Example</h2>
+    <pre><code>let x = 3.14;
+let y = 3;</code></pre>
+
+    <h2>Common Number Methods</h2>
+    <ul>
+      <li><code>Number.isInteger()</code> → Checks if the value is an integer.</li>
+      <li><code>Number.parseFloat()</code> → Converts a string to a floating-point number.</li>
+      <li><code>Number.parseInt()</code> → Converts a string to an integer.</li>
+      <li><code>toString()</code> → Converts a number to a string.</li>
+      <li><code>toFixed()</code> → Formats a number with fixed decimals.</li>
+      <li><code>toPrecision()</code> → Formats a number to a specified precision.</li>
+      <li><code>valueOf()</code> → Returns the primitive value of a number.</li>
+    </ul>
+
+    <h2>Example Usage</h2>
+    <pre><code>let x = 123;
+let y = 123.456;
+
+console.log(Number.isInteger(x));        // true
+console.log(Number.isInteger(y));        // false
+console.log(Number.parseFloat("123.456")); // 123.456
+console.log(Number.parseInt("123.456"));   // 123
+console.log(x.toString());               // "123"
+console.log(y.toFixed(2));               // "123.46"
+console.log(y.toPrecision(4));           // "123.5"
+console.log(x.valueOf());                // 123
+console.log(y.valueOf());                // 123.456</code></pre>
+
+    <p>
+      These methods help in handling numbers effectively — whether you’re
+      formatting, converting, or validating numerical values in your JavaScript
+      programs.
+    </p>
+  </main>
+
+  <footer>
+    <p>Author: <strong>Bhupendra Singh</strong></p>
+  </footer>
+
+  <script>
+    // Example Code
     let x = 123;
-    let y = 123.456;</code></pre>
-    <p>console.log(Number.isInteger(x)); // true</p>
-    <p>console.log(Number.isInteger(y)); // false</p>
-    <p>console.log(Number.parseFloat("123.456")); // 123.456</p>
-    <p>console.log(Number.parseInt("123.456")); // 123</p>
-    <p>console.log(x.toString()); // "123"</p>
-    <p>console.log(y.toFixed(2)); // "123.46"</p>
-    <p>console.log(y.toPrecision(4)); // "123.5"</p>
-    <p>console.log(x.valueOf()); // 123</p> 
-    <p>console.log(y.valueOf()); // 123.456</p>
-    
-    <script>
-        let x = 123;
-        let y = 123.456;
-        console.log(Number.isInteger(x)); // true
-        console.log(Number.isInteger(y)); // false
-        console.log(Number.parseFloat("123.456")); // 123.456
-        console.log(Number.parseInt("123.456")); // 123
-        console.log(x.toString()); // "123"
-        console.log(y.toFixed(2)); // "123.46"
-        console.log(y.toPrecision(4)); // "123.5"
-        console.log(x.valueOf()); // 123
-        console.log(y.valueOf()); // 123.456
-    </script>
+    let y = 123.456;
+    console.log(Number.isInteger(x)); // true
+    console.log(Number.isInteger(y)); // false
+    console.log(Number.parseFloat("123.456")); // 123.456
+    console.log(Number.parseInt("123.456")); // 123
+    console.log(x.toString()); // "123"
+    console.log(y.toFixed(2)); // "123.46"
+    console.log(y.toPrecision(4)); // "123.5"
+    console.log(x.valueOf()); // 123
+    console.log(y.valueOf()); // 123.456
+  </script>
 </body>
 </html>

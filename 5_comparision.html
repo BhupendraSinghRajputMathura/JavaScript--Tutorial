@@ -3,12 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Comparision</title>
+    <title>JavaScript Comparison Operators</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 20px;
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+        }
+        p {
+            background: #fff;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 5px;
+            border-radius: 4px;
+            color: #e74c3c;
+        }
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 14px;
+            color: #555;
+        }
+    </style>
 </head>
 <body>
-    <h1>Comparision</h1>
+    <h1>JavaScript Comparison Operators</h1>
+
     <p>
-        // Strict Equality (===) <br> <br>
+        <b>// Strict Equality (===)</b> <br><br>
         console.log(5 === 5); // true<br>
         console.log(5 === "5"); // false<br>
         console.log(true === 1); // false<br>
@@ -17,89 +50,64 @@
         console.log(null === null); // true<br>
         console.log(undefined === undefined); // true<br>
         console.log(null === undefined); // false<br>
-        console.log(null === 0); // false<br>
-        console.log(undefined === 0); // false<br>
         console.log(NaN === NaN); // false<br>
         console.log(Object.is(NaN, NaN)); // true<br>
-        console.log(Object.is(0, -0)); // false<br>
-        <br>
-        // Loose Equality (==) <br> <br>
+    </p>
+
+    <p>
+        <b>// Loose Equality (==)</b> <br><br>
         console.log(5 == 5); // true<br>
         console.log(5 == "5"); // true<br>
         console.log(true == 1); // true<br>
         console.log(false == 0); // true<br>
-        console.log(true == false); // false<br>
-        console.log(null == null); // true<br>
-        console.log(undefined == undefined); // true<br>
         console.log(null == undefined); // true<br>
-        console.log(null == 0); // false<br>
-        console.log(undefined == 0); // false<br>
         console.log(NaN == NaN); // false<br>
-        console.log(Object.is(NaN, NaN)); // true<br>
-        console.log(Object.is(0, -0)); // false<br>
     </p>
+
     <p>
-        // Relational Operators <br> <br>
+        <b>// Relational Operators</b> <br><br>
         console.log(5 > 3); // true<br>
         console.log(5 < 3); // false<br>
-        console.log(5 >= 5); // true<br>
-        console.log(5 <= 5); // true<br>
-        console.log(5 >= "5"); // true<br>
-        console.log(5 <= "5"); // true<br>
         console.log("abc" > "ab"); // true<br>
-        console.log("abc" < "ab"); // false<br>
-        console.log("abc" > "abcd"); // false<br>
         console.log("abc" < "abcd"); // true<br>
-        console.log("abc" > "ABC"); // true<br>
-        console.log("abc" < "ABC"); // false<br>
-        console.log("2" > "12"); // true (lexicographical comparison)<br>
-        console.log("2" < "12"); // false (lexicographical comparison)<br>
-        console.log(null > 0); // false<br>
+        console.log("2" > "12"); // true (string comparison)<br>
         console.log(null >= 0); // true<br>
-        console.log(null < 0); // false<br>
-        console.log(null <= 0); // true<br>
         console.log(undefined > 0); // false<br>
-        console.log(undefined < 0); // false<br>
-        console.log(undefined >= 0); // false<br>
-        console.log(undefined <= 0); // false<br>
-        console.log(NaN > 0); // false<br>
-        console.log(NaN < 0); // false<br>
-        console.log(NaN >= 0); // false<br>
-        console.log(NaN <= 0); // false<br>
     </p>
+
     <p>
-        // Comparing Different Types <br> <br>
+        <b>// Comparing Different Types</b> <br><br>
         console.log(5 > "3"); // true<br>
-        console.log(5 < "3"); // false<br>
-        console.log("5" > 3); // true<br>
         console.log("5" < 3); // false<br>
         console.log(true > false); // true<br>
-        console.log(true < false); // false<br>
-        console.log(true > 0); // true<br>
-        console.log(false < 0); // false<br>
         console.log(null > -1); // true<br>
-        console.log(null < 1); // true<br>
-        console.log(undefined > 0); // false<br>
-        console.log(undefined < 0); // false<br>
         console.log(undefined == null); // true<br>
         console.log(undefined === null); // false<br>
     </p>
 
     <script>
-        // You can run the above code snippets in the browser console to see the results.
-        console.log(5 === 5); // true
-        console.log(5 === "5"); // false
-        console.log(true === 1); // false
-        console.log(false === 0); // false
-        console.log(true === false); // false
-        console.log(null === null); // true
-        console.log(undefined === undefined); // true                   
-        console.log(null === undefined); // false
-        console.log(null === 0); // false
-        console.log(undefined === 0); // false
-        console.log(NaN === NaN); // false
-        console.log(Object.is(NaN, NaN)); // true
-        console.log(Object.is(0, -0)); // false
+        // Run in console to view results
+        console.log("=== Strict Equality ===");
+        console.log(5 === 5);
+        console.log(5 === "5");
+        console.log(true === 1);
+        console.log(null === undefined);
+
+        console.log("=== Loose Equality ===");
+        console.log(5 == "5");
+        console.log(null == undefined);
+
+        console.log("=== Relational Operators ===");
+        console.log(5 > 3);
+        console.log("abc" < "abcd");
+
+        console.log("=== Mixed Types ===");
+        console.log(true > false);
+        console.log(undefined == null);
     </script>
+
+    <footer>
+        <p><b>Author:</b> Bhupendra Singh</p>
+    </footer>
 </body>
 </html>

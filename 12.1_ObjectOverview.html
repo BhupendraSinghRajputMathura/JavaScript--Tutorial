@@ -1,214 +1,241 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Object OverView</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JavaScript Object Overview</title>
+  <style>
+    body {
+      font-family: "Poppins", sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(120deg, #dfe9f3, #ffffff);
+      color: #222;
+    }
+
+    header {
+      background: linear-gradient(135deg, #4b6cb7, #182848);
+      color: white;
+      text-align: center;
+      padding: 30px 10px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      margin: 0;
+    }
+
+    main {
+      max-width: 1000px;
+      margin: 30px auto;
+      background: white;
+      border-radius: 16px;
+      padding: 30px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      color: #2a5298;
+      border-left: 5px solid #2a5298;
+      padding-left: 10px;
+    }
+
+    ol {
+      list-style: none;
+      counter-reset: item;
+      padding: 0;
+    }
+
+    ol > li {
+      margin-bottom: 30px;
+      background: #f8faff;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      transition: transform 0.2s ease, box-shadow 0.3s ease;
+    }
+
+    ol > li:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    ol > li::before {
+      counter-increment: item;
+      content: "Step " counter(item) ": ";
+      font-weight: bold;
+      color: #2a5298;
+    }
+
+    pre {
+      background: #1e1e1e;
+      color: #00ff9d;
+      padding: 15px;
+      border-radius: 10px;
+      overflow-x: auto;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    code {
+      font-family: "Consolas", monospace;
+    }
+
+    p {
+      font-size: 1rem;
+      color: #333;
+    }
+
+    ul {
+      margin-top: 10px;
+      padding-left: 20px;
+    }
+
+    li ul li {
+      margin-top: 10px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9rem;
+      color: #444;
+    }
+
+    footer span {
+      color: #2a5298;
+      font-weight: bold;
+    }
+
+    .question {
+      background: #e6f0ff;
+      padding: 15px;
+      border-left: 4px solid #2a5298;
+      border-radius: 10px;
+      margin-top: 30px;
+    }
+
+    .question pre {
+      background: #272822;
+      color: #a6e22e;
+    }
+  </style>
 </head>
 <body>
-    <h1>Object in JavaScript</h1>
-    <h2>
-        <ol>
-            <li>
-                <p>Defination:</p>
-                <h3>Collection of key value pair and each key is distinct</h3>
-            </li>
-            <li>
-                <p>Declaration:</p>
-                <h3><code><pre>
-                    const obj1 = {id:1, age:21, name:"aadi"};
-                </pre></code></h3>
-                <p>//OR</p>
-                <h3><code><pre>
-                    const obj1 = {
-                        id:1,
-                        age:21,
-                        name:"aadi"
-                    };
-                </pre></code></h3>
-            </li>
-            <li>
-                <p>Accessing:</p>
-                <h3><code><pre>
-                    const obj1 = {
-                        id:1,
-                        age:21,
-                        name:"aadi"
-                    };
+  <header>
+    <h1>🧠 JavaScript Object Overview</h1>
+  </header>
 
-                    console.log(obj1.id); // 1
+  <main>
+    <h2>Understanding Objects in JavaScript</h2>
+    <ol>
+      <li>
+        <p><strong>Definition:</strong></p>
+        <p>Collection of key-value pairs where each key is distinct.</p>
+      </li>
 
-                    <h2><p>//OR</p></h2>
+      <li>
+        <p><strong>Declaration:</strong></p>
+        <pre><code>const obj1 = {id:1, age:21, name:"aadi"};</code></pre>
+        <p><em>OR</em></p>
+        <pre><code>const obj1 = {
+  id:1,
+  age:21,
+  name:"aadi"
+};</code></pre>
+      </li>
 
-                    console.log(obj1["id"]); // 1
-                </pre></code></h3>
-            </li>
-            <li>
-                <p>Over Writing</p>
-                <h3><code><pre>
-                    const obj1 = {
-                        id:1,
-                        age:21,
-                        name:"aadi"
-                    };
-                    
-                    obj1.id = 2;
-                    obj1.age = 22;
-                    obj1.name ="Singh";
+      <li>
+        <p><strong>Accessing:</strong></p>
+        <pre><code>const obj1 = {
+  id:1,
+  age:21,
+  name:"aadi"
+};
 
-                    console.log(obj1.id); // 2
-                    console.log(obj1.age); // 22
-                    console.log(obj1.name); // Singh
-                </pre></code></h3>
-            </li>
-            <li>
-                <p>Object.freeze(object_name)</p>
-                <p>Used to lock the given object then it become immutable(Unchangable)</p>
-                <h3><code><pre>
-                    const obj1 = {
-                        id:1,
-                        age:21,
-                        name:"aadi"
-                    };
+console.log(obj1.id); // 1
+console.log(obj1["id"]); // 1</code></pre>
+      </li>
 
-                    Object.freeze(obj1);
-                    
-                    obj1.id = 2;
-                    obj1.age = 22;
-                    obj1.name ="Singh";
+      <li>
+        <p><strong>Overwriting:</strong></p>
+        <pre><code>obj1.id = 2;
+obj1.age = 22;
+obj1.name = "Singh";</code></pre>
+      </li>
 
-                    console.log(obj1.id); // 1
-                    console.log(obj1.age); // 21
-                    console.log(obj1.name); // aadi
-                </pre></code></h3>
-            </li>
-            <li>
-                <p>Object.keys(object_name)</p>
-                <p>Used to get keys of object</p>
-                <h3><code><pre>
-                    const obj1 = {
-                        id:1,
-                        age:21,
-                        name:"aadi"
-                    };
+      <li>
+        <p><strong>Object.freeze(object_name)</strong></p>
+        <p>Locks the object — makes it immutable.</p>
+        <pre><code>Object.freeze(obj1);
+obj1.id = 5; // won't change</code></pre>
+      </li>
 
-                    const key=Object.keys(obj1);
-                    console.log(key); // ['id','age','name']
-                </pre></code></h3>
-            </li>
-            <li>
-                <p>Object.value(object_name)</p>
-                <p>Used to get values of object</p>
-                <h3><code><pre>
-                    const obj1 = {
-                        id:1,
-                        age:21,
-                        name:"aadi"
-                    };
+      <li>
+        <p><strong>Object.keys(object_name)</strong></p>
+        <p>Returns all keys.</p>
+        <pre><code>Object.keys(obj1); // ['id','age','name']</code></pre>
+      </li>
 
-                    const values=Object.value(obj1);
-                    console.log(values); // ['1','21','aadi']
-                </pre></code></h3>
-            </li>
-            <li>
-                <p>Object.entries(object_name)</p>
-                <p>Used to get entries from object</p>
-                <h3><code><pre>
-                    const obj1 = {
-                        id:1,
-                        age:21,
-                        name:"aadi"
-                    };
+      <li>
+        <p><strong>Object.values(object_name)</strong></p>
+        <p>Returns all values.</p>
+        <pre><code>Object.values(obj1); // [1, 21, 'aadi']</code></pre>
+      </li>
 
-                    const entities=Object.entries(obj1);
-                    console.log(entities); // [ [ 'id', 1 ], [ 'age', 21 ], [ 'name', 'aadi' ] ]
-                </pre></code></h3>
-            </li>
-            <li>
-                <p>Spread Operator(...)</p>
-                <p>Used to spread elements</p>
-                <ul>
-                    <li>
-                        <p>Copy Object</p>
-                        <h3><code><pre>
-                            const obj1 = {a:1, b:2};
-                            
-                            const copy = {...obj1};
-                            console.log(copy); // { a: 1, b: 2}
-                        </pre></code></h3>
-                    </li>
-                    <li>
-                        <p>Merging</p>
-                        <h3><code><pre>
-                            const obj1 = {a:1, b:2};
-                            const obj2 = {c:3, d:4};
-                            const obj3 = {e:5, f:6};
-                            
-                            const merged = {...obj1,...obj2,...obj3};
-                            console.log(merged); // { a: 1, b: 2, c: 3, d: 4, e: 5, f: 6 }
-                        </pre></code></h3>
-                    </li>
-                    <li>
-                        <p>Override</p>
-                        <h3><code><pre>
-                            const obj1 = {a:1, b:2};
-                            
-                            const update = {...obj1,b:5};
-                            console.log(merged); // { a: 1, b: 5 }
-                        </pre></code></h3>
-                    </li>
-                    <li>
-                        <p>Nested Object (Shallow copy issue)</p>
-                        <h3><code><pre>
-                            const student = {
-                                name: "Raj",
-                                address: { city: "Mathura", pincode: 281001 }
-                            };
+      <li>
+        <p><strong>Object.entries(object_name)</strong></p>
+        <p>Returns key-value pairs.</p>
+        <pre><code>Object.entries(obj1);
+// [['id',1], ['age',21], ['name','aadi']]</code></pre>
+      </li>
 
-                            const newStudent = { ...student };
-                            newStudent.address.city = "Delhi";
-                            
-                            console.log(student.address.city); // Delhi 
-                        </pre></code></h3>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <p>De-Structuring of Object</p>
-                <h3><code><pre>
-                    const obj = {
-                        id:1,
-                        age:21,
-                        name:"Aadi"
-                    };
+      <li>
+        <p><strong>Spread Operator (...)</strong></p>
+        <ul>
+          <li>Copy Object</li>
+          <pre><code>const copy = {...obj1};</code></pre>
 
-                    console.log(obj.id);  // 1
-                    console.log(obj.age);  //21
+          <li>Merging Objects</li>
+          <pre><code>const merged = {...obj1, ...obj2};</code></pre>
 
-                // De-Structuring
+          <li>Override</li>
+          <pre><code>const updated = {...obj1, age:25};</code></pre>
 
-                    const {id, age , name} = obj;
+          <li>Nested Object (Shallow Copy Issue)</li>
+          <pre><code>const student = {
+  name: "Raj",
+  address: { city: "Mathura" }
+};
+const newStudent = {...student};
+newStudent.address.city = "Delhi";</code></pre>
+        </ul>
+      </li>
 
-                    console.log(id);  // 1
-                    console.log(age);  //21
-                    console.log(name);  // Aadi
-                </pre></code></h3>
-            </li>
-        </ol>
-    </h2>
+      <li>
+        <p><strong>De-structuring of Object:</strong></p>
+        <pre><code>const obj = { id:1, age:21, name:"Aadi" };
+const { id, age, name } = obj;
+console.log(name); // Aadi</code></pre>
+      </li>
+    </ol>
 
-    <p>Q. Take symbol than attached in object and print it?</p>
-    <h3><code><pre>
-        const symb = Symbol("key1");
+    <div class="question">
+      <h3>Practice Question 💡</h3>
+      <p>Take a symbol, attach it to an object, and print it.</p>
+      <pre><code>const symb = Symbol("key1");
+const obj = {
+  [symb]: "key1",
+  id:1,
+  age:23
+};
+console.log(obj[symb]); // key1</code></pre>
+    </div>
+  </main>
 
-        const obj = {
-            [symb]: "key1",
-            id:1,
-            age:23
-        }
-
-        console.log([symb]);  // [ Symbol(key1) ]
-    </pre></code></h3>
-   
+  <footer>
+    © 2025 <span>Bhupendra Singh</span> | JavaScript Learning Notes
+  </footer>
 </body>
 </html>

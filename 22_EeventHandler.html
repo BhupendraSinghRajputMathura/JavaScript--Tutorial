@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event Handlers in JavaScript - Notes</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f9fafb;
+      color: #333;
+      margin: 40px;
+      line-height: 1.6;
+    }
+    h1, h2 {
+      color: #0056b3;
+    }
+    code {
+      background-color: #f1f1f1;
+      padding: 3px 6px;
+      border-radius: 5px;
+      color: #c7254e;
+    }
+    pre {
+      background-color: #272822;
+      color: #f8f8f2;
+      padding: 12px;
+      border-radius: 8px;
+      overflow-x: auto;
+    }
+    ul {
+      margin-left: 25px;
+    }
+    hr {
+      border: 1px solid #ddd;
+    }
+  </style>
+</head>
+<body>
+  <h1>📘 Event Handlers in JavaScript</h1>
+  <p>
+    Event handlers are functions that run when a specific event occurs in the browser.  
+    Examples include user interactions like clicking a button, typing in a textbox, or moving the mouse.
+  </p>
+
+  <hr>
+
+  <h2>🔹 What is an Event?</h2>
+  <p>
+    An <strong>event</strong> is an action or occurrence that happens in the system you are programming — 
+    the system tells you about it so your code can respond to it.
+  </p>
+
+  <ul>
+    <li><code>onclick</code> – Triggered when an element is clicked.</li>
+    <li><code>onmouseover</code> – Triggered when the mouse pointer hovers over an element.</li>
+    <li><code>onchange</code> – Triggered when the value of an input element changes.</li>
+    <li><code>onkeydown</code> – Triggered when a key is pressed down.</li>
+    <li><code>onload</code> – Triggered when a page or image is loaded.</li>
+  </ul>
+
+  <hr>
+
+  <h2>🔹 Types of Event Handlers</h2>
+
+  <h3>1. Inline Event Handler</h3>
+  <p>Defined directly in the HTML element using attributes like <code>onclick</code>.</p>
+  <pre><code>&lt;button onclick="alert('Button Clicked!')"&gt;Click Me&lt;/button&gt;</code></pre>
+
+  <h3>2. DOM Level 0 Event Handler (Classic Method)</h3>
+  <p>Assigned directly to a DOM element property in JavaScript.</p>
+  <pre><code>&lt;button id="btn"&gt;Click Me&lt;/button&gt;
+
+&lt;script&gt;
+  const btn = document.getElementById('btn');
+  btn.onclick = function() {
+    alert('Button clicked!');
+  };
+&lt;/script&gt;</code></pre>
+
+  <h3>3. DOM Level 2 Event Handler (Modern Method)</h3>
+  <p>Uses <code>addEventListener()</code> to attach multiple handlers.</p>
+  <pre><code>&lt;button id="myButton"&gt;Click Me&lt;/button&gt;
+
+&lt;script&gt;
+  const myButton = document.getElementById('myButton');
+  myButton.addEventListener('click', function() {
+    alert('Clicked using addEventListener!');
+  });
+&lt;/script&gt;</code></pre>
+
+  <hr>
+
+  <h2>🔹 Removing an Event Listener</h2>
+  <pre><code>function showMessage() {
+  alert('Hello!');
+}
+
+myButton.addEventListener('click', showMessage);
+
+// To remove:
+myButton.removeEventListener('click', showMessage);
+</code></pre>
+
+  <hr>
+
+  <h2>🔹 Event Object</h2>
+  <p>
+    When an event occurs, JavaScript passes an <code>event</code> object that contains details about the event.
+  </p>
+  <pre><code>document.addEventListener('click', function(event) {
+  console.log('Clicked Element:', event.target);
+  console.log('Mouse X:', event.clientX);
+  console.log('Mouse Y:', event.clientY);
+});</code></pre>
+
+  <hr>
+
+  <h2>🔹 Common Mouse and Keyboard Events</h2>
+  <ul>
+    <li><code>click</code> – Mouse click</li>
+    <li><code>dblclick</code> – Double click</li>
+    <li><code>mousedown</code> / <code>mouseup</code> – Mouse button pressed/released</li>
+    <li><code>keydown</code> / <code>keyup</code> – Key pressed/released</li>
+    <li><code>input</code> – User input in text fields</li>
+    <li><code>submit</code> – Form submission</li>
+  </ul>
+
+  <hr>
+
+  <h2>🔹 Example: Handling Multiple Events</h2>
+  <pre><code>&lt;button id="demoBtn"&gt;Try Events&lt;/button&gt;
+
+&lt;script&gt;
+  const demoBtn = document.getElementById('demoBtn');
+
+  function handleClick() {
+    console.log('Clicked!');
+  }
+
+  function handleMouseOver() {
+    console.log('Mouse Over!');
+  }
+
+  demoBtn.addEventListener('click', handleClick);
+  demoBtn.addEventListener('mouseover', handleMouseOver);
+&lt;/script&gt;</code></pre>
+
+  <hr>
+
+  <h2>✅ Summary</h2>
+  <ul>
+    <li>Event Handlers respond to user or browser actions.</li>
+    <li><code>addEventListener()</code> is preferred over inline handlers.</li>
+    <li>Always remove event listeners if no longer needed to avoid memory leaks.</li>
+    <li>Use the <code>event</code> object to access event details.</li>
+  </ul>
+
+  <hr>
+  <p><strong>Author:</strong>Bhupendra Singh<br>
+  <strong>Upload Date:</strong> October 2025</p>
+</body>
+</html>

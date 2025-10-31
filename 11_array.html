@@ -1,400 +1,187 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Array</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arrays in JavaScript</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: #e0e0e0;
+      margin: 0;
+      padding: 20px;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: auto;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 25px 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+    }
+
+    h1, h2, h3 {
+      color: #eeaf42;
+      text-shadow: 0 0 10px #00ffff;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    h2 {
+      border-bottom: 2px solid #00ffff;
+      padding-bottom: 5px;
+      margin-top: 30px;
+      transition: 0.3s ease;
+    }
+
+    h2:hover {
+      color: #FFD700;
+      text-shadow: 0 0 10px #FFD700;
+    }
+
+    p, li {
+      font-size: 1rem;
+      color: #e6e6e6;
+    }
+
+    ul, ol {
+      margin-left: 25px;
+    }
+
+    pre {
+      background: rgba(0, 0, 0, 0.85);
+      color: #00ffae;
+      padding: 15px;
+      border-radius: 10px;
+      overflow-x: auto;
+      font-size: 0.95rem;
+      box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
+    }
+
+    code {
+      background: rgba(0, 0, 0, 0.7);
+      color: #00ffae;
+      padding: 3px 6px;
+      border-radius: 5px;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 50px;
+      color: #aaa;
+      border-top: 1px solid #00ffff;
+      padding-top: 10px;
+    }
+
+    strong {
+      color: #FFD700;
+    }
+
+    hr {
+      border: none;
+      height: 1px;
+      background: linear-gradient(to right, transparent, #00ffff, transparent);
+      margin: 40px 0;
+    }
+  </style>
 </head>
 <body>
-    <h1>
-        Array in JavaScript
-    </h1>
-    <h2>
-        An array is a special variable, which can hold more than one value at a time.
-    </h2>
-    <h3>
-        Arrays are used to store multiple values in a single variable.
-    </h3>
-    <p>
-        Example:
-        <ul>
-            <li>const fruits = ["Apple", "Banana", "Mango"];</li>
-            <li>let numbers = [1, 2, 3, 4, 5];</li>
-            <li>var mixed = ["Hello", 42, true, null];</li>
-        </ul>
-    </p>
-    <p>
-        <ol>
-            <li>
-                 In the above example, fruits is an array that holds three string values, numbers is an array that holds five numeric values, and mixed is an array that holds different types of values (string, number, boolean, and null).
-            </li>
-            <li>
-                Arrays can be accessed using their index, which starts from 0. For example, fruits[0] will give you "Apple", and numbers[2] will give you 3.
-            </li>
-            <li>
-                You can also modify arrays by adding or removing elements using methods like push(), pop(), shift(), unshift(), splice(), etc.
-            </li>
-        </ol>
-    </p>
+  <div class="container">
+    <h1>Arrays in JavaScript</h1>
+    <p>An <strong>Array</strong> is a special variable that can hold more than one value at a time. Arrays are used to store multiple values in a single variable.</p>
 
-    <h1>
-        interview Question: How do you access elements in an array in JavaScript?
-        You can access elements in an array using their index. The index starts from 0 for the first element. For example:
-        <ul>
-            <li>const fruits = ["Apple", "Banana", "Mango"];</li>
-            <li>console.log(fruits[0]); // Output: Apple</li>
-            <li>console.log(fruits[1]); // Output: Banana</li>
-            <li>console.log(fruits[2]); // Output: Mango</li>
-        </ul>
-    </h1>
-                    <li>let: Can be reassigned.</li>
-                    <li>const: Cannot be reassigned.</li>
-                </ul>
-            </li>
-            <li>Hoisting:
-                <ul>
-                    <li>var: Hoisted to the top of its scope and initialized with undefined.</li>
-                    <li>let: Hoisted to the top of its block but not initialized. Accessing it before declaration results in a ReferenceError.</li>
-                    <li>const: Hoisted to the top of its block but not initialized. Accessing it before declaration results in a ReferenceError.</li>
-                </ul>
-            </li>
-            <li>Re-declaration:
-                <ul>
-                    <li>var: Can be re-declared within the same scope without errors.</li>
-                    <li>let: Cannot be re-declared within the same scope. Attempting to do so results in a SyntaxError.</li>
-                    <li>const: Cannot be re-declared within the same scope. Attempting to do so results in a SyntaxError.</li>
-                </ul>
-            </li>
-        </ul>
-    </h1>
+    <h2>Example</h2>
+    <pre><code>
+const fruits = ["Apple", "Banana", "Mango"];
+let numbers = [1, 2, 3, 4, 5];
+var mixed = ["Hello", 42, true, null];
+    </code></pre>
 
     <h2>Array Methods</h2>
-    <p>
-        Here are some commonly used array methods in JavaScript:
-        <ul>
-            <li>push(): Adds one or more elements to the end of an array and returns the new length of the array.
-                <ul>
-                    <li>Example: 
-                        <pre>
-const fruits = ["Apple", "Banana"];
-fruits.push("Mango"); // fruits is now ["Apple", "Banana", "
-Mango"]
-                        </pre>
-                    </li>
-                </ul>
-            </li>
-            <li>pop(): Removes the last element from an array and returns that element.
-                <ul>
-                    <li>Example: 
-                        <pre>   
-const fruits = ["Apple", "Banana", "Mango"];
-const lastFruit = fruits.pop(); // lastFruit is "Mango", fruits is now ["
-Apple", "Banana"]
-                        </pre>
-                    </li>
-                </ul>
-            </li>
-            <li>shift(): Removes the first element from an array and returns that element.
-                <ul>
-                    <li>Example: 
-                        <pre>   
-const fruits = ["Apple", "Banana", "Mango"];
-const firstFruit = fruits.shift(); // firstFruit is "Apple", fruits is now ["Ban
-ana", "Mango"]
-                        </pre>
-                    </li>
-                </ul>
-            </li>
-            <li>unshift(): Adds one or more elements to the beginning of an array and returns the new length of the array.
-                <ul>
-                    <li>Example: 
-                        <pre>       
-const fruits = ["Banana", "Mango"];
-fruits.unshift("Apple"); // fruits is now ["Apple", "Banana", "M
-ango"]
-                        </pre>
-                    </li>
-                </ul>
-            </li>
-            <li>splice(): Changes the contents of an array by removing or replacing existing elements and/or adding new elements in place.
-                <ul>
-                    <li>Example: 
-                        <pre>   
-const fruits = ["Apple", "Banana", "Mango"];
-fruits.splice(1, 1, "Orange"); // fruits is now ["Apple",
-    "Orange", "Mango"]
-                            </pre>
-                        </li>
-                    </ul>
-                </li>
-                <li>slice(): Returns a shallow copy of a portion of an array into a new array object selected from start to end (end not included).
-                    <ul>
-                        <li>Example: 
-                            <pre>
-const fruits = ["Apple", "Banana", "Mango", "Orange"];
-const citrus = fruits.slice(2, 4); // citrus is ["Mango", "
-Orange"]
-                            </pre>
-                        </li>
-                    </ul>
-                </li>
-                <li>forEach(): Executes a provided function once for each array element.
-                    <ul>
-                        <li>Example: 
-                            <pre>   
-const fruits = ["Apple", "Banana", "Mango"];
-fruits.forEach(function(fruit) {
-    console.log(fruit);
-}); 
-// Output:
-// Apple
-// Banana
-// Mango
-                            </pre>
-                        </li>
-                    </ul>
-                </li>
-                <li>map(): Creates a new array populated with the results of calling a provided function on every element in the calling array.
-                    <ul>
-                        <li>Example: 
-                            <pre>   
-const numbers = [1, 2, 3, 4];
-const doubled = numbers.map(function(num) {
-    return num * 2;
-});
-// doubled is [2, 4, 6, 8]
-                            </pre>
-                        </li>
-                    </ul>
-                </li>
-                <li>filter(): Creates a new array with all elements that pass the test implemented by the provided function.
-                    <ul>
-                        <li>Example: 
-                            <pre>       
-const numbers = [1, 2, 3, 4, 5];
-const evenNumbers = numbers.filter(function(num) {
-    return num % 2 === 0;
-}); 
-// evenNumbers is [2, 4]
-                            </pre>
-                        </li>
-                    </ul>
-                </li>
-                <li>reduce(): Executes a reducer function (that you provide) on each element of the array, resulting in a single output value.
-                    <ul>
-                        <li>Example: 
-                            <pre>
-const numbers = [1, 2, 3, 4];
-const sum = numbers.reduce(function(accumulator, currentValue) {
-    return accumulator + currentValue;
-}, 0);
-// sum is 10
-                            </pre>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </p>
-<h1>Slice vs splice</h1>
-<p>
     <ul>
-        <li>slice(): 
-            <ul>
-                <li>Does not modify the original array.</li>
-                <li>Returns a new array containing the selected elements.</li>
-                <li>Accepts two arguments: start index and end index (end not included).</li>
-                <li>Example: 
-                    <pre>
-const fruits = ["Apple", "Banana", "Mango", "Orange"];
-const citrus = fruits.slice(1, 3); // citrus is ["Banana", "
-Mango"], fruits remains ["Apple", "Banana", "Mango", "Orange"]
-                    </pre>
-                </li>
-            </ul>
-        </li>
-        <li>splice(): 
-            <ul>
-                <li>Modifies the original array.</li>
-                <li>Returns an array containing the removed elements (if any).</li>
-                <li>Accepts three arguments: start index, number of elements to remove, and optional elements to add.</li>
-                <li>Example: 
-                    <pre>
-const fruits = ["Apple", "Banana", "Mango", "Orange"];
-fruits.splice(1, 2, "Grapes"); // fruits is now ["
-Apple", "Grapes", "Orange"]
-                    </pre>
-                </li>
-            </ul>
-        </li>
+      <li><code>push()</code> – Adds elements to the end</li>
+      <li><code>pop()</code> – Removes the last element</li>
+      <li><code>shift()</code> – Removes the first element</li>
+      <li><code>unshift()</code> – Adds elements to the beginning</li>
+      <li><code>splice()</code> – Adds/removes elements anywhere</li>
+      <li><code>slice()</code> – Copies part of an array</li>
+      <li><code>forEach()</code> – Loops through each item</li>
+      <li><code>map()</code> – Transforms items into a new array</li>
+      <li><code>filter()</code> – Filters items based on a condition</li>
+      <li><code>reduce()</code> – Reduces array to a single value</li>
     </ul>
-</p>
-    <h2>Common Interview Questions on Arrays</h2>
-    <p>
-        <ul>
-            <li>How do you check if an array contains a specific value in JavaScript?
-                <ul>
-                    <li>You can use the includes() method to check if an array contains a specific value. Example:
-                        <pre>
-const fruits = ["Apple", "Banana", "Mango"];
-console.log(fruits.includes("Banana")); // Output: true
-console.log(fruits.includes("Orange")); // Output: false
-                        </pre>
-                    </li>
-                </ul>
-            </li>
-            <li>How do you find the index of a specific value in an array in JavaScript?
-                <ul>
-                    <li>You can use the indexOf() method to find the index of a specific value in an array. Example:
-                        <pre>
-const fruits = ["Apple", "Banana", "Mango"];
-console.log(fruits.indexOf("Banana")); // Output: 1
-console.log(fruits.indexOf("Orange")); // Output: -1 (not found)
-                        </pre>
-                    </li>
-                </ul>
-            </li>
-            <li>How do you sort an array in JavaScript?
-                <ul>
-                    <li>You can use the sort() method to sort an array. By default, it sorts elements as strings in ascending order. Example:
-                        <pre>   
-const numbers = [3, 1, 4, 2];
-numbers.sort();
-console.log(numbers); // Output: [1, 2, 3, 4]
-                        </pre>
-                    </li>
-                </ul>
-            </li>
-            <li>How do you reverse the order of elements in an array in JavaScript?
-                <ul>
-                    <li>You can use the reverse() method to reverse the order of elements in an array. Example:
-                        <pre>
-const fruits = ["Apple", "Banana", "Mango"];
-fruits.reverse();
-console.log(fruits); // Output: ["Mango", "Banana", "Apple"]
-                        </pre>
-                    </li>
-                </ul>
-            </li>
-        </ul>
-    </p>
 
-    <h2>Conclusion</h2>
-    <p>
-        Arrays are a fundamental data structure in JavaScript that allow you to store and manipulate multiple values in a single variable. Understanding how to work with arrays and their methods is essential for effective JavaScript programming.
-    </p>
-    <h2>Example Code</h2>
-    <p>
-        Here is an example code snippet demonstrating some array methods:   
-    </p>
+    <h2>Slice vs Splice</h2>
+    <pre><code>
+// slice() – returns a new array, original remains unchanged
+const fruits = ["Apple", "Banana", "Mango", "Orange"];
+const citrus = fruits.slice(1, 3); 
+console.log(citrus); // ["Banana", "Mango"]
 
+// splice() – modifies original array
+fruits.splice(1, 2, "Grapes");
+console.log(fruits); // ["Apple", "Grapes", "Orange"]
+    </code></pre>
 
-    <h1>Most Important:</h1>
-    <h2>Spread Operator  (...)</h2>
+    <h2>Advanced Array Features</h2>
+    <pre><code>
+// 1. Spread Operator (...)
+const arr1 = [1,2,3];
+const arr2 = [4,5,6];
+const merged = [...arr1, ...arr2];
+console.log(merged); // [1,2,3,4,5,6]
 
+// 2. flat() – Flattens nested arrays
+const nested = [1, [2, [3, [4]]]];
+console.log(nested.flat(Infinity)); // [1,2,3,4]
 
-<Script>
-    // Example usage of some array methods
+// 3. Array.from() – Converts string or iterable to array
+console.log(Array.from("BHUPENDRA")); 
+// ['B','H','U','P','E','N','D','R','A']
+
+// 4. Array.of() – Creates array from individual values
+const nums = Array.of(10, 20, 30, 40);
+console.log(nums); // [10, 20, 30, 40]
+    </code></pre>
+
+    <h2>Common Interview Questions</h2>
+    <pre><code>
+// includes() – checks if value exists
+console.log(["Apple","Banana"].includes("Banana")); // true
+
+// indexOf() – gets index of value
+console.log(["Apple","Banana"].indexOf("Banana")); // 1
+
+// sort() – sorts array alphabetically or numerically
+console.log([3,1,4,2].sort()); // [1,2,3,4]
+
+// reverse() – reverses array order
+console.log(["A","B","C"].reverse()); // ["C","B","A"]
+    </code></pre>
+
+    <hr>
+
+    <h2>Example Output in Console</h2>
+    <p>Open your browser console (<strong>F12 → Console</strong>) to see live results of these methods in action.</p>
+
+    <footer>
+      Created with 💙 by <strong>Bhupendra Singh</strong>
+    </footer>
+  </div>
+
+  <script>
+    // Sample JS Console Execution
     const fruits = ["Apple", "Banana"];
-    console.log("Initial fruits:", fruits); // ["Apple", "Banana"]
-
     fruits.push("Mango");
-    console.log("After push:", fruits); // ["Apple", "Banana", "Mango"]
-
-    const lastFruit = fruits.pop();
-    console.log("After pop:", fruits, "Popped fruit:", lastFruit); // ["Apple", "Banana"], "Mango"
-
-    const firstFruit = fruits.shift();
-    console.log("After shift:", fruits, "Shifted fruit:", firstFruit); // ["Banana"], "Apple"
-
-    fruits.unshift("Apple");
-    console.log("After unshift:", fruits);  // ["Apple", "Banana"]
-
-    fruits.splice(1, 1, "Orange");
-    console.log("After splice:", fruits); // ["Apple", "Orange"]
-
-    const citrus = fruits.slice(1, 3);
-    console.log("Sliced array:", citrus); // ["Orange"]
-
-    console.log("Using forEach:");  // Using forEach to print each fruit
-    fruits.forEach(function(fruit) {
-        console.log(fruit);
-    });
-
-    const numbers = [1, 2, 3, 4];
-    const doubled = numbers.map(function(num) {
-        return num * 2;
-    });
-    console.log("Doubled numbers using map:", doubled); // [2, 4, 6, 8]
-
-    const evenNumbers = numbers.filter(function(num) {
-        return num % 2 === 0;
-    });
-    console.log("Even numbers using filter:", evenNumbers); // [2, 4]
-
-    const sum = numbers.reduce(function(accumulator, currentValue) {
-        return accumulator + currentValue;
-    }, 0);
-    console.log("Sum of numbers using reduce:", sum);
-
-    // Slice vs Splice example
-    const moreFruits = ["Apple", "Banana", "Mango", "Orange"];
-    const slicedFruits = moreFruits.slice(1, 3);        
-    console.log("Sliced fruits:", slicedFruits);  // ["Banana", "Mango"]
-    console.log("Original array after slice (unchanged):", moreFruits);  // ["Apple", "Banana", "Mango", "Orange"]
-    moreFruits.splice(1, 2, "Grapes");
-    console.log("Array after splice (modified):", moreFruits); // ["Apple", "Grapes", "Orange"]
-
-    // Common Interview Questions
-    const sampleFruits = ["Apple", "Banana", "Mango"];   // For includes and indexOf
-    console.log("Does array include 'Banana'?", sampleFruits.includes("Banana")); // true
-    console.log("Does array include 'Orange'?", sampleFruits.includes("Orange")); // false
-    console.log("Index of 'Banana':", sampleFruits.indexOf("Banana")); // 1
-    console.log("Index of 'Orange':", sampleFruits.indexOf("Orange")); // -1
-    const sampleNumbers = [3, 1, 4, 2]; // For sort and reverse
-    sampleNumbers.sort();  // Sorts in place
-    console.log("Sorted numbers:", sampleNumbers); // [1, 2, 3, 4]
-    sampleFruits.reverse(); // Reverses in place    
-    console.log("Reversed fruits:", sampleFruits); // ["Mango", "Banana", "Apple"]
-
-    //important 1 {spread operator(...ArrayName)}
-    const arr1 = [1,2,3,4];
-    const arr2 = [5,6,7,8];
-    const arr3 = [9,10,11,12];
-    const spread = [...arr1, ...arr2, ...arr3];
-    console.log("Merge 3 array:", spread);
-
-    //important 2 {flate method}
-    const arr4 = [1,2,3,[4,5,6,[8,9,10,[11,12]]],13,14,15];
-    const flat = arr4.flat(Infinity); // const flat = arr4.flat(3);
-    console.log(arr4);
-    console.log(flat);
-
-    //important 3 string into array
-    const string = "BHUPENDRA SINGH"
-    const arr5 = Array.isArray("BHUPENDRA SINGH");
-    const arr6 = Array.from("BHUPENDRA SINGH");
-
-    console.log(string);
-    console.log(arr5);
-    console.log(arr6);
-
-    //important 4 data to array
-
-    const a=12;
-    const b=122;
-    const c=112;
-    const d=121;
-    const e=102;
-    const  arr7 = Array.of(a,b,c,d,e);
-    console.log(arr7);
-
-    
-
-
-    
-
-    
-</Script>
-    
+    fruits.pop();
+    fruits.unshift("Grapes");
+    fruits.forEach(f => console.log("Fruit:", f));
+  </script>
 </body>
 </html>

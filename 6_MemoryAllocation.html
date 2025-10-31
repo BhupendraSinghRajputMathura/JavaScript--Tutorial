@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory Allocation in JavaScript</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 20px;
+            background-color: #fafafa;
+            color: #333;
+            line-height: 1.7;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        p, ul {
+            background: #fff;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+        }
+        ul {
+            margin: 15px 0;
+        }
+        code {
+            background-color: #f4f4f4;
+            padding: 3px 5px;
+            border-radius: 5px;
+            color: #e74c3c;
+            font-family: Consolas, monospace;
+        }
+        img {
+            display: block;
+            margin: 20px auto;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        }
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 14px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <h1>Memory Allocation in JavaScript</h1>
+
+    <p>
+        In JavaScript, memory allocation is managed automatically through a process called 
+        <b>garbage collection</b>. When you create variables, objects, or functions, memory is allocated 
+        to store these values. JavaScript uses a combination of <b>stack</b> and <b>heap</b> memory to manage data.
+    </p>
+
+    <h2>Stack Memory (Stores Actual Copy)</h2>
+    <p>
+        Stack memory is used for storing <b>primitive data types</b> such as numbers, strings, and booleans, 
+        as well as function calls. It follows a <b>Last In, First Out (LIFO)</b> structure, meaning 
+        the last item added to the stack is the first to be removed. 
+        Stack memory is fast and efficient but limited in size.
+    </p>
+
+    <h2>Heap Memory (Stores References)</h2>
+    <p>
+        Heap memory is used for <b>non-primitive data types</b> like objects and arrays. 
+        It supports <b>dynamic allocation</b>, allowing memory to be allocated and released as needed. 
+        Heap memory is larger than stack memory but slower to access.
+    </p>
+
+    <h2>Garbage Collection</h2>
+    <p>
+        JavaScript automatically manages memory through <b>garbage collection</b>. 
+        When an object or variable is no longer referenced, it becomes "garbage," 
+        and the garbage collector reclaims that memory. This prevents memory leaks 
+        and improves performance.
+    </p>
+
+    <h2>Best Practices for Memory Management</h2>
+    <ul>
+        <li>Avoid unnecessary global variables.</li>
+        <li>Use local variables whenever possible.</li>
+        <li>Set unused objects to <code>null</code> to help garbage collection.</li>
+        <li>Avoid circular references between objects.</li>
+        <li>Clean up large data structures when not needed.</li>
+    </ul>
+
+    <p>
+        By understanding how memory allocation works and following these best practices, 
+        you can write efficient and memory-optimized JavaScript programs.
+    </p>
+
+    <img src="./Image/stack-heap-pointers.png" alt="Memory Allocation in JavaScript (Stack and Heap Memory)" width="800" height="400">
+
+    <h2>Example</h2>
+    <p>
+        <code>
+            let name = "Alice"; // Stack memory<br>
+            let anotherName = name;<br>
+            console.log(name); // "Alice"<br>
+            console.log(anotherName); // "Alice"<br><br>
+
+            name = "Bob"; // new copy in stack<br>
+            console.log(name); // "Bob"<br>
+            console.log(anotherName); // "Alice"<br><br>
+
+            let obj1 = { key: "value" }; // Heap memory<br>
+            let obj2 = obj1;<br>
+            console.log(obj1); // { key: "value" }<br>
+            console.log(obj2); // { key: "value" }<br><br>
+
+            obj1.key = "newValue";<br>
+            console.log(obj1); // { key: "newValue" }<br>
+            console.log(obj2); // { key: "newValue" }
+        </code>
+    </p>
+
+    <script>
+        let name = "Alice";
+        let anotherName = name;
+        console.log(name);
+        console.log(anotherName);
+
+        name = "Bob";
+        console.log(name);
+        console.log(anotherName);
+
+        let obj1 = { key: "value" };
+        let obj2 = obj1;
+        console.log(obj1);
+        console.log(obj2);
+
+        obj1.key = "newValue";
+        console.log(obj1);
+        console.log(obj2);
+    </script>
+
+    <footer>
+        <p><b>Author:</b> Bhupendra Singh</p>
+    </footer>
+</body>
+</html>

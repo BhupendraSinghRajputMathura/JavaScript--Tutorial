@@ -1,61 +1,167 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scope</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JavaScript Scope - Notes by Bhupendra Singh</title>
+
+  <style>
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(120deg, #e0f7fa, #ffffff);
+      margin: 0;
+      padding: 0;
+      color: #212121;
+    }
+
+    header {
+      background: linear-gradient(90deg, #00695c, #004d40);
+      color: #fff;
+      text-align: center;
+      padding: 1.5rem;
+      font-size: 1.8rem;
+      letter-spacing: 0.5px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    }
+
+    section {
+      max-width: 900px;
+      margin: 2rem auto;
+      background: #fff;
+      border-radius: 12px;
+      padding: 2rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    h1, h2 {
+      color: #00695c;
+      border-left: 5px solid #004d40;
+      padding-left: 10px;
+    }
+
+    p, li {
+      line-height: 1.6;
+    }
+
+    pre {
+      background: #1e1e1e;
+      color: #f8f8f2;
+      padding: 1rem;
+      border-radius: 10px;
+      overflow-x: auto;
+      font-size: 0.95rem;
+      margin-top: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    code {
+      color: #e6db74;
+      font-family: "Courier New", monospace;
+    }
+
+    ul {
+      background: #e0f2f1;
+      padding: 1rem 1.5rem;
+      border-left: 5px solid #004d40;
+      border-radius: 8px;
+      list-style: none;
+    }
+
+    ul li {
+      margin: 0.5rem 0;
+    }
+
+    footer {
+      background: #004d40;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      font-size: 1rem;
+      margin-top: 2rem;
+      border-top: 3px solid #00796b;
+    }
+
+    .note {
+      background: #e0f2f1;
+      padding: 0.8rem;
+      border-left: 5px solid #00796b;
+      margin: 1rem 0;
+      border-radius: 6px;
+      font-style: italic;
+    }
+  </style>
 </head>
+
 <body>
-    <h1>Scope</h1>
-    <p>In JavaScript, scope refers to the current context of execution, which determines the accessibility of variables. There are two main types of scope:</p>
+  <header>JavaScript Scope - Notes</header>
+
+  <section>
+    <h1>Understanding Scope in JavaScript</h1>
+    <p>
+      In JavaScript, <strong>scope</strong> refers to the current context of execution, 
+      which determines the accessibility (visibility) of variables. There are two main types of scope:
+    </p>
+
     <ul>
-        <li><strong>Global Scope:var</strong> Variables declared outside of any function or block are in the global scope and can be accessed from anywhere in the code.</li>
-        <li><strong>Local Scope (Block Scope):const,let</strong> Variables declared within a function or block are in the local scope and can only be accessed within that function or block.</li>
+      <li><strong>Global Scope (var):</strong> Variables declared outside of any function or block can be accessed anywhere in the program.</li>
+      <li><strong>Local / Block Scope (let, const):</strong> Variables declared inside a block <code>{}</code> or function can only be accessed within that block or function.</li>
     </ul>
 
-    <p>Example</p>
-    <code>
-        if(true){
-            let blockScopedLet = "I am block scoped";
-            console.log(blockScopedLet); // Accessible
-            const blockScopedConst = "I am block scoped";
-            console.log(blockScopedConst); // Accessible
-            var globalScopedVar = "I am function scoped";
-            console.log(globalScopedVar); // Accessible
-        }
-        console.log(blockScopedLet); // Not Accessible
-        console.log(blockScopedConst); // Not Accessible
-        console.log(globalScopedVar); // Accessible
-    </code>
-    <code>
-        var globalVar = "I am a global variable";
+    <h2>Example 1: Block vs Function Scope</h2>
+    <pre><code>if (true) {
+  let blockScopedLet = "I am block scoped (let)";
+  const blockScopedConst = "I am block scoped (const)";
+  var globalScopedVar = "I am function scoped (var)";
 
-        function testScope() {
-            var localVar = "I am a local variable";
-            console.log(globalVar); // Accessible
-            console.log(localVar);  // Accessible
-        }
+  console.log(blockScopedLet);   // Accessible
+  console.log(blockScopedConst); // Accessible
+  console.log(globalScopedVar);  // Accessible
+}
 
-        testScope();
+console.log(blockScopedLet);   // ❌ Not Accessible
+console.log(blockScopedConst); // ❌ Not Accessible
+console.log(globalScopedVar);  // ✅ Accessible</code></pre>
 
-        console.log(globalVar); // Accessible
-        console.log(localVar);  // Not Accessible
-    </code>
+    <div class="note">
+      <strong>Note:</strong> <code>let</code> and <code>const</code> are block-scoped, while <code>var</code> is function-scoped.
+    </div>
 
-    <code>
-        if(true){
-            const a = 10;
-            console.log(a); // 10 Accessible
-            let b = 20;
-            console.log(b); // 20 Accessible
-            var c = 30;
-            console.log(c); // 30 Accessible
-        }
-        console.log(a); // Not Accessible
-        console.log(b); // Not Accessible
-        console.log(c); // Accessible
-    </code>
+    <h2>Example 2: Global and Local Scope</h2>
+    <pre><code>var globalVar = "I am a global variable";
 
-    
+function testScope() {
+  var localVar = "I am a local variable";
+  console.log(globalVar); // Accessible
+  console.log(localVar);  // Accessible
+}
+
+testScope();
+
+console.log(globalVar); // Accessible
+console.log(localVar);  // ❌ Not Accessible</code></pre>
+
+    <h2>Example 3: var, let, const Behavior</h2>
+    <pre><code>if (true) {
+  const a = 10;
+  let b = 20;
+  var c = 30;
+
+  console.log(a); // 10
+  console.log(b); // 20
+  console.log(c); // 30
+}
+
+console.log(a); // ❌ Not Accessible
+console.log(b); // ❌ Not Accessible
+console.log(c); // ✅ Accessible</code></pre>
+
+    <div class="note">
+      <strong>Tip:</strong> Always prefer <code>let</code> or <code>const</code> over <code>var</code> to avoid unexpected access or hoisting issues.
+    </div>
+  </section>
+
+  <footer>
+    © 2025 | Created by <strong>Bhupendra Singh</strong> | All Rights Reserved
+  </footer>
 </body>
 </html>

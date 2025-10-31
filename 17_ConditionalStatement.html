@@ -1,118 +1,227 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Conditional Statements</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Conditional Statements in JavaScript</title>
+  <style>
+    body {
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(135deg, #e3f2fd, #e0f7fa);
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 900px;
+      background: #fff;
+      margin: 40px auto;
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      text-align: center;
+      color: #1565c0;
+      font-size: 2.4em;
+      margin-bottom: 20px;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      color: #1976d2;
+      border-left: 5px solid #42a5f5;
+      padding-left: 10px;
+      margin-top: 30px;
+    }
+
+    h3 {
+      color: #0288d1;
+      margin-top: 20px;
+    }
+
+    p {
+      line-height: 1.7;
+      font-size: 1.05em;
+    }
+
+    ul, ol {
+      background: #f8fbff;
+      border-radius: 10px;
+      padding: 20px 30px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    li {
+      margin: 10px 0;
+      font-size: 1.05em;
+    }
+
+    pre {
+      background-color: #263238;
+      color: #e0e0e0;
+      padding: 15px;
+      border-radius: 10px;
+      overflow-x: auto;
+      font-family: "Consolas", monospace;
+      font-size: 1em;
+      margin: 15px 0;
+    }
+
+    code {
+      color: #00e676;
+    }
+
+    strong {
+      color: #0d47a1;
+    }
+
+    .note {
+      background: #fff3e0;
+      border-left: 5px solid #ffb300;
+      padding: 15px 20px;
+      border-radius: 10px;
+      margin-top: 25px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    footer {
+      text-align: center;
+      color: #777;
+      margin-top: 40px;
+      font-size: 0.9em;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        margin: 20px;
+        padding: 25px;
+      }
+
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+  </style>
 </head>
 <body>
+  <div class="container">
     <h1>Conditional Statements in JavaScript</h1>
-    <p>Conditional statements are used to perform different actions based on different conditions. They allow you to control the flow of your program by executing certain blocks of code only when specific conditions are met.</p>
+    <p>
+      Conditional statements are used to perform different actions based on conditions. 
+      They control the flow of execution in a program by executing certain blocks of code only when specific conditions are met.
+    </p>
+
     <h2>Types of Conditional Statements</h2>
     <ul>
-        <li><strong>if statement:</strong> Executes a block of code if a specified condition is true.</li>
-        <li><strong>if...else statement:</strong> Executes one block of code if a condition is true, and another block if it is false.</li>
-        <li><strong>else if statement:</strong> Specifies a new condition to test if the first condition is false.</li>
-        <li><strong>switch statement:</strong> Evaluates an expression and executes code based on matching case values.</li>
-    </ul>   
-    <h2>Examples</h2>
-    <h3>if statement</h3>
-    <pre><code>
-if (condition) {
-    // code to be executed if condition is true 
-}
-    </code></pre>   
-    <h3>if...else statement</h3>
-    <pre><code>
-if (condition) {
-    // code to be executed if condition is true
-} else {
-    // code to be executed if condition is false    
-}
-    </code></pre>
-    <h3>else if statement</h3>
-    <pre><code>
-if (condition1) {
-    // code to be executed if condition1 is true
-} else if (condition2) {
-    // code to be executed if condition2 is true
-} else {
-    // code to be executed if both conditions are false    
-}
-    </code></pre>
-    <h3>switch statement</h3>
-    <pre><code>
-switch (expression) {
-    case value1:
-        // code to be executed if expression === value1
-        break;
-    case value2:
-        // code to be executed if expression === value2
-        break;
-    default:
-        // code to be executed if expression doesn't match any case
-}
-    </code></pre>
-    <h2>Best Practices</h2>
-    <ul>
-        <li>Use clear and concise conditions to improve readability.</li>
-        <li>Avoid deeply nested conditional statements; consider using functions to simplify complex logic.</li>
-        <li>Use switch statements for multiple discrete values instead of multiple if...else if statements.</li>
-        <li>Always include a default case in switch statements to handle unexpected values.</li>
+      <li><strong>if statement:</strong> Executes a block of code if a condition is true.</li>
+      <li><strong>if...else statement:</strong> Executes one block if a condition is true, another if false.</li>
+      <li><strong>else if statement:</strong> Tests multiple conditions sequentially.</li>
+      <li><strong>switch statement:</strong> Compares an expression against multiple values.</li>
     </ul>
 
-    <h2>Conclusion</h2>
-    <p>Conditional statements are essential for controlling the flow of a program. By using them
-    effectively, you can create dynamic and responsive applications that react to user input and other conditions.</p>  
+    <h2>Examples</h2>
+    <h3>if Statement</h3>
+    <pre><code>if (condition) {
+    // code executes if condition is true
+}</code></pre>
+
+    <h3>if...else Statement</h3>
+    <pre><code>if (condition) {
+    // executes if condition is true
+} else {
+    // executes if condition is false
+}</code></pre>
+
+    <h3>else if Statement</h3>
+    <pre><code>if (condition1) {
+    // executes if condition1 is true
+} else if (condition2) {
+    // executes if condition2 is true
+} else {
+    // executes if all are false
+}</code></pre>
+
+    <h3>switch Statement</h3>
+    <pre><code>switch (expression) {
+    case value1:
+        // code executes if expression === value1
+        break;
+    case value2:
+        // code executes if expression === value2
+        break;
+    default:
+        // code executes if no case matches
+}</code></pre>
 
     <h2>Ternary Operator</h2>
-    <p>The ternary operator is a shorthand way of writing an if...else statement. It takes three operands: a condition, a value to return if the condition is true, and a value to return if the condition is false.</p>
-    <pre><code>
-condition ? valueIfTrue : valueIfFalse;
-    </code></pre>   
+    <p>
+      The <strong>ternary operator</strong> provides a shorthand way of writing if...else.  
+      It takes three operands: a condition, a value if true, and a value if false.
+    </p>
+    <pre><code>condition ? valueIfTrue : valueIfFalse;</code></pre>
     <p>Example:</p>
-    <pre><code>
-let age = 20;
+    <pre><code>let age = 20;
 let status = (age < 18) ? "minor" : "adult";
-console.log(status); // Output: adult
-    </code></pre>
-    <script>
-        // Example of if...else statement
-        let age = 20;
-        if (age < 18) {
-            console.log("You are a minor.");
-        } else {
-            console.log("You are an adult.");
-        }
+console.log(status); // Output: adult</code></pre>
 
-        // Example of switch statement
-        let day = 3;
-        switch (day) {
-            case 1:
-                console.log("Monday");
-                break;
-            case 2:
-                console.log("Tuesday");
-                break;
-            case 3:
-                console.log("Wednesday");
-                break;
-            case 4:
-                console.log("Thursday");
-                break;
-            case 5:
-                console.log("Friday");
-                break;
-            case 6:
-                console.log("Saturday");
-                break;
-            case 7:
-                console.log("Sunday");
-                break;
-            default:
-                console.log("Invalid day");
-        }
-    </script>
+    <h2>Best Practices</h2>
+    <ul>
+      <li>Write simple, clear conditions for better readability.</li>
+      <li>Use <strong>switch</strong> when checking multiple discrete values.</li>
+      <li>Avoid deeply nested if statements; refactor with functions or logical operators.</li>
+      <li>Always include a <strong>default</strong> case in switch statements.</li>
+    </ul>
 
+    <div class="note">
+      <h2>Conclusion</h2>
+      <p>
+        Conditional statements are fundamental to decision-making in JavaScript.  
+        They help create dynamic, responsive, and logical programs that react to user inputs and changing data.
+      </p>
+    </div>
+
+    <footer>© 2025 | Designed by Bhupendra Singh</footer>
+  </div>
+
+  <script>
+    // Example of if...else statement
+    let age = 20;
+    if (age < 18) {
+      console.log("You are a minor.");
+    } else {
+      console.log("You are an adult.");
+    }
+
+    // Example of switch statement
+    let day = 3;
+    switch (day) {
+      case 1:
+        console.log("Monday");
+        break;
+      case 2:
+        console.log("Tuesday");
+        break;
+      case 3:
+        console.log("Wednesday");
+        break;
+      case 4:
+        console.log("Thursday");
+        break;
+      case 5:
+        console.log("Friday");
+        break;
+      case 6:
+        console.log("Saturday");
+        break;
+      case 7:
+        console.log("Sunday");
+        break;
+      default:
+        console.log("Invalid day");
+    }
+  </script>
 </body>
 </html>
